@@ -21,3 +21,17 @@ export interface Project
   finishDate: string;
   projectLeaderId: number;
 }
+
+export interface Task
+{
+  id: number;
+  projectId:number;
+  name: string;
+  description: string;
+  status: string;
+  priority: string;
+  estimatedDuration: number;
+  creationDate: string;
+  startDate: string;
+  finishDate: string;
+}
