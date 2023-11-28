@@ -18,6 +18,19 @@
   grid-area: 2 / 2 / 3 / 3;
 }
 
+.blueButton {
+  display: flex;
+  width: 78px;
+  height: 33px;
+  padding: 16px 12px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 5px;
+  border: 2px solid var(--azul-oscuro, #164863);
+  background: var(--azul-oscuro, #164863);
+}
+
 .footer {
   background-color: #92400e;
   grid-area: 3 / 2 / 4 / 3;

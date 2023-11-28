@@ -1,13 +1,15 @@
-export default function ClientGridRow({ cliente }: {cliente: any}) {
+import { Cliente } from "@/types/types";
+
+export default function ClientGridRow({ cliente }: {cliente: Cliente}) {
 
     return (
         <tr key={`${cliente['razon social']}`}>
             <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <div className="flex items-center">{cliente['id']}</div>
+                <div className="flex items-center text-gray-900">{cliente['id']}</div>
             </td>
 
             <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <div className="flex items-center">{cliente['razon social']}</div>
+                <div className="flex items-center text-gray-900">{cliente['razon social']}</div>
             </td>
 
             <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">

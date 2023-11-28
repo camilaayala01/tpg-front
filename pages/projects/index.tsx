@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react"
 import UserGridRow from "@/components/userGridRow"
+import { Project, Usuario } from "@/types/types"
+import ProjectGridRow from "@/components/projectGridRow"
+import MyButton from "@/components/button"
 
 function HeaderItem({ title }: { title: string }) {
   return <th className="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50">{title}</th>
 }
 
+
 export default function Usuarios() {
-  const [list, setList] = useState([])
+  const [list, setList] = useState<Project[]>([])
 
   useEffect(() => {
-    fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos")
+    fetch("http://localhost:8080/projects")
       .then((res) => {
         return res.json()
       })
@@ -25,7 +29,7 @@ export default function Usuarios() {
 
       <div className="container max-w-7xl mx-auto mt-8">
         <div className="mb-4">
-          <h1 className="text-3xl font-bold decoration-gray-400">Usuarios</h1>
+          <h1 className="text-3xl font-bold decoration-gray-400">Proyectos</h1>
         </div>
         <div className="flex flex-col">
           <div className="overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
@@ -34,15 +38,20 @@ export default function Usuarios() {
                 <thead>
                   <tr>
                     <HeaderItem title="ID" />
-                    <HeaderItem title="Nombre" />
-                    <HeaderItem title="Apellido" />
+                    <HeaderItem title="Name" />
+                    <HeaderItem title="Description" />
+                    <HeaderItem title="Status" />
+                    <HeaderItem title="Creation Date" />
+                    <HeaderItem title="Start Date" />
+                    <HeaderItem title="Finish Date (estimated)" />
+                    <HeaderItem title="button" />
                   </tr>
                 </thead>
 
                 <tbody>
-                  {list.map((usuario) => (
-                    <UserGridRow key={usuario['legajo']} usuario={usuario} />
-                  ))}
+                  {list.map((project) => (
+                    <ProjectGridRow key={project['id']} project={project} />
+                  ))};
                 </tbody>
               </table>
             </div>
@@ -52,3 +61,4 @@ export default function Usuarios() {
     </>
   )
 }
+
