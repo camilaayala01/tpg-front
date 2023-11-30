@@ -4,4 +4,4 @@ LABEL authors="camil"
 COPY . .
 
 
-CMD ["npm", "run", "dev"]
+CMD ["npm" ,"install" ,"next" ,"npm", "run", "dev"]
