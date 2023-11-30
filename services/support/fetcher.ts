@@ -1,0 +1,1 @@
+export const supportAPIUrl = "http://localhost:8080/swagger-ui.html#/memo-1-tpg"
