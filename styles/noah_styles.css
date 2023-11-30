@@ -29,6 +29,7 @@
   border-radius: 5px;
   border: 2px solid var(--azul-oscuro, #164863);
   background: var(--azul-oscuro, #164863);
+  color: white;
 }
 
 .footer {
