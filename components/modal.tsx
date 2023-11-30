@@ -1,3 +1,4 @@
+import { button } from "@nextui-org/react"
 import { ModalProps } from "./types"
 
 export default function Modal({ modalOpen, setModalOpen, list }: ModalProps) {

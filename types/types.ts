@@ -1,4 +1,4 @@
-export interface Usuario {
+export interface Employee {
   Nombre: string
   Apellido: string
   legajo: number
