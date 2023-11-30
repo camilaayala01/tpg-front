@@ -6,4 +6,3 @@ const ImagenComponente: React.FC<{ src: string; alt: string; style?: React.CSSPr
 };
 
 export default ImagenComponente;
-

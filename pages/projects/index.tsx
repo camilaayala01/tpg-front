@@ -13,7 +13,7 @@ export default function Projects() {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:8080/projects")
+    fetch("https://psa-proyecto.onrender.com/projects")
       .then((res) => {
         return res.json()
       })

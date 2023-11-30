@@ -16,7 +16,7 @@ export default function Tasks() {
   
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:8080/projects/${id}/tasks`)
+    fetch(`https://psa-proyecto.onrender.com/projects/${id}/tasks`)
       .then((res) => {
         return res.json()
       })

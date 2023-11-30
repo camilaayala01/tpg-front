@@ -13,9 +13,9 @@ const ListBox: React.FC<{label: any; style?: React.CSSProperties; opciones: stri
 
   return (
     <div style={style}>
-      <label htmlFor="listaDesplegable" style={{ fontSize: '1.3em', fontWeight: 'bold' }}>{label}</label>
+      <label htmlFor="listaDesplegable" style={{ fontSize: '1.3em', fontWeight: 'bold', color: 'black' }}>{label}</label>
       <select id="listaDesplegable" value={opcionSeleccionada} onChange={handleSeleccion} style={{position: 'absolute', top: '100%', left: '10%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}}>
-        <option value="">{label}</option>
+        <option value="" style= {{color: 'black'}}>{label}</option>
         {opciones.map((opcion, index) => (
           <option key={index} value={opcion}>
             {opcion}

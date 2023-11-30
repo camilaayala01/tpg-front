@@ -15,14 +15,14 @@ const TextBox: React.FC<{label: any; description: any; style?: React.CSSProperti
 
   return (
     <div style={style}>
-        <p style={{fontWeight: 'bold'}}>{label}</p>
-        <p style={{fontSize: '0.9rem'}}>{description}</p>
+        <p style={{fontWeight: 'bold', color: 'black'}}>{label}</p>
+        <p style={{fontSize: '0.9rem', color: 'black'}}>{description}</p>
         <input
             type="text"
             id="campoTexto"
             value={valor}
             onChange={handleChange}
-            style={{backgroundColor: '#EDEDED', width: '300px', height: '40px', borderRadius: '12px'}}
+            style={{backgroundColor: '#EDEDED', width: '300px', height: '40px', borderRadius: '12px', color: 'black'}}
         />
     </div>
   );

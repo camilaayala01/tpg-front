@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import UserGridRow from "@/components/userGridRow"
-import { Usuario } from "@/types/types"
+import { Employee } from "@/types/types"
 
 function HeaderItem({ title }: { title: string }) {
   return <th className="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50">{title}</th>
@@ -8,7 +8,7 @@ function HeaderItem({ title }: { title: string }) {
 
 
 export default function Usuarios() {
-  const [list, setList] = useState<Usuario[]>([])
+  const [list, setList] = useState<Employee[]>([])
 
   useEffect(() => {
     fetch("http://localhost:8080/employees")
@@ -42,8 +42,8 @@ export default function Usuarios() {
                 </thead>
 
                 <tbody>
-                  {list.map((usuario) => (
-                    <UserGridRow key={usuario['legajo']} usuario={usuario} />
+                  {list.map((employee) => (
+                    <UserGridRow key={employee['legajo']} employee={employee} />
                   ))}
                 </tbody>
               </table>

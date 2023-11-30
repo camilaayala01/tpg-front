@@ -10,47 +10,6 @@ import DateBox from "@/components/projects/DateBox";
 
 const inter = Inter({ subsets: ["latin"] })
 
-// export default function ProjectMainPage({ params }: { params: { id: string } }) {
- 
-//   const router = useRouter();
-//   const {id} = router.query;
-
-//   function handleButtonClick() {
-//     router.push(`${id}/tasks`)
-//   }
-
-//   const [curProject, setProject] = useState<Project>()
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     setLoading(true);
-//     fetch(`http://localhost:8080/projects/${id}`)
-//       .then((res) => {
-//         return res.json()
-//       })
-//       .then((data) => {
-//         setProject(data)
-//         setLoading(false);
-//       })
-//   }, [])
-  
-//   return (
-//     <div className="flex h-full flex-col justify-center items-center bg-white">
-//         {loading ? (
-//             SkeletonLoader()
-//           ) :
-//             //mostrar pag d proyecto
-//             <h1 className="text-4xl mb-5 font-bold text-black">Ahora estás en proyecto {id}</h1>
-//           }
-//       <div className="text-sm leading-5 text-gray-900">
-//         <MyButton onClickHandler={handleButtonClick} />
-//       </div>
-
-//       <span className="text-7xl">proyecto</span>
-//     </div>
-//   );
-// }
-
 export default function ProjectMainPage({ params }: { params: { id: string } }) {
   const router = useRouter();
   const { id } = router.query;
@@ -58,10 +17,10 @@ export default function ProjectMainPage({ params }: { params: { id: string } }) 
   const [curProject, setProject] = useState<Project>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
+  //hacer buscador
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:8080/projects/${id}`)
+    fetch(`https://psa-proyecto.onrender.com/projects/${id}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error(`Error ${res.status}: ${res.statusText}`);

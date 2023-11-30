@@ -22,8 +22,8 @@ export default function Layout({ children }: { children: any }) {
       title: "Homepage",
     },
     {
-      href: "/employees",
-      title: "Employees",
+      href: "/support",
+      title: "Support",
     },
     {
       href: "/projects",
