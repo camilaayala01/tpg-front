@@ -1,4 +1,4 @@
-import {Usuario} from "../types/types";
+import {Employee} from "../types/types";
 
 export interface ISidebarItem {
   href: string
@@ -9,5 +9,5 @@ export interface ISidebarItem {
 export interface ModalProps {
   modalOpen: boolean
   setModalOpen: (x: boolean) => void
-  list: Usuario[]
+  list: Employee[]
 }

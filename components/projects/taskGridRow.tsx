@@ -1,16 +1,7 @@
 import { Project, Task } from "@/types/types";
-import MyButton from "./button";
+import MyButton from "../button";
 import router, { useRouter } from "next/router";
-//import StatusText from "./StatusText";
-
-function StatusText (text : string) {
-
-    return (
-        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-            <div className="text-sm leading-5 text-gray-900">{text}</div>
-        </td>
-    )
-}
+import StatusText from "../StatusText";
 
 export default function TaskGridRow({ task }: {task: Task}) {
     const router = useRouter();
