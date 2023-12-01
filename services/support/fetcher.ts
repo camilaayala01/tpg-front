@@ -1,4 +1,4 @@
-export const supportAPIUrl = "http://localhost:8080"
+export const supportAPIUrl = "https://psa-soporte-1yfx.onrender.com"
 
 export const postHeaders = {
     Accept: "application/json",
