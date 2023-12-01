@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from 'next/image';
 import { useEffect, useState } from "react"
 import { Inter } from "next/font/google"
 import TicketGridRow from "@/components/support/ticketGridRow";

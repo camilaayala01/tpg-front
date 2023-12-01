@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import ListBox from './ListBox';
 import Boton from './button';
 
@@ -13,6 +13,22 @@ const RectanguloConBorde: React.FC = () => {
         top: '12vh',
         left: '22vw'
     };
+
+    const [tareas, setTareas] = useState<string[]>([]);
+
+    useEffect(() => {
+        // Llamada a la API para obtener las tareas
+        fetch('https://psa-proyecto.onrender.com/tasks') // Reemplaza 'URL_DE_TU_API' con la URL real de tu API
+            .then(response => response.json())
+            .then(data => {
+                // Actualiza el estado con las tareas obtenidas
+                setTareas(data);
+            })
+            .catch(error => {
+                console.error('Error fetching tareas:', error);
+            });
+    }, []); // El segundo parámetro [] asegura que useEffect solo se ejecute una vez al montar el componente
+
 
     // @ts-ignore
     return (
@@ -30,6 +46,7 @@ const RectanguloConBorde: React.FC = () => {
             <ListBox label = 'Versión del producto' opciones = {['v1', 'v2', 'v3']} style = {{position: 'absolute', top: '47%', left: '46%',fontSize:'17px',width:'40vh'}}/>
             <Boton label = 'Crear el ticket' link = '/crear_ticket' style = {{position: 'absolute', width: '15vw', backgroundColor: '#9BBEC8',color: 'black',padding: '20px', border: 'none', borderRadius: '10px', cursor: 'pointer',display: 'flex',alignItems: 'left',justifyItems:'left',top: '79%', left: '75%'}} />
             <ListBox label = 'Persona asignada' opciones = {['Alberto Rodriguez', 'Cristian Pavon', 'Rogelio Aniz']} style = {{position: 'absolute', top: '30%', left: '3%',fontSize:'17px',width:'30vh'}}/>
+            <ListBox label="Tarea/s Asociada/s" opciones={tareas} style={{ position: 'absolute', fontSize: '17px', width: '80vh',top:'65%',left:'3%'}} />
         </div>
     );
 };
