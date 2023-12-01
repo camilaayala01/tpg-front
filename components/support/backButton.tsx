@@ -7,10 +7,11 @@ const BotonAtras: React.FC = () => {
 
   const botonStyle: React.CSSProperties = {
     position: 'fixed',
-    width: '15vw',
+    width: '10vw',
+    height: '7vh',
     bottom: '0px',
     left: '0px',
-    backgroundColor: 'rgb(3 105 161 / var(--tw-bg-opacity))',
+    backgroundColor: '#427D9D',
     color: 'black',
     padding: '20px',
     border: 'none',

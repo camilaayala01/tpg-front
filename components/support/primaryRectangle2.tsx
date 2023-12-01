@@ -1,13 +1,16 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 
 const SoftRectangle2: React.FC = () => {
+
+  const router = useRouter();
   
   const innerContainerStyle: React.CSSProperties = {
     display: 'flex',
     position: 'fixed',
     width: '700px',
     height: '192px',
-    backgroundColor: 'rgb(3 121 191 / var(--tw-bg-opacity))',
+    backgroundColor: '#427D9D',
     padding: '16px',
     borderRadius: '12px',
     top: '55vh',
@@ -21,7 +24,7 @@ const SoftRectangle2: React.FC = () => {
     left: '8%',
     top: '50%',
     transform: 'translateY(-50%)',
-    backgroundColor: 'rgb(3 141 191 / var(--tw-bg-opacity))',
+    backgroundColor: '#9BBEC8',
     borderRadius: '80%',
   };
 
@@ -36,12 +39,17 @@ const SoftRectangle2: React.FC = () => {
   const buttonStyle: React.CSSProperties = {
     width: '200px',
     height: '50px',
-    backgroundColor: 'rgb(3 141 191 / var(--tw-bg-opacity))',
+    backgroundColor: '#9BBEC8',
     padding: '4px',
     borderRadius: '8px',
     position: 'relative',
     top: '40%',
     left: '70%',
+  };
+
+  const handleClick = () => {
+    // Cambia '/otra-pagina' a la ruta de la página a la que deseas redirigir
+    router.push('/support/manage_ticket');
   };
 
   return (
@@ -61,7 +69,7 @@ const SoftRectangle2: React.FC = () => {
         modificación y eliminación<br />
         de tickets<br />
       </p>
-      <button style={buttonStyle}>
+      <button style={buttonStyle} onClick={handleClick}>
         <p style={{position: 'absolute', top: '15px', left: '5px', color: 'black', textAlign: 'left', fontSize: '1rem', marginBottom: '-23px'}}>Ir a Gestionar Ticket</p>
         <img
           id='img-vector'

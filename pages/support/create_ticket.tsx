@@ -8,7 +8,7 @@ import RectanguloConBorde from "@/components/support/createTicket";
 
 const inter = Inter({ subsets: ["latin"] })
 
-export default function Ticket() {
+export default function CreateTicket() {
   return (
     <div>
       <BotonAtras />

@@ -20,4 +20,4 @@ export default function Tickets() {
       {/* Otros componentes que quieras agregar */}
     </div>
   );
-} // VENTANA CON LOS BOTONES DE CREAR TICKET Y GESTIONAR TICKETS (TERMINADAS)
+}
