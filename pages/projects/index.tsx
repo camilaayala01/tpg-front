@@ -5,9 +5,12 @@ import SkeletonLoader from "@/components/SkeletonLoader"
 import router, { useRouter } from "next/router"
 import Button from "@/components/projects/otherButton"
 
+
 function HeaderItem({ title }: { title: string }) {
   return <th className="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50">{title}</th>
 }
+
+
 
 function handleButtonClick() {
   const router = useRouter();
@@ -38,14 +41,15 @@ export default function Projects() {
         </div>
         <div className="flex flex-col">
           <div className="overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-          <label>
-              Input de texto: <input name="myInput" />
-          </label>
+          
             <div className="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
             {loading ? (
                 SkeletonLoader()
               ) : list.length > 0 ? (
                 <>
+                  <label>
+                    Input de texto: <input name="myInput" />
+                  </label>
                   <table className="min-w-full">
                     <thead>
                       <tr>

@@ -35,3 +35,30 @@ export interface Task
   startDate: string;
   finishDate: string;
 }
+
+import React from "react";
+
+// Definición del Enum
+enum Status {
+  IN_PROGRESS,
+  NOT_STARTED,
+  COMPLETED,
+  BLOCKED,
+}
+
+const getStatusFromString = (statusString: string): Status | undefined => {
+  const lowercaseStatusString = statusString.toLowerCase();
+
+  switch (lowercaseStatusString) {
+    case "In progress":
+      return Status.IN_PROGRESS;
+    case "Completed":
+      return Status.COMPLETED;
+    case "Not started":
+      return Status.NOT_STARTED;
+    case "Blocked":
+      return Status.BLOCKED;
+    default:
+      return undefined;
+  }
+};

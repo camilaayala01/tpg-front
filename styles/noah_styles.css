@@ -36,3 +36,13 @@
   background-color: #92400e;
   grid-area: 3 / 2 / 4 / 3;
 }
+
+.buttonStyle{
+  background-color: rgb(3 141 191 / var(--tw-bg-opacity));
+  padding: 10px;
+  border-radius: 6px;
+  position: absolute;
+  top: 90%;
+  left: 80%;
+  transform: translate(-90%, -80%)
+};

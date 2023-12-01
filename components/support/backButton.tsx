@@ -34,7 +34,7 @@ const BotonAtras: React.FC = () => {
       <img
         src="https://i.ibb.co/h9dB1zf/Vector.png"
         alt="Imagen"
-        style={{ marginLeft: '5px', width: '20px', height: '20px' }}
+        style={{ marginLeft: '5px', width: '8px', height: '8px' }}
       />
     </button>
   );

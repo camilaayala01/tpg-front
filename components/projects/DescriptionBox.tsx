@@ -5,7 +5,7 @@ const DescriptionBox = (description: string) => {
     <div
       style={{
         position: 'absolute',
-        top: '50px', // Ajusta la distancia desde la parte superior según tus necesidades
+        top: '50px',
         left: '50%',
         transform: 'translateX(-50%)',
         width: '300px',

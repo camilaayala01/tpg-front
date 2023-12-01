@@ -25,7 +25,7 @@ const Boton: React.FC<{ label: any; link: string }> = ({ label, link }) => {
   };
 
   return (
-    <button style={buttonStyle} onClick={handleClick}>
+    <button className="buttonStyle" onClick={handleClick}>
       <span style={labelStyle}>{label}</span>
     </button>
   );

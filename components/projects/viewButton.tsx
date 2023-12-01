@@ -1,5 +1,4 @@
 import {useRouter} from 'next/router';
-//mport "@/styles/noah_styles.css";
 import { SVGAttributes } from "react";
 
 export function EyeIcon(props: SVGAttributes<SVGElement>) {
