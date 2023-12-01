@@ -3,8 +3,8 @@ import { Project } from "@/types/types"
 import ProjectGridRow from "@/components/projects/projectGridRow"
 import SkeletonLoader from "@/components/SkeletonLoader"
 import router, { useRouter } from "next/router"
-import Button from "@/components/projects/otherButton"
 import AppSearchBar from "@/components/homeList"
+import AddButton, { AddingIcon } from "@/components/projects/addButton"
 
 export function HeaderItem({ title }: { title: string }) {
   return <th className="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50">{title}</th>

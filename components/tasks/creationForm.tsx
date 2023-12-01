@@ -1,6 +1,6 @@
 import { FormEvent, useRef, useState } from "react";
-import TextBox from "./TextBox";
-import DescriptionBox from "./DescriptionBox";
+import TextBox from "../projects/TextBox";
+import DescriptionBox from "../projects/DescriptionBox";
 import fetchEmployees from "@/services/project/fetchEmployees";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -22,6 +22,7 @@ export default function creationForm() {
 
   const [formData, setFormData] = useState({ name: "", description: ""});
   const projectLeaderRef = useRef<HTMLSelectElement>(null);
+  const priorityRef = useRef<HTMLSelectElement>(null);
   const [startDate, setStartDate] = useState<Dayjs | null>(null);
   const [finishDate, setFinishDate] = useState<Dayjs | null>(null);
 
@@ -34,13 +35,8 @@ export default function creationForm() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(formData);
-    if (!formData.name || !formData.description || !startDate || !finishDate || !projectLeaderRef.current?.value) {
-      alert("Por favor, complete todos los campos.");
-      return;
-    }else{
-      alert(`Nombre: ${formData.name}, Descripcion: ${formData.description}, Fecha de Inicio: ${startDate}, Fecha de Fin: ${finishDate}, Lider:  ${projectLeaderRef.current}`);
-      createProject(formData.name, formData.description, startDate, finishDate, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].accessKey);
-    }
+    
+    alert(`Nombre: ${formData.name}, Descripcion: ${formData.description}, Fecha de Inicio: ${startDate}, Fecha de Fin: ${finishDate}, Prioridad: ${ priorityRef.current}, Lider:  ${projectLeaderRef.current}`);
   };
   
   const Employees = fetchEmployees();
@@ -58,7 +54,7 @@ export default function creationForm() {
 
       <TextBox label='Nombre' description='Indique el nombre del proyecto' style={{ position: 'absolute', top: '1%', left: '1%' }} name={"name"} handleChange={handleChange} />
 
-      <div style = {{ position: 'absolute', top: '5%', left: '40%' }}>
+      <div style = {{position: 'absolute', top: '20%', left: '1%'}}>
         <label htmlFor="startDate" style={{fontWeight: 'bold', color: 'black'}}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
@@ -71,7 +67,7 @@ export default function creationForm() {
         </label>
       </div>
      
-      <div style =  {{position: 'absolute', top: '22%', left: '40%'}}>
+      <div style =  {{position: 'absolute', top: '20%', left: '40%'}}>
         <label htmlFor="finishDate" style={{fontWeight: 'bold', color: 'black'}}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
@@ -83,8 +79,20 @@ export default function creationForm() {
           </LocalizationProvider>
         </label>
       </div>
+      
+      <div style = {{position: 'absolute', top: '35%', left: '1%'}}>
+        <label htmlFor="priority" style={{ fontSize: '1em', fontWeight: 'bold', color: 'black' }}>Prioridad</label>
+        <select ref={priorityRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}}>
+            <option value="" style= {{color: 'black'}}>Seleccione la prioridad</option>
+            {['Baja', 'Media', 'Alta'].map((opcion, index) => (
+            <option key={index} value={opcion}>
+                {opcion}
+            </option>
+            ))}
+        </select>
+      </div>
 
-      <div style = {{position: 'absolute', top: '20%', left: '1%'}}>
+      <div style = {{ position: 'absolute', top: '35%', left: '40%' }}>
         <label htmlFor="projectLeader" style={{ fontSize: '1em', fontWeight: 'bold', color: 'black' }}>Project Leader</label>
         <select ref={projectLeaderRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}}>
             <option value="" style= {{color: 'black'}}>Asigne un líder</option>
@@ -96,7 +104,7 @@ export default function creationForm() {
         </select>
       </div>
 
-      <DescriptionBox label='Descripcion' description='Detalles del proyecto' style={{ position: 'absolute', top: '40%', left: '1%', width: '70%', height: '50%'}} name={"description"} handleChange={handleChange} />
+      <DescriptionBox label='Descripcion' description='Detalles del proyecto' style={{ position: 'absolute', top: '50%', left: '1%', width: '70%', height: '50%'}} name={"description"} handleChange={handleChange} />
 
       <button type="submit" className="buttonStyle">
         Aceptar

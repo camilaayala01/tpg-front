@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { Inter } from "next/font/google"
 import TicketGridRow from "@/components/support/ticketGridRow";
 import { useRouter } from 'next/router';
-import Link from 'next/link';  // Importa el componente Link para enlaces internos
+import Link from 'next/link';
 import BotonAtras from "@/components/support/backButton";
 import ProjectGridRow from "@/components/projects/projectGridRow";
 import { supportFetcher } from "@/services/support/fetcher";
@@ -27,7 +27,6 @@ export default function ManageTickets() {
       method: "GET",
       headers: {
           'Content-Type': 'application/json',
-          // Puedes agregar otras cabeceras según sea necesario
         },
     })
     .then((data) => {
@@ -40,7 +39,6 @@ export default function ManageTickets() {
     method: "GET",
     headers: {
         'Content-Type': 'application/json',
-        // Puedes agregar otras cabeceras según sea necesario
       },
   }).then((tickets) => tickets)
 
