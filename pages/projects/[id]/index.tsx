@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { Inter } from "next/font/google"
 import { useRouter } from "next/router";
-import MyButton from "@/components/button";
+import MyButton from "@/components/projects/viewButton";
 import { useEffect, useState } from "react";
 import { Project } from "@/types/types";
 import SkeletonLoader from "@/components/SkeletonLoader";

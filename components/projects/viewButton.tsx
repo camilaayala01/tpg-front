@@ -11,16 +11,6 @@ export function EyeIcon(props: SVGAttributes<SVGElement>) {
   );
 }
 
-/**
-export const Box = (): JSX.Element => {
-  return (
-    <div className="w-[30px] h-[19px]">
-      <img className="fixed w-[30px] h-[19px] top-0 left-0" alt="Eye" src="eye.svg" />
-    </div>
-  );
-};
- */
-
 export default function MyButton({ onClickHandler }: { onClickHandler: () => void }) {
   const router = useRouter();
 
