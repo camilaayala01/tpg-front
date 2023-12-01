@@ -62,3 +62,33 @@ const getStatusFromString = (statusString: string): Status | undefined => {
       return undefined;
   }
 };
+
+
+
+export type ProductVersion = {
+  id: number;
+  name: string;
+};
+
+export type Product = {
+  id: number;
+  name: string;
+  versions: ProductVersion[];
+};
+
+// export type Status = "Abierto" | "Cerrado"
+
+export type Ticket = {
+  id: number;
+  status: string;
+  name: string;
+  description: string;
+  severity: string;
+  priority: string;
+  // employees: number[];
+  // tasks: number[];
+  creationDate: string;
+  deadline: string;
+  // lastEditionDate: string;
+  client: string; // despues vemos de pasarlo a que sea el id (number)
+};

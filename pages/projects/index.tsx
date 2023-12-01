@@ -4,12 +4,11 @@ import ProjectGridRow from "@/components/projects/projectGridRow"
 import SkeletonLoader from "@/components/SkeletonLoader"
 import router, { useRouter } from "next/router"
 import Button from "@/components/projects/otherButton"
+import AppSearchBar from "@/components/homeList"
 
-
-function HeaderItem({ title }: { title: string }) {
+export function HeaderItem({ title }: { title: string }) {
   return <th className="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50">{title}</th>
 }
-
 
 
 function handleButtonClick() {
@@ -41,33 +40,12 @@ export default function Projects() {
         </div>
         <div className="flex flex-col">
           <div className="overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-          
             <div className="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
             {loading ? (
                 SkeletonLoader()
               ) : list.length > 0 ? (
-                <>
-                  <label>
-                    Input de texto: <input name="myInput" />
-                  </label>
-                  <table className="min-w-full">
-                    <thead>
-                      <tr>
-                        <HeaderItem title="Name" />
-                        <HeaderItem title="Status" />
-                        <HeaderItem title="Creation Date" />
-                        <HeaderItem title="Actions" />
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {list.map((project) => (
-                            <ProjectGridRow key={project['id']} project={project} />
-                          ))}
-                    </tbody>
-                  </table>
-                  <div className="text-sm leading-5 text-gray-900">
-                    <Button label = 'Crear Proyecto' link = '/projects/crear' />
-                  </div>
+                <> 
+                <AppSearchBar listProject={list}/>
                 </>
               ) : (
                 <h1>No projects created.</h1>
