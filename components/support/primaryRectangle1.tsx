@@ -10,7 +10,7 @@ const SoftRectangle1: React.FC = () => {
     position: 'fixed',
     width: '700px',
     height: '192px',
-    backgroundColor: 'rgb(3 121 191 / var(--tw-bg-opacity))',
+    backgroundColor: '#427D9D',
     padding: '16px',
     borderRadius: '12px',
     top: '15vh',
@@ -24,7 +24,7 @@ const SoftRectangle1: React.FC = () => {
     left: '8%',
     top: '50%',
     transform: 'translateY(-50%)',
-    backgroundColor: 'rgb(3 141 191 / var(--tw-bg-opacity))',
+    backgroundColor: '#9BBEC8',
     borderRadius: '50%',
   };
 
@@ -39,7 +39,7 @@ const SoftRectangle1: React.FC = () => {
   const buttonStyle: React.CSSProperties = {
     width: '200px',
     height: '50px',
-    backgroundColor: 'rgb(3 141 191 / var(--tw-bg-opacity))',
+    backgroundColor: '#9BBEC8',
     padding: '4px',
     borderRadius: '8px',
     position: 'relative',
@@ -49,7 +49,7 @@ const SoftRectangle1: React.FC = () => {
 
   const handleClick = () => {
     // Cambia '/otra-pagina' a la ruta de la página a la que deseas redirigir
-    router.push('/support/crear_ticket');
+    router.push('/support/create_ticket');
   };
 
   return (
