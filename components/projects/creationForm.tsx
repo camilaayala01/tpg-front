@@ -39,7 +39,6 @@ export default function creationForm() {
       return;
     }else{
       alert(`Nombre: ${formData.name}, Descripcion: ${formData.description}, Fecha de Inicio: ${startDate}, Fecha de Fin: ${finishDate}, Lider:  ${projectLeaderRef.current}`);
-      console.log(startDate?.format('YYYY-MM-DD'));
       createProject(formData.name, formData.description, startDate, finishDate, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value);
     }
   };

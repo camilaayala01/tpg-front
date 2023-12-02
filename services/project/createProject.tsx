@@ -1,17 +1,18 @@
 import { Project } from "@/types/types";
 import { Dayjs } from "dayjs";
 
-async function postData(url = "", data = {}) {
+ function postData(url = "", data = {}) {
 
-    const response = await fetch(url, {
+    const response = fetch(url, {
       method: "POST", 
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
       },
-      body: JSON.stringify(data), // body data type must match "Content-Type" header
-    });
+      body: JSON.stringify(data),
+    }) .then(response => response.json());
     console.log(JSON.stringify(data));
-    return response.json(); // parses JSON response into native JavaScript objects
+    return response;
   }
   
   
@@ -24,8 +25,6 @@ async function postData(url = "", data = {}) {
         description: description, 
         startDate: startDate?.format('YYYY-MM-DD')?? null,
         estimatedFinishDate: estimatedFinishDate?.format('YYYY-MM-DD')?? null,
-        leaderId: leaderId?? null,})
-        .then((data) => {
-        data
-      });
+        leaderId: leaderId?? null,
+    }).then((data) => {data});
   }
