@@ -7,11 +7,10 @@ async function postData(url = "", data = {}) {
       method: "POST", 
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json",
       },
       body: JSON.stringify(data), // body data type must match "Content-Type" header
     });
-    console.log(response);
+    console.log(JSON.stringify(data));
     return response.json(); // parses JSON response into native JavaScript objects
   }
   
@@ -21,11 +20,11 @@ async function postData(url = "", data = {}) {
   {
     return postData("https://psa-proyecto.onrender.com/projects", 
     {
-        name,
-        description, 
-        startDate: startDate?.format('yyyy-MM-dd') ?? null,
-        estimatedFinishDate: estimatedFinishDate?.format('yyyy-MM-dd') ?? null,
-        leaderId: leaderId ?? null,})
+        name: name,
+        description: description, 
+        startDate: startDate?.format('YYYY-MM-DD')?? null,
+        estimatedFinishDate: estimatedFinishDate?.format('YYYY-MM-DD')?? null,
+        leaderId: leaderId?? null,})
         .then((data) => {
         data
       });

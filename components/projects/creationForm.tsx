@@ -39,7 +39,8 @@ export default function creationForm() {
       return;
     }else{
       alert(`Nombre: ${formData.name}, Descripcion: ${formData.description}, Fecha de Inicio: ${startDate}, Fecha de Fin: ${finishDate}, Lider:  ${projectLeaderRef.current}`);
-      createProject(formData.name, formData.description, startDate, finishDate, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].accessKey);
+      console.log(startDate?.format('YYYY-MM-DD'));
+      createProject(formData.name, formData.description, startDate, finishDate, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value);
     }
   };
   
@@ -89,7 +90,7 @@ export default function creationForm() {
         <select ref={projectLeaderRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}}>
             <option value="" style= {{color: 'black'}}>Asigne un líder</option>
             {Employees.list.map((opcion) => (
-            <option key={opcion.legajo} value={opcion ? `${opcion['Nombre']} ${opcion['Apellido']}` : "-"}>
+            <option value={opcion.legajo}>
                 {opcion ? `${opcion['Nombre']} ${opcion['Apellido']}` : "-"}
             </option>
             ))}
