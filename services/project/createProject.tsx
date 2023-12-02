@@ -10,7 +10,7 @@ import { Dayjs } from "dayjs";
         Accept: "application/json",
       },
       body: JSON.stringify(data),
-    }) .then(response => response.json());
+    }).then(response => response.json());
     console.log(JSON.stringify(data));
     return response;
   }

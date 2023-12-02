@@ -7,6 +7,7 @@ import { Project } from "@/types/types";
 import SkeletonLoader from "@/components/SkeletonLoader";
 import LeaderBox from "@/components/projects/LeaderBox";
 import DateBox from "@/components/projects/DateBox";
+import ProjectVisualization from "@/components/projects/projectVisualization";
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -17,7 +18,7 @@ export default function ProjectMainPage({ params }: { params: { id: string } }) 
   const [curProject, setProject] = useState<Project>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  //hacer buscador
+  
   useEffect(() => {
     setLoading(true);
     fetch(`https://psa-proyecto.onrender.com/projects/${id}`)
@@ -52,14 +53,7 @@ export default function ProjectMainPage({ params }: { params: { id: string } }) 
       ) : error || !curProject ? (
         <h1 className="text-4xl mb-5 font-bold text-red-500">{error}</h1>
       ) : (
-        <>
-          <h1 className="text-4xl mb-5 font-bold text-black">Ahora estás en proyecto {curProject['id']}</h1>
-          <LeaderBox leaderId={1}/>
-          <DateBox dateName={"hola"} date={"chau"} />
-          <div className="text-sm leading-5 text-gray-900">
-            <MyButton onClickHandler={handleButtonClick} />
-          </div>
-        </>
+        <ProjectVisualization project={curProject}/>
       )}
     </div>
   );

@@ -4,15 +4,10 @@ import ProjectGridRow from "@/components/projects/projectGridRow"
 import SkeletonLoader from "@/components/SkeletonLoader"
 import router, { useRouter } from "next/router"
 import AppSearchBar from "@/components/homeList"
-import AddButton, { AddingIcon } from "@/components/projects/addButton"
+import BotonAgregar from "@/components/projects/addButton"
 
 export function HeaderItem({ title }: { title: string }) {
   return <th className="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50">{title}</th>
-}
-
-function handleButtonClick() {
-  const router = useRouter();
-  router.push(`create`);
 }
 
 export default function Projects() {
@@ -44,7 +39,9 @@ export default function Projects() {
                 SkeletonLoader()
               ) : list.length > 0 ? (
                 <> 
+                <div style={{ position: 'absolute', color: 'black', top: '8%', left: '16%', fontSize: '2em', fontWeight: 'bold', letterSpacing: 0.20 }}>Proyectos PSA</div>
                 <AppSearchBar listProject={list}/>
+                <BotonAgregar name="Agregar Proyecto" url="projects/crear"/>
                 </>
               ) : (
                 <h1>No projects created.</h1>

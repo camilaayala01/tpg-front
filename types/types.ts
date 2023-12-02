@@ -36,8 +36,6 @@ export interface Task
   finishDate: string;
 }
 
-import React from "react";
-
 // Definición del Enum
 enum Status {
   IN_PROGRESS,
@@ -62,8 +60,6 @@ const getStatusFromString = (statusString: string): Status | undefined => {
       return undefined;
   }
 };
-
-
 
 export type ProductVersion = {
   id: number;

@@ -16,7 +16,6 @@ export default function Tickets() {
     <div>
       <SoftRectangle1 />
       <SoftRectangle2 />
-      <BotonAtras />
       {/* Otros componentes que quieras agregar */}
     </div>
   );

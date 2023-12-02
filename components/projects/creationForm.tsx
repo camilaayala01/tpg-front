@@ -11,14 +11,14 @@ import createProject from "@/services/project/createProject";
 
 export default function creationForm() {
     
-    const estiloRectangulo: React.CSSProperties = {
-      position: 'fixed',
-      width: '70vw',
-      height: '80vh',
-      backgroundColor: '#FFFFFF',
-      top: '18vh',
-      left: '25vw'
-    };
+  const estiloRectangulo: React.CSSProperties = {
+    position: 'fixed',
+    width: '70vw',
+    height: '80vh',
+    backgroundColor: '#FFFFFF',
+    top: '18vh',
+    left: '25vw'
+  };
 
   const [formData, setFormData] = useState({ name: "", description: ""});
   const projectLeaderRef = useRef<HTMLSelectElement>(null);

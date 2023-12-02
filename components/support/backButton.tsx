@@ -2,7 +2,6 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 const BotonAtras: React.FC = () => {
-
   const router = useRouter();
 
   const botonStyle: React.CSSProperties = {
@@ -18,28 +17,24 @@ const BotonAtras: React.FC = () => {
     borderRadius: '10px',
     cursor: 'pointer',
     display: 'flex',
+    justifyContent: 'space-between', // Distribuye el espacio entre los elementos
     alignItems: 'center',
   };
 
-  fetch
-
   const handleClick = () => {
-    // Cambia '/otra-pagina' a la ruta de la página a la que deseas redirigir
     router.back();
   };
 
   return (
     <button style={botonStyle} onClick={handleClick}>
-      Atras
+      <span>Atras</span>
       <img
-        src="https://i.ibb.co/h9dB1zf/Vector.png"
+        src="https://i.ibb.co/pbXRFvd/add.png"
         alt="Imagen"
-        style={{ marginLeft: '5px', width: '8px', height: '8px' }}
+        style={{ width: '22px', height: '22px' }}
       />
     </button>
   );
 };
 
 export default BotonAtras;
-
-  
