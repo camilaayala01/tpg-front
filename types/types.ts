@@ -28,7 +28,7 @@ export interface Task
   projectId:number;
   name: string;
   description: string;
-  status: string;
+  status: Status;
   priority: string;
   estimatedDuration: number;
   creationDate: string;
@@ -71,6 +71,22 @@ export const getStatusToString = (status: string): string | undefined => {
   }
 };
 
+export const getStringToStatus = (status: string): string | undefined => {
+
+  switch (status) {
+    case "IN_PROGRESS":
+      return Status.IN_PROGRESS;
+    case "COMPLETED":
+      return Status.COMPLETED;
+    case "NOT_STARTED":
+      return Status.NOT_STARTED;
+    case "BLOCKED":
+      return Status.BLOCKED;
+    case undefined: 
+      return undefined;
+  }
+};
+
 export type ProductVersion = {
   id: number;
   name: string;
@@ -92,7 +108,7 @@ export type Ticket = {
   priority: string;
   product: string;
   version: string;
-  clientId: string; // despues vemos de pasarlo a que sea el id (number)
+  clientId: number; // despues vemos de pasarlo a que sea el id (number)
   employeeId: number;
   associatedTasks: number[];
   startDate: string;

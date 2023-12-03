@@ -10,6 +10,7 @@ import DateBox from "@/components/projects/DateBox";
 import ProjectVisualization from "@/components/projects/projectVisualization";
 
 import { Ubuntu } from "next/font/google"
+import fetchEmployee from "@/services/project/fetchEmployee";
 
 const ubuntu = Ubuntu({ subsets: ["latin"],  weight: "300"})
 
@@ -21,6 +22,7 @@ export default function ProjectMainPage({ params }: { params: { id: string } }) 
   const [curProject, setProject] = useState<Project>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  
   
   useEffect(() => {
     if(!id) return;
@@ -45,6 +47,7 @@ export default function ProjectMainPage({ params }: { params: { id: string } }) 
         setLoading(false);
       });
   }, [id]);
+
 
   return (
     <div className="flex h-full flex-col justify-center items-center bg-white">

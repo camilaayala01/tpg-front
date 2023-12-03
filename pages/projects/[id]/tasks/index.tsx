@@ -3,6 +3,7 @@ import { Task } from "@/types/types"
 import TaskGridRow from "@/components/projects/taskGridRow"
 import { useRouter } from "next/router"
 import SkeletonLoader from "@/components/SkeletonLoader"
+import { BotonAtrasTop } from "@/components/projects/bottonBackTop"
 
 function HeaderItem({ title }: { title: string }) {
   return <th className="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50">{title}</th>
@@ -29,11 +30,12 @@ export default function Tasks() {
 
   return (
     <>
+      
       <div className="container max-w-7xl mx-auto mt-8">
-        <div className="mb-4">
+        <div className="mb-4 justify-around">
           <h1 className="text-3xl font-bold decoration-gray-400">Tasks</h1>
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col" >
           <div className="overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
             <div className="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
               {loading ? (

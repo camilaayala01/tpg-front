@@ -1,4 +1,4 @@
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import TextBox from "./TextBox";
 import DescriptionBox from "./DescriptionBox";
 import fetchEmployees from "@/services/project/fetchEmployees";
@@ -9,6 +9,7 @@ import React from "react";
 import { Dayjs } from "dayjs";
 import createProject from "@/services/project/createProject";
 import { useRouter } from "next/router";
+import { Employee } from "@/types/types";
 
 export default function creationForm() {
     
@@ -25,6 +26,14 @@ export default function creationForm() {
   const projectLeaderRef = useRef<HTMLSelectElement>(null);
   const [startDate, setStartDate] = useState<Dayjs | null>(null);
   const [finishDate, setFinishDate] = useState<Dayjs | null>(null);
+  const [employees, setEmployees] = useState<Employee[]>();
+  useEffect(() => {
+    const fetchData = async () => {
+        const data = await fetchEmployees();
+        setEmployees(data);
+    };
+    fetchData();
+  }, []);
 
   const handleChange = (event: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.currentTarget;
@@ -40,13 +49,9 @@ export default function creationForm() {
       return;
     }else{
       createProject(formData.name, formData.description, startDate, finishDate, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value);
-      router.push(`/projects`)
     }
   };
   
-  const Employees = fetchEmployees();
-  
-
   return (
     <>
     <div style={{ position: 'absolute', color: 'black', top: '10%', left: '25%', fontSize: '2em', fontWeight: 'bold', letterSpacing: 0.20 }}>Crear Proyecto</div>
@@ -85,7 +90,7 @@ export default function creationForm() {
         <label htmlFor="projectLeader" style={{ fontSize: '1em', fontWeight: 'bold', color: 'black' }}>Project Leader</label>
         <select ref={projectLeaderRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}}>
             <option value="" style= {{color: 'black'}}>Asigne un líder</option>
-            {Employees.list.map((opcion) => (
+            {employees?.map((opcion) => (
             <option value={opcion.legajo}>
                 {opcion ? `${opcion['Nombre']} ${opcion['Apellido']}` : "-"}
             </option>

@@ -1,5 +1,5 @@
 import { Project } from "@/types/types";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LeaderBox from "./LeaderBox";
 import DateBox from "./DateBox";
 import MyButton from "./viewButton";
@@ -13,6 +13,7 @@ import deleteProject from "@/services/project/deleteProject";
 import { BotonAtrasTop } from './bottonBackTop';
 
 export default function ProjectVisualization({ project }: {project: Project}) {
+
   
 const estiloRectangulo: React.CSSProperties = {
   position: 'absolute',
@@ -24,6 +25,7 @@ const estiloRectangulo: React.CSSProperties = {
 };
 
 const router = useRouter();
+
 function handleButtonClick() {
   router.push(`${project.id}/tasks`);
 }
@@ -82,7 +84,7 @@ return (
       
       <div style={{ position: 'absolute', top: '30%', left: '0%', display: 'flex', alignItems: 'center' }}>
           <p style={{ fontSize: '1rem', fontWeight: 'bold', color: '#666666', marginRight: '20px' }}>Líder de proyecto</p>
-          <LeaderBox id={project.projectLeaderId} />
+          <LeaderBox id ={project.projectLeaderId} />
       </div>
 
       <div style={{ position: 'absolute', top: '45%', left: '0%'}}>

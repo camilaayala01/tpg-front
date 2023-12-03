@@ -17,6 +17,7 @@ export default function fetchProject(id: any): FetchProjectResult {
         if (!res.ok) {
           throw new Error(`Error ${res.status}: ${res.statusText}`);
         }
+        console.log(res);
         return res.json();
       })
       .then((data) => {
@@ -30,5 +31,6 @@ export default function fetchProject(id: any): FetchProjectResult {
         }
       });
   }, [id]);
+
       return ({curProject, error})
 }

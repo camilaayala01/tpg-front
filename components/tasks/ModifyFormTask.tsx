@@ -1,5 +1,5 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
-import TextBox from '../projects/TextBox'
+import TextBox from "../projects/TextBox";
 import DescriptionBox from "../projects/DescriptionBox";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -7,14 +7,11 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import React from "react";
 import dayjs, { Dayjs } from "dayjs";
 import editProject from "@/services/project/editProject";
-import {  Task, Status, getStatusToString, Priority } from "@/types/types";
+import {  Employee, Project, Status, getStatusToString } from "@/types/types";
 import { useRouter } from "next/router";
 import fetchEmployees from "@/services/project/fetchEmployees";
-import editTask from "@/services/project/editTask";
-import Tasks from "@/pages/projects/[id]/tasks";
 
-
-export function ModifyFormTask({task}: {task: Task}) {
+export default function ModifyForm({task}: {task: Task}) {
     
   const estiloRectangulo: React.CSSProperties = {
     position: 'fixed',
@@ -25,37 +22,51 @@ export function ModifyFormTask({task}: {task: Task}) {
     left: '25vw'
   };
 
-  const [formData, setFormData] = useState({ name: task.name, description: task.description, estimatedDuration: task.estimatedDuration});
+  const [formData, setFormData] = useState({ name: project.name, description: project.description});
   const projectLeaderRef = useRef<HTMLSelectElement>(null);
   const statusRef = useRef<HTMLSelectElement>(null);
-  const prioridadRef = useRef<HTMLSelectElement>(null);
-  const [finishDate, setFinishDate] = useState<Dayjs|null>(dayjs(task.finishDate, "MM-DD-YYYY"));
+  const [finishDate, setFinishDate] = useState<Dayjs|null>(dayjs(project.finishDate, "YYYY-MM-DD"));
   const router = useRouter();
-  
+  const [employees, setEmployees] = useState<Employee[]>();
+  useEffect(() => {
+    const fetchData = async () => {
+        const data = await fetchEmployees();
+        setEmployees(data);
+    };
+    fetchData();
+  }, []);
+  function handleClick() {
+    router.push(`/projects/${project.id}`);
+  }
   const handleChange = (event: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.currentTarget;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
 
   };
 
+  useEffect(() => {
+    setFinishDate(dayjs(project.finishDate, "YYYY-MM-DD"));
+  })
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    if (!formData.name || !formData.description ||  !finishDate || !statusRef.current?.value || !prioridadRef.current?.value ) {
+
+    if (!formData.name || !formData.description ||  !finishDate || !projectLeaderRef.current?.value || !statusRef.current?.value ) {
       alert("Por favor, complete todos los campos.");
       return;
     }else{
-        editTask(task.id, task.projectId,formData.name, formData.description , statusRef.current?.options[statusRef.current?.selectedIndex].value,prioridadRef.current?.options[statusRef.current?.selectedIndex].value, finishDate ,formData.estimatedDuration);
-        // router.push(`/projects/${task.projectId}/tasks/${task.id}`)
+      console.log(finishDate)
+      editProject(project.id, formData.name, formData.description, statusRef.current?.options[statusRef.current?.selectedIndex].value, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value, finishDate);
     }
   };
   
   return (
     <>
-    <div style={{ position: 'absolute', color: 'black', top: '10%', left: '25%', fontSize: '2em', fontWeight: 'bold', letterSpacing: 0.20 }}>Modificar Tarea</div>
-    <form onSubmit={handleSubmit}>
+    <div style={{ position: 'absolute', color: 'black', top: '10%', left: '25%', fontSize: '2em', fontWeight: 'bold', letterSpacing: 0.20 }}>Modificar Proyecto</div>
+    <form onSubmit={handleSubmit} >
     <div style={estiloRectangulo}>
 
-      <TextBox label='Nombre' description='Indique el nombre de la tarea' style={{ position: 'absolute', top: '1%', left: '1%' }} name={"name"} defaultValue={task.name} handleChange={handleChange} />
+      <TextBox label='Nombre' description='Indique el nombre del proyecto' style={{ position: 'absolute', top: '1%', left: '1%' }} name={"name"} defaultValue={project.name} handleChange={handleChange} />
        
      
       <div style =  {{position: 'absolute', top: '22%', left: '40%'}}>
@@ -64,17 +75,16 @@ export function ModifyFormTask({task}: {task: Task}) {
             <DatePicker
               label={"Fecha finalizacion estimada"}
               openTo="year"
-              defaultValue={dayjs(task.finishDate, "YYYY-MM-DD")}
+              defaultValue={dayjs(project.finishDate, "YYYY-MM-DD")}
               views={['year', 'month', 'day']}
               onChange={(newValue: Dayjs | null) => setFinishDate(newValue)}
             />
           </LocalizationProvider>
         </label>
       </div>
-
       <div style = {{position: 'absolute', top: '35%', left: '1%'}}>
         <label htmlFor="status" style={{ fontSize: '1em', fontWeight: 'bold', color: 'black' }}>Estado</label>
-        <select ref={statusRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}} defaultValue={task.status}>
+        <select ref={statusRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}} defaultValue={project.status}>
             {Object.keys(Status).map((opcion) => (
             <option value={opcion} key={opcion}>
                 {getStatusToString(opcion)}
@@ -82,21 +92,22 @@ export function ModifyFormTask({task}: {task: Task}) {
             ))}
         </select>
       </div>
-
+      
+       
       <div style = {{position: 'absolute', top: '20%', left: '1%'}}>
-        <label htmlFor="status" style={{ fontSize: '1em', fontWeight: 'bold', color: 'black' }}>Prioridad</label>
-        <select ref={prioridadRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}} defaultValue={task.priority}>
-            {Object.keys(Priority).map((opcion) => (
-            <option value={opcion} key={opcion}>
-                {getStatusToString(opcion)}
+        <label htmlFor="projectLeader" style={{ fontSize: '1em', fontWeight: 'bold', color: 'black' }}>Lider de Proyecto</label>
+        <select ref={projectLeaderRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}} defaultValue={"Raul"}>
+        {employees?.map((opcion) => (
+            <option value={opcion.legajo} key={opcion.legajo}>
+                {opcion ? `${opcion['Nombre']} ${opcion['Apellido']}` : "-"}
             </option>
             ))}
         </select>
-      </div>
-      
-      <DescriptionBox label='Descripcion' description='Detalles' style={{ position: 'absolute', top: '60%', left: '1%', width: '70%', height: '50%'}} name={"description"} defaultValue={task.description} handleChange={handleChange} />
+            </div>
+        
+      <DescriptionBox label='Descripcion' description='Detalles del proyecto' style={{ position: 'absolute', top: '60%', left: '1%', width: '70%', height: '50%'}} name={"description"} defaultValue={project.description} handleChange={handleChange} />
 
-      <button type="submit" className="buttonStyle">
+      <button type="submit" className="buttonStyle" onClick={handleClick}>
         Aceptar
       </button>
     </div>  
