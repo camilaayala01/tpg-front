@@ -9,7 +9,10 @@ import LeaderBox from "@/components/projects/LeaderBox";
 import DateBox from "@/components/projects/DateBox";
 import ProjectVisualization from "@/components/projects/projectVisualization";
 
-const inter = Inter({ subsets: ["latin"] })
+import { Ubuntu } from "next/font/google"
+
+const ubuntu = Ubuntu({ subsets: ["latin"],  weight: "300"})
+
 
 export default function ProjectMainPage({ params }: { params: { id: string } }) {
   const router = useRouter();

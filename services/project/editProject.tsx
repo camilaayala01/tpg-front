@@ -18,7 +18,7 @@ import { Dayjs } from "dayjs";
   }
   
   
-  export default function editProject(projectId :number, name: string , description:string , status: string, estimatedFinishDate?:Dayjs | null ,leaderId?: string)
+  export default function editProject(projectId :number, name: string , description:string , status: string,leaderId: string, estimatedFinishDate?:Dayjs | null)
   {
     return editData(`https://psa-proyecto.onrender.com/projects/${projectId}`, 
     {
@@ -26,6 +26,6 @@ import { Dayjs } from "dayjs";
         description: description, 
         status: status,
         estimatedFinishDate: estimatedFinishDate?.format('YYYY-MM-DD')?? null,
-        leaderId: leaderId?? null,
+        leaderId: leaderId,
     }).then((data) => {data});
   }

@@ -5,7 +5,7 @@ export default function fetchEmployee( leaderId: any ) {
     const [leader, setLeader] = useState<Employee>();
     const [error, setError] = useState<string | null>(null);
   
-    useEffect(() => {
+    
       fetch(`https://psa-proyecto.onrender.com/employees/${leaderId}`)
         .then((res) => {
           if (!res.ok) {
@@ -24,7 +24,7 @@ export default function fetchEmployee( leaderId: any ) {
             setError('This leader does not exist.');
           }
         });
-    });
+    ;
     const fullName = leader ? (`${leader['Nombre']} ${leader['Apellido']}`) : "-";
     
     return ({fullName, error})

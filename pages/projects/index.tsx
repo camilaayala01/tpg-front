@@ -6,6 +6,10 @@ import router, { useRouter } from "next/router"
 import AppSearchBar from "@/components/homeList"
 import BotonAgregar from "@/components/projects/addButton"
 
+import { Ubuntu } from "next/font/google"
+
+const ubuntu = Ubuntu({ subsets: ["latin"],  weight: "300"})
+
 export function HeaderItem({ title }: { title: string }) {
   return <th className="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50">{title}</th>
 }
@@ -29,10 +33,10 @@ export default function Projects() {
   return (
     <>
       <div className="container max-w-7xl mx-auto mt-8">
-        <div className="mb-4" style={{  color: 'black', top: '8%', left: '16%', fontSize: '2em', fontWeight: 'bold', letterSpacing: 0.20} }>Proyectos PSA</div>
+        <div className="mb-4" style={{  color: 'black', top: '8%', left: '16%', fontSize: '2.4em', fontWeight: 'bold', letterSpacing: 0.20} }>Proyectos PSA</div>
         <div className="flex flex-col">
           <div className="overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-            <div className="inline-block min-w-full overflow-hidden my-6 align-middle border-b border-gray-200 shadow sm:rounded-lg">
+            <div className="inline-block min-w-full overflow-hidden my-6 align-middle border-white shadow sm:rounded-lg">
             {loading ? (                
                SkeletonLoader()
               ) : list.length > 0 ? (
@@ -41,7 +45,7 @@ export default function Projects() {
                   <AppSearchBar listProject={list}/> 
                 </div>
                 
-                <div style={{position: 'absolute', top: '18%', right: '8%'}}>
+                <div style={{position: 'absolute', top: '25%', right: '12%'}}>
                 <BotonAgregar name="Agregar Proyecto" urlDestination="projects/crear" urlImg="https://i.ibb.co/pbXRFvd/add.png" backColor="rgba(66, 125, 157, 1)"/>
                 </div>
                 </>
