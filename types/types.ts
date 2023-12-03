@@ -43,6 +43,12 @@ export enum Status {
   BLOCKED = "Blocked",
 }
 
+export enum Priority {
+  HIGH = "High",
+  LOW = "Low",
+  MEDIUM = "Medium",
+}
+
 export const getStatusToString = (status: string): string | undefined => {
 
   switch (status) {
@@ -54,6 +60,12 @@ export const getStatusToString = (status: string): string | undefined => {
       return "Not started";
     case "BLOCKED":
       return "Blocked";
+    case "HIGH":
+      return "High"
+    case "LOW":
+      return "Low"
+    case "MEDIUM":
+      return "Medium"
     case undefined: 
       return undefined;
   }

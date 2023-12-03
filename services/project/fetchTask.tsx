@@ -12,6 +12,7 @@ export default function FetchTask(idProject: any, id: any): FetchTaskResult {
   const [error, setError] = useState<string>();
 
   useEffect(() => {
+    if( !id || ! idProject) return; 
     fetch(`https://psa-proyecto.onrender.com/projects/${idProject}/tasks/${id}`)
       .then((res) => {
         if (!res.ok) {
