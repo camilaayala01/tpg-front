@@ -1,4 +1,5 @@
 export const supportAPIUrl = "https://psa-soporte-1yfx.onrender.com"
+export const employeeAPIUrl = "https://psa-proyecto.onrender.com"
 
 export const postHeaders = {
     Accept: "application/json",
@@ -19,3 +20,6 @@ fetch(baseUrl + resource, options)
 
 export const supportFetcher = (resource: string, options?: RequestInit) =>
 genericFetcher(supportAPIUrl, resource, options);
+
+export const employeeFetcher = (resource: string, options?: RequestInit) =>
+genericFetcher(employeeAPIUrl, resource, options);
