@@ -34,7 +34,7 @@ export default function Projects() {
         </div>
         <div className="flex flex-col">
           <div className="overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-            <div className="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
+            <div className="inline-block min-w-full overflow-hidden align-middle border-b border-white shadow sm:rounded-lg" style={{ width: '90%', maxWidth: '90vw', overflowX: 'auto' }}>
             {loading ? (
                 SkeletonLoader()
               ) : list.length > 0 ? (
