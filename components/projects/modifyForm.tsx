@@ -26,9 +26,7 @@ export default function ModifyForm({project}: {project: Project}) {
   const projectLeaderRef = useRef<HTMLSelectElement>(null);
   const statusRef = useRef<HTMLSelectElement>(null);
   const [finishDate, setFinishDate] = useState<Dayjs|null>(dayjs(project.finishDate, "MM-DD-YYYY"));
-  useEffect(() => {
-  setFinishDate(dayjs(project.finishDate, "YYYY-MM-DD"));
-  });
+  const router = useRouter();
   
   const handleChange = (event: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.currentTarget;
@@ -76,7 +74,7 @@ export default function ModifyForm({project}: {project: Project}) {
         <label htmlFor="status" style={{ fontSize: '1em', fontWeight: 'bold', color: 'black' }}>Estado</label>
         <select ref={statusRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}} defaultValue={project.status}>
             {Object.keys(Status).map((opcion) => (
-            <option value={opcion}>
+            <option value={opcion} key={opcion}>
                 {getStatusToString(opcion)}
             </option>
             ))}
