@@ -43,6 +43,7 @@ export default function Tasks() {
                     <tr>
                       <HeaderItem title="Name" />
                       <HeaderItem title="Status" />
+                      <HeaderItem title="Priority" />
                       <HeaderItem title="Creation Date" />
                       <HeaderItem title="Actions" />
                     </tr>

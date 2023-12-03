@@ -46,6 +46,7 @@ export default function ProjectMainPage({ params }: { params: { id: string } }) 
     <div className="flex h-full flex-col justify-center items-center bg-white">
       {loading ? (
         SkeletonLoader()
+        
       ) : error || !curProject ? (
         <h1 className="text-4xl mb-5 font-bold text-red-500">{error}</h1>
       ) : (
