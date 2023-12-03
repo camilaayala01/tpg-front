@@ -29,18 +29,18 @@ export default function Projects() {
   return (
     <>
       <div className="container max-w-7xl mx-auto mt-8">
-        <div className="mb-4">
-          <h1 className="text-3xl font-bold decoration-gray-400">Proyectos</h1>
-        </div>
+        <div className="mb-4" style={{  color: 'black', top: '8%', left: '16%', fontSize: '2em', fontWeight: 'bold', letterSpacing: 0.20} }>Proyectos PSA</div>
         <div className="flex flex-col">
           <div className="overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-            <div className="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
-            {loading ? (
-                SkeletonLoader()
+            <div className="inline-block min-w-full overflow-hidden my-6 align-middle border-b border-gray-200 shadow sm:rounded-lg">
+            {loading ? (                
+               SkeletonLoader()
               ) : list.length > 0 ? (
                 <> 
-                <div style={{ position: 'absolute', color: 'black', top: '8%', left: '16%', fontSize: '2em', fontWeight: 'bold', letterSpacing: 0.20 }}>Proyectos PSA</div>
-                <AppSearchBar listProject={list}/>
+                <div  > 
+                  <AppSearchBar listProject={list}/> 
+                </div>
+                
                 <div style={{position: 'absolute', top: '18%', right: '8%'}}>
                 <BotonAgregar name="Agregar Proyecto" urlDestination="projects/crear" urlImg="https://i.ibb.co/pbXRFvd/add.png" backColor="rgba(66, 125, 157, 1)"/>
                 </div>

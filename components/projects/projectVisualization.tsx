@@ -11,8 +11,9 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import DeleteButton from "./DeleteButton";
 import styled from "styled-components";
 import deleteProject from "@/services/project/deleteProject";
+import { BotonAtrasTop } from './bottonBackTop';
 
-export default function projectVisualization({ project }: {project: Project}) {
+export default function ProjectVisualization({ project }: {project: Project}) {
   
 const estiloRectangulo: React.CSSProperties = {
   position: 'absolute',
@@ -58,10 +59,16 @@ const urlModify = `/projects/${project.id}/modify`
 
 return (
   <>
-  <div style={{ position: 'absolute', color: 'black', top: '10%', left: '25%', fontSize: '2em', fontWeight: 'bold', letterSpacing: 0.20 }}>Proyecto "{project.name}"</div>
-  <div style={{ position: 'absolute', top: '11%', left: '73%', display: 'flex', alignItems: 'center' }}>
-        {StatusText(project.status)}
+  <div >
+    <div style={{ position: 'fixed', color: 'black', top: '11%', left: '25%', fontSize: '2em', fontWeight: 'bold', letterSpacing: 0.20 }}>Proyecto {project.name}</div>
+    <div style={{ position: 'fixed', top: '11%', left: '60%', display: 'flex', alignItems: 'center' }}>
+          {StatusText(project.status)}
+    </div>
+    <div style={{ position: 'fixed', top: '11%', left: '80%', display: 'flex'}}>
+        <BotonAtrasTop/>  
+    </div>
   </div>
+  
   
   <div style={estiloRectangulo}>
 
@@ -95,8 +102,8 @@ return (
         <AddButton urlImg="https://i.ibb.co/X2FHKrw/backlog.png" name="Ver backlog" urlDestination={urlBacklog} backColor="rgba(155, 190, 200, 1)"/>
       </div>
 
-      <div style={{ position: 'absolute', top: '70%', left: '20%', display: 'flex', alignItems: 'center' }} className="text-sm leading-5 text-gray-900">
-        <AddButton urlImg="https://i.ibb.co/Z68w2Mj/edit.png" name="Editar proyecto" urlDestination={urlModify} backColor="#ffff"/>
+      <div style={{ position: 'absolute', top: '70%', left: '12%', display: 'flex', alignItems: 'center' }} className="text-sm leading-5 text-gray-900">
+        <AddButton urlImg="https://i.ibb.co/Z68w2Mj/edit.png" name="Editar proyecto" urlDestination={urlModify} backColor="rgba(155, 190, 200, 1)"/>
       </div>
 
       <div style={{ position: 'absolute', top: '70%', left: '50%', display: 'flex', alignItems: 'center' }} className="text-sm leading-5 text-gray-900">

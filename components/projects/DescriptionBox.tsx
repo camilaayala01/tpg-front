@@ -21,6 +21,7 @@ const DescriptionBox: React.FC<CampoDeTextoProps> = ({ label, name, description,
             defaultValue={defaultValue}
             onChange={handleChange}
             style={{
+              textAlign: 'justify',
               backgroundColor: '#FFFFFF',
               width: '100%',
               height: '40%',
@@ -30,6 +31,7 @@ const DescriptionBox: React.FC<CampoDeTextoProps> = ({ label, name, description,
               border: '1px solid black',
               padding: '5px',
               verticalAlign: 'top',
+
             }}
         />
         </label>
