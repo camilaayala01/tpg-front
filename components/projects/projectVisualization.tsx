@@ -9,7 +9,6 @@ import AddButton from "./addButton";
 import { confirmAlert } from "react-confirm-alert";
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import DeleteButton from "./DeleteButton";
-import styled from "styled-components";
 import deleteProject from "@/services/project/deleteProject";
 import { BotonAtrasTop } from './bottonBackTop';
 
