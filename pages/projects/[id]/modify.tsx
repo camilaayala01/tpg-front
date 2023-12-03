@@ -7,7 +7,7 @@ import fetchEmployee from "@/services/project/fetchEmployee";
 
 const inter = Inter({ subsets: ["latin"] })
 
-export default function modificarProyecto() {
+export default function ModificarProyecto() {
 
 const router = useRouter();
 

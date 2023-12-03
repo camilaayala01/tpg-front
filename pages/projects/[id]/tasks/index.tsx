@@ -15,6 +15,7 @@ export default function Tasks() {
   const {id} = router.query;
   
   useEffect(() => {
+    if(!id) return;
     setLoading(true);
     fetch(`https://psa-proyecto.onrender.com/projects/${id}/tasks`)
       .then((res) => {
@@ -24,7 +25,7 @@ export default function Tasks() {
         setList(data)
         setLoading(false);
       })
-  }, [])
+  }, [id])
 
   return (
     <>

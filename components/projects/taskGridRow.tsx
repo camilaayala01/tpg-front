@@ -9,8 +9,7 @@ export default function TaskGridRow({ task }: {task: Task}) {
     const {id} = router.query;
 
     function handleButtonClick() {
-        const taskId = task['id'];
-        router.push(`/projects/${id}/tasks/${taskId}`)
+        router.push(`/projects/${id}/tasks/${task.id}`)
     }
       
     return (
@@ -31,8 +30,6 @@ export default function TaskGridRow({ task }: {task: Task}) {
             <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <div className="text-sm leading-5 text-gray-900">{task['creationDate']}</div>
             </td>
-
-            
 
             <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <div className="text-sm leading-5 text-gray-900"><MyButton onClickHandler={handleButtonClick} /></div>
