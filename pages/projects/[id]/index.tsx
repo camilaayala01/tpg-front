@@ -42,10 +42,6 @@ export default function ProjectMainPage({ params }: { params: { id: string } }) 
       });
   }, [id]);
 
-  function handleButtonClick() {
-    router.push(`${id}/tasks`);
-  }
-
   return (
     <div className="flex h-full flex-col justify-center items-center bg-white">
       {loading ? (

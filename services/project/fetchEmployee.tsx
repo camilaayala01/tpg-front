@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Employee } from "@/types/types";
 
-export default function fetchEmployee( leaderId: number ) {
+export default function fetchEmployee( leaderId: any ) {
     const [leader, setLeader] = useState<Employee>();
     const [error, setError] = useState<string | null>(null);
   

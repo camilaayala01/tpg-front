@@ -46,3 +46,8 @@
   left: 80%;
   transform: translate(-90%, -80%)
 };
+
+.react-confirm-alert-button-group > button:nth-child(2) {
+  background-color: #f44336;
+  color: white;
+}

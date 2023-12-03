@@ -52,7 +52,7 @@ export default function creationForm() {
     <form onSubmit={handleSubmit}>
     <div style={estiloRectangulo}>
 
-      <TextBox label='Nombre' description='Indique el nombre del proyecto' style={{ position: 'absolute', top: '1%', left: '1%' }} name={"name"} handleChange={handleChange} />
+      <TextBox label='Nombre' description='Indique el nombre del proyecto' style={{ position: 'absolute', top: '1%', left: '1%' }} name={"name"} handleChange={handleChange} defaultValue="" />
 
       <div style = {{position: 'absolute', top: '20%', left: '1%'}}>
         <label htmlFor="startDate" style={{fontWeight: 'bold', color: 'black'}}>
@@ -104,7 +104,7 @@ export default function creationForm() {
         </select>
       </div>
 
-      <DescriptionBox label='Descripcion' description='Detalles del proyecto' style={{ position: 'absolute', top: '50%', left: '1%', width: '70%', height: '50%'}} name={"description"} handleChange={handleChange} />
+      <DescriptionBox label='Descripcion' description='Detalles del proyecto' style={{ position: 'absolute', top: '50%', left: '1%', width: '70%', height: '50%'}} name={"description"} handleChange={handleChange} defaultValue="" />
 
       <button type="submit" className="buttonStyle">
         Aceptar

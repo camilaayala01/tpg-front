@@ -2,13 +2,13 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 interface Params {
-  urlDestination: string;
   urlImg: string;
   name: string;
   backColor: string;
+  handleClick: ()=>void;
 }
 
-const BotonMultiuso: React.FC<Params> = ({ urlDestination, urlImg, name, backColor }) => {
+const BotonEliminar: React.FC<Params> = ({ urlImg, name, backColor, handleClick }) => {
   const router = useRouter();
 
   const botonStyle: React.CSSProperties = {
@@ -43,7 +43,7 @@ const BotonMultiuso: React.FC<Params> = ({ urlDestination, urlImg, name, backCol
   };
 
   function handleButtonClick() {
-    router.push(urlDestination);
+    handleClick();
   }
 
   return (
@@ -56,4 +56,5 @@ const BotonMultiuso: React.FC<Params> = ({ urlDestination, urlImg, name, backCol
   );
 };
 
-export default BotonMultiuso;
+export default BotonEliminar;
+

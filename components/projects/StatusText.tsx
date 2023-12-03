@@ -1,6 +1,6 @@
 
 
-export default function StatusText (text : string) {
+export default function StatusText(text : string) {
 
     if(text === "IN_PROGRESS") {
         return (

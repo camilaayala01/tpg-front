@@ -8,6 +8,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import React from "react";
 import { Dayjs } from "dayjs";
 import createProject from "@/services/project/createProject";
+import { useRouter } from "next/router";
 
 export default function creationForm() {
     
@@ -19,7 +20,7 @@ export default function creationForm() {
     top: '18vh',
     left: '25vw'
   };
-
+  const router = useRouter();
   const [formData, setFormData] = useState({ name: "", description: ""});
   const projectLeaderRef = useRef<HTMLSelectElement>(null);
   const [startDate, setStartDate] = useState<Dayjs | null>(null);
@@ -33,22 +34,18 @@ export default function creationForm() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(formData);
+
     if (!formData.name || !formData.description || !startDate || !finishDate || !projectLeaderRef.current?.value) {
       alert("Por favor, complete todos los campos.");
       return;
     }else{
-      alert(`Nombre: ${formData.name}, Descripcion: ${formData.description}, Fecha de Inicio: ${startDate}, Fecha de Fin: ${finishDate}, Lider:  ${projectLeaderRef.current}`);
       createProject(formData.name, formData.description, startDate, finishDate, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value);
+      router.push(`/projects`)
     }
   };
   
   const Employees = fetchEmployees();
-  const EmployeeNames = Employees.list;
-  EmployeeNames.map((employee) => {
-    const fullName = employee ? `${employee['Nombre']} ${employee['Apellido']}` : "-";
-    return fullName;
-  });
+  
 
   return (
     <>
@@ -56,7 +53,7 @@ export default function creationForm() {
     <form onSubmit={handleSubmit}>
     <div style={estiloRectangulo}>
 
-      <TextBox label='Nombre' description='Indique el nombre del proyecto' style={{ position: 'absolute', top: '1%', left: '1%' }} name={"name"} handleChange={handleChange} />
+      <TextBox label='Nombre' description='Indique el nombre del proyecto' style={{ position: 'absolute', top: '1%', left: '1%' }} name={"name"} defaultValue="" handleChange={handleChange} />
 
       <div style = {{ position: 'absolute', top: '5%', left: '40%' }}>
         <label htmlFor="startDate" style={{fontWeight: 'bold', color: 'black'}}>
@@ -96,7 +93,7 @@ export default function creationForm() {
         </select>
       </div>
 
-      <DescriptionBox label='Descripcion' description='Detalles del proyecto' style={{ position: 'absolute', top: '40%', left: '1%', width: '70%', height: '50%'}} name={"description"} handleChange={handleChange} />
+      <DescriptionBox label='Descripcion' description='Detalles del proyecto' style={{ position: 'absolute', top: '40%', left: '1%', width: '70%', height: '50%'}} name={"description"}  defaultValue="" handleChange={handleChange} />
 
       <button type="submit" className="buttonStyle">
         Aceptar

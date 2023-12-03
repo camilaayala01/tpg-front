@@ -5,10 +5,11 @@ interface CampoDeTextoProps {
     name: string;
     description: any;
     style?: React.CSSProperties;
+    defaultValue: string;
     handleChange: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   }
 
-const TextBox: React.FC<CampoDeTextoProps> = ({ label, name, description, style, handleChange }) =>{
+const TextBox: React.FC<CampoDeTextoProps> = ({ label, name, description, style,defaultValue , handleChange }) =>{
 
   return (
     <div style={style}>
@@ -18,6 +19,7 @@ const TextBox: React.FC<CampoDeTextoProps> = ({ label, name, description, style,
             type="text"
             name={name}
             onChange={handleChange}
+            defaultValue={defaultValue}
             style={{backgroundColor: '#EDEDED', width: '300px', height: '40px', borderRadius: '12px', color: 'black', padding: '5px'}}
         />
         </label>

@@ -41,7 +41,9 @@ export default function Projects() {
                 <> 
                 <div style={{ position: 'absolute', color: 'black', top: '8%', left: '16%', fontSize: '2em', fontWeight: 'bold', letterSpacing: 0.20 }}>Proyectos PSA</div>
                 <AppSearchBar listProject={list}/>
-                <BotonAgregar name="Agregar Proyecto" url="projects/crear"/>
+                <div style={{position: 'absolute', top: '18%', right: '8%'}}>
+                <BotonAgregar name="Agregar Proyecto" urlDestination="projects/crear" urlImg="https://i.ibb.co/pbXRFvd/add.png" backColor="rgba(66, 125, 157, 1)"/>
+                </div>
                 </>
               ) : (
                 <h1>No projects created.</h1>

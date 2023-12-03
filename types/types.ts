@@ -36,27 +36,25 @@ export interface Task
   finishDate: string;
 }
 
-// Definición del Enum
-enum Status {
-  IN_PROGRESS,
-  NOT_STARTED,
-  COMPLETED,
-  BLOCKED,
+export enum Status {
+  IN_PROGRESS = "In progress",
+  NOT_STARTED = "Not started",
+  COMPLETED = "Completed",
+  BLOCKED = "Blocked",
 }
 
-const getStatusFromString = (statusString: string): Status | undefined => {
-  const lowercaseStatusString = statusString.toLowerCase();
+export const getStatusToString = (status: string): string | undefined => {
 
-  switch (lowercaseStatusString) {
-    case "In progress":
-      return Status.IN_PROGRESS;
-    case "Completed":
-      return Status.COMPLETED;
-    case "Not started":
-      return Status.NOT_STARTED;
-    case "Blocked":
-      return Status.BLOCKED;
-    default:
+  switch (status) {
+    case "IN_PROGRESS":
+      return "In progress";
+    case "COMPLETED":
+      return "Completed";
+    case "NOT_STARTED":
+      return "Not started";
+    case "BLOCKED":
+      return "Blocked";
+    case undefined: 
       return undefined;
   }
 };
