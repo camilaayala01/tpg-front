@@ -1,10 +1,10 @@
 import fetchEmployee from "@/services/project/fetchEmployee";
+import { Employee } from "@/types/types";
+import { useEffect, useState } from "react";
 
-export default function LeaderBox({id}: {id:number}) {
+export default function LeaderBox({id}: {id:any}) {
    
-
-  const {fullName, error} = fetchEmployee(id);
-  
+    const {fullName,error} =  fetchEmployee(id);
 
   return (
      <div style={{ background: 'rgba(255, 255, 255, 0)', justifyContent: 'flex-start', alignItems: 'flex-start', display: 'inline-flex'}}>

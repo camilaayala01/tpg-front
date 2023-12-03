@@ -1,4 +1,4 @@
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import TextBox from "./TextBox";
 import DescriptionBox from "./DescriptionBox";
 import fetchEmployees from "@/services/project/fetchEmployees";
@@ -49,7 +49,6 @@ export default function creationForm() {
       return;
     }else{
       createProject(formData.name, formData.description, startDate, finishDate, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value);
-      router.push(`/projects`)
     }
   };
   
@@ -91,7 +90,7 @@ export default function creationForm() {
         <label htmlFor="projectLeader" style={{ fontSize: '1em', fontWeight: 'bold', color: 'black' }}>Project Leader</label>
         <select ref={projectLeaderRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}}>
             <option value="" style= {{color: 'black'}}>Asigne un líder</option>
-            {Employees.list.map((opcion) => (
+            {employees?.map((opcion) => (
             <option value={opcion.legajo}>
                 {opcion ? `${opcion['Nombre']} ${opcion['Apellido']}` : "-"}
             </option>

@@ -10,6 +10,7 @@ import { Dayjs } from "dayjs";
         Accept: "application/json",
       },
     })
+    console.log(response);
   }
   
   

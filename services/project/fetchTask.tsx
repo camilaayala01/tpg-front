@@ -18,6 +18,7 @@ export default function FetchTask(idProject: any, id: any): FetchTaskResult {
         if (!res.ok) {
           throw new Error(`Error ${res.status}: ${res.statusText}`);
         }
+        console.log(res);
         return res.json();
       })
       .then((data) => {

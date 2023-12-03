@@ -35,7 +35,9 @@ export default function ModifyForm({project}: {project: Project}) {
     };
     fetchData();
   }, []);
-  
+  function handleClick() {
+    router.push(`/projects/${project.id}`);
+  }
   const handleChange = (event: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.currentTarget;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
@@ -55,7 +57,6 @@ export default function ModifyForm({project}: {project: Project}) {
     }else{
       console.log(finishDate)
       editProject(project.id, formData.name, formData.description, statusRef.current?.options[statusRef.current?.selectedIndex].value, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value, finishDate);
-      router.push(`/projects/`)
     }
   };
   
@@ -106,7 +107,7 @@ export default function ModifyForm({project}: {project: Project}) {
         
       <DescriptionBox label='Descripcion' description='Detalles del proyecto' style={{ position: 'absolute', top: '60%', left: '1%', width: '70%', height: '50%'}} name={"description"} defaultValue={project.description} handleChange={handleChange} />
 
-      <button type="submit" className="buttonStyle">
+      <button type="submit" className="buttonStyle" onClick={handleClick}>
         Aceptar
       </button>
     </div>  
