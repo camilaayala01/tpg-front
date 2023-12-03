@@ -27,7 +27,7 @@ import { Dayjs } from "dayjs";
         description: description, 
         status: status,
         priority: priority,
-        finishDate: finishDate?.format('YYYY-MM-DD')?? null,
+        finishDate: finishDate?.format('DD-MM-YYYY')?? null,
         estimatedDuration: estimatedDuration?? null,
     }).then((data) => {data});
   }

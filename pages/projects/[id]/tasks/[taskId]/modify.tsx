@@ -2,18 +2,22 @@ import { Inter } from "next/font/google"
 import { ModifyFormTask } from "@/components/tasks/ModifyFormTask";
 import { useRouter } from "next/router";
 import FetchTask from "@/services/project/fetchTask";
+import { useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] })
 
 export default function ModificarTarea() {
 
   const router = useRouter();
+  const { taskId, id } = router.query;
+  const {curTask, error} = FetchTask(id, taskId); 
 
-  const { projectId, id } = router.query;
-  const {curTask, error} = FetchTask(projectId, id); 
+  useEffect ( () => {
+    console.log(id, taskId)
+  },[id, taskId])
 
   if (!curTask) {
-    return <h1>Tarea no encontrada</h1>;
+    return <h1>Tarea no encontradaaa</h1>;
   }
 
   return (
