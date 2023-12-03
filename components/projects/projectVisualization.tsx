@@ -75,7 +75,7 @@ return (
           <h2 style={{ color: '#666666', fontSize: '1.1rem', margin: 0, fontWeight: 'bold' }}>
               Descripción
           </h2>
-          <p style={{ color: 'black', fontSize: '0.9rem', fontFamily: 'Arial, sans-serif', margin: 0 }}>
+          <p style={{ color: 'black', fontSize: '0.9rem', margin: 0 }}>
               {project.description}
           </p>
       </div>
