@@ -8,6 +8,7 @@ import BotonAtras from "@/components/support/backButton";
 import ProjectGridRow from "@/components/projects/projectGridRow";
 import { supportFetcher } from "@/services/support/fetcher";
 import { Ticket } from "@/types/types";
+import { translateInputTicket } from '@/services/support/translateTicket';
 
 
 const inter = Inter({ subsets: ["latin"] })
@@ -18,7 +19,7 @@ function HeaderItem({ title }: { title: string }) {
 
 export default function ManageTickets() {
 
-  const [list, setList] = useState<Ticket[]>([])
+  const [tickets, setList] = useState<Ticket[]>([])
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -35,20 +36,13 @@ export default function ManageTickets() {
     })
   }, [])
 
-  const tickets = supportFetcher("/tickets", {
-    method: "GET",
-    headers: {
-        'Content-Type': 'application/json',
-      },
-  }).then((tickets) => tickets)
-
   return (
     <div>
         <p style = {{top: '10vh', left: '10vw', fontSize: '1.5rem', fontWeight: 'bold', color: 'black'}}>Tickets</p>
         <table className="min-w-full">
           <thead>
             <tr>
-              <HeaderItem title="Nombre" />
+              <HeaderItem title="Titulo" />
               <HeaderItem title="Estado" />
               <HeaderItem title="Severidad" />
               <HeaderItem title="Prioridad" />
@@ -56,8 +50,8 @@ export default function ManageTickets() {
             </tr>
           </thead>
           <tbody>
-            {list.map((ticket) => (
-                  <TicketGridRow key={ticket['id']} ticket={ticket} />
+            {tickets.map((ticket) => (
+                  <TicketGridRow key={ticket['code']} ticket={translateInputTicket(ticket)} />
                 ))}
           </tbody>
         </table>
