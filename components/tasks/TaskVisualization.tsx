@@ -1,4 +1,4 @@
-
+import TicketsView from "./TicketsView";
 import { Task } from "@/types/types";
 import React from "react";
 import LeaderBox from "../projects/LeaderBox";
@@ -86,31 +86,36 @@ return (
           </p>
       </div>
       
-      <div style={{ position: 'absolute', top: '30%', left: '0%', display: 'flex', alignItems: 'center' }}>
+      <div style={{ position: 'absolute', top: '27%', left: '0%', display: 'flex', alignItems: 'center' }}>
           <p style={{ fontSize: '1rem', fontWeight: 'bold', color: '#666666', marginRight: '20px' }}>Prioridad</p>
           {PriorityText(task.priority)}
       </div>
 
-      <div style={{ position: 'absolute', top: '45%', left: '0%'}}>
+      <div style={{ position: 'absolute', top: '35%', left: '0%'}}>
           <DateBox dateName={"Fecha de creación"} date={task.creationDate} />
       </div>
 
-      <div style={{ position: 'absolute', top: '45%', left: '20%'}}>
+      <div style={{ position: 'absolute', top: '35%', left: '20%'}}>
           <DateBox dateName={"Fecha de inicio"} date={task.startDate} />
       </div>
 
-      <div style={{ position: 'absolute', top: '45%', left: '40%'}}>
+      <div style={{ position: 'absolute', top: '35%', left: '40%'}}>
           <DateBox dateName={"Fecha de finalizacion"} date={task.finishDate} />
       </div>
-      <div style={{ position: 'absolute', top: '70%', left: '12%', display: 'flex', alignItems: 'center' }} className="text-sm leading-5 text-gray-900">
+
+      <div style={{ position: 'absolute', top: '45%', left: '0%'}}>
+          <TicketsView id={task.id}/>
+      </div>
+
+      <div style={{ position: 'absolute', top: '65vh', left: '12%', display: 'flex', alignItems: 'center' }} className="text-sm leading-5 text-gray-900">
         <AddButton urlImg="https://i.ibb.co/Z68w2Mj/edit.png" name="Editar tarea" urlDestination={urlModify} backColor="rgba(155, 190, 200, 1)"/>
       </div>
 
-      <div style={{ position: 'absolute', top: '70%', left: '0%', display: 'flex', alignItems: 'center' }} className="text-sm leading-5 text-gray-900">
+      <div style={{ position: 'absolute', top: '65vh', left: '0%', display: 'flex', alignItems: 'center' }} className="text-sm leading-5 text-gray-900">
         <DeleteButton urlImg="https://i.ibb.co/gw4X4S5/delete.png" name="Eliminar" backColor="rgba(155, 190, 200, 1)" handleClick={submit} />
       </div>
 
-      <div style={{ position: 'absolute', top: '70%', left: '70%', display: 'flex', alignItems: 'center' }} className="text-sm leading-5 text-gray-900">
+      <div style={{ position: 'absolute', top: '65vh', left: '70%', display: 'flex', alignItems: 'center' }} className="text-sm leading-5 text-gray-900">
         <AddButton urlImg="https://i.ibb.co/FByhPx2/kanban.png" name="Ver Kanban" urlDestination={urlKanban} backColor="rgba(155, 190, 200, 1)" />
       </div>
   </div>

@@ -99,19 +99,21 @@ export type Product = {
   versions: ProductVersion[];
 };
 
-// export type Status = "Abierto" | "Cerrado"
 
 export type Ticket = {
-  id: number;
-  status: string;
-  name: string;
+  code: number;
+  title: string;
   description: string;
+  status: string;
   severity: string;
   priority: string;
-  // employees: number[];
-  // tasks: number[];
-  creationDate: string;
-  deadline: string;
-  // lastEditionDate: string;
-  client: string; // despues vemos de pasarlo a que sea el id (number)
+  product: string;
+  version: string;
+  clientId: number; // despues vemos de pasarlo a que sea el id (number)
+  employeeId: number;
+  associatedTasks: number[];
+  startDate: string;
+  estimatedClosingDate: string;
 };
+
+

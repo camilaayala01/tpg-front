@@ -67,20 +67,20 @@ const RectanguloConBorde: React.FC = () => {
     // Función para mapear nombres de clientes a IDs
     const mapClientesToIds = (razonSocialCliente: string, clientesData: any[]): string => {
       const cliente = clientesData.find((cliente) => {
-        console.log(`string de comparacion: ${cliente['razon social']} - CUIT: ${cliente['CUIT']}`);
-        `${cliente['razon social']} - CUIT: ${cliente['cuit']}` == razonSocialCliente});
-      console.log(`razonSocialCLiente: ${razonSocialCliente}`);
-      console.log(`cliente: ${cliente}`);
-      return cliente ? cliente.id : 'ID no encontrado'; // Reemplaza 'id' con la propiedad real del ID
+        // console.log(`string de comparacion: ${cliente['razon social']} - CUIT: ${cliente['CUIT']}`);
+        return `${cliente['razon social']} - CUIT: ${cliente['CUIT']}` === razonSocialCliente});
+      // console.log(`razonSocialCLiente: ${razonSocialCliente}`);
+      // console.log(`cliente: ${cliente}`);
+      return cliente ? cliente.id.toString() : 'ID no encontrado'; // Reemplaza 'id' con la propiedad real del ID
     };
       
     // Función para mapear nombres de empleados a IDs
     const mapEmpleadosToIds = (nombreEmpleado: string, empleadosData: any[]): string => {
       const empleado = empleadosData.find((empleado) => {
-        console.log(`string de comparacion: ${empleado['Nombre']} ${empleado['Apellido']} - Legajo: ${empleado['legajo']}`);
-        `${empleado['Nombre']} ${empleado['Apellido']} - Legajo: ${empleado['legajo']}` == nombreEmpleado});
-      console.log(`empleado: ${empleado}`);
-      console.log(`nombreEmpleado: ${nombreEmpleado}`);
+        // console.log(`string de comparacion: ${empleado['Nombre']} ${empleado['Apellido']} - Legajo: ${empleado['legajo']}`);
+        return `${empleado['Nombre']} ${empleado['Apellido']} - Legajo: ${empleado['legajo']}` === nombreEmpleado});
+      //   console.log(`nombreEmpleado: ${nombreEmpleado}`);
+      // console.log(`empleado: ${empleado}`);
       return empleado ? empleado.legajo.toString() : 'Legajo no encontrado'; // Reemplaza 'legajo' con la propiedad real del ID
     };
     

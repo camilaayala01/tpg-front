@@ -8,18 +8,17 @@ import BotonAtras from "@/components/support/backButton";
 import ProjectGridRow from "@/components/projects/projectGridRow";
 import { supportFetcher } from "@/services/support/fetcher";
 import { Ticket } from "@/types/types";
-import { translateInputTicket } from '@/services/support/translateTicket';
 
 
 const inter = Inter({ subsets: ["latin"] })
 
 function HeaderItem({ title }: { title: string }) {
-  return <th className="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50">{title}</th>
-}
+    return <th className="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50">{title}</th>
+  }
 
-export default function ManageTickets() {
+export default function TicketsView({id} : {id: number}) {
 
-  const [tickets, setList] = useState<Ticket[]>([])
+  const [list, setList] = useState<Ticket[]>([])
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -36,23 +35,37 @@ export default function ManageTickets() {
     })
   }, [])
 
+  const tickets = supportFetcher("/tickets", {
+    method: "GET",
+    headers: {
+        'Content-Type': 'application/json',
+      },
+  }).then((tickets) => tickets)
+
   return (
     <div>
-        <p style = {{top: '10vh', left: '10vw', fontSize: '1.5rem', fontWeight: 'bold', color: 'black'}}>Tickets</p>
-        <table className="min-w-full">
+        <p style = {{top: '10vh', left: '0vw', fontSize: '1.2rem', fontWeight: 'bold', color: 'black'}}>Tickets asociados</p>
+        <table style={{ width: '60%', maxWidth: '90vw', overflowX: 'auto' }}>
           <thead>
             <tr>
-              <HeaderItem title="Titulo" />
-              <HeaderItem title="Estado" />
-              <HeaderItem title="Severidad" />
-              <HeaderItem title="Prioridad" />
+              <HeaderItem title="Nombre" />
               <HeaderItem title="Acciones" />
             </tr>
           </thead>
           <tbody>
-            {tickets.map((ticket) => (
-                  <TicketGridRow key={ticket['code']} ticket={translateInputTicket(ticket)} />
-                ))}
+            {
+                list.filter(ticket => {
+
+                        /*f(ticket.tasks.includes(id)) {
+                            return ticket;
+                        }else{
+                            return
+                        }
+                    */
+                    }
+                ).map((ticket, key) => (
+                    <TicketGridRow key={ticket['name']} ticket={ticket}/>))   
+            }
           </tbody>
         </table>
         <BotonAtras />
