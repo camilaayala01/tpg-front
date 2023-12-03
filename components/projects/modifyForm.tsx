@@ -7,7 +7,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import React from "react";
 import dayjs, { Dayjs } from "dayjs";
 import editProject from "@/services/project/editProject";
-import {  Project, Status, getStatusToString } from "@/types/types";
+import {  Employee, Project, Status, getStatusToString } from "@/types/types";
 import { useRouter } from "next/router";
 import fetchEmployees from "@/services/project/fetchEmployees";
 
@@ -25,15 +25,26 @@ export default function ModifyForm({project}: {project: Project}) {
   const [formData, setFormData] = useState({ name: project.name, description: project.description});
   const projectLeaderRef = useRef<HTMLSelectElement>(null);
   const statusRef = useRef<HTMLSelectElement>(null);
-  const [finishDate, setFinishDate] = useState<Dayjs|null>(dayjs(project.finishDate, "MM-DD-YYYY"));
+  const [finishDate, setFinishDate] = useState<Dayjs|null>(dayjs(project.finishDate, "YYYY-MM-DD"));
   const router = useRouter();
+  const [employees, setEmployees] = useState<Employee[]>();
+  useEffect(() => {
+    const fetchData = async () => {
+        const data = await fetchEmployees();
+        setEmployees(data);
+    };
+    fetchData();
+  }, []);
   
   const handleChange = (event: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.currentTarget;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
 
   };
-  const Employees = fetchEmployees();
+
+  useEffect(() => {
+    setFinishDate(dayjs(project.finishDate, "YYYY-MM-DD"));
+  })
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -43,7 +54,7 @@ export default function ModifyForm({project}: {project: Project}) {
       return;
     }else{
       console.log(finishDate)
-      editProject(project.id, formData.name, formData.description, statusRef.current?.options[statusRef.current?.selectedIndex].value, finishDate, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value);
+      editProject(project.id, formData.name, formData.description, statusRef.current?.options[statusRef.current?.selectedIndex].value, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value, finishDate);
       router.push(`/projects/`)
     }
   };
@@ -85,15 +96,14 @@ export default function ModifyForm({project}: {project: Project}) {
       <div style = {{position: 'absolute', top: '20%', left: '1%'}}>
         <label htmlFor="projectLeader" style={{ fontSize: '1em', fontWeight: 'bold', color: 'black' }}>Lider de Proyecto</label>
         <select ref={projectLeaderRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}} defaultValue={"Raul"}>
-            {Employees.list.map((opcion) => (
+        {employees?.map((opcion) => (
             <option value={opcion.legajo} key={opcion.legajo}>
                 {opcion ? `${opcion['Nombre']} ${opcion['Apellido']}` : "-"}
             </option>
             ))}
         </select>
             </div>
-
-
+        
       <DescriptionBox label='Descripcion' description='Detalles del proyecto' style={{ position: 'absolute', top: '60%', left: '1%', width: '70%', height: '50%'}} name={"description"} defaultValue={project.description} handleChange={handleChange} />
 
       <button type="submit" className="buttonStyle">

@@ -28,7 +28,7 @@ export interface Task
   projectId:number;
   name: string;
   description: string;
-  status: string;
+  status: Status;
   priority: string;
   estimatedDuration: number;
   creationDate: string;
@@ -66,6 +66,22 @@ export const getStatusToString = (status: string): string | undefined => {
       return "Low"
     case "MEDIUM":
       return "Medium"
+    case undefined: 
+      return undefined;
+  }
+};
+
+export const getStringToStatus = (status: string): string | undefined => {
+
+  switch (status) {
+    case "IN_PROGRESS":
+      return Status.IN_PROGRESS;
+    case "COMPLETED":
+      return Status.COMPLETED;
+    case "NOT_STARTED":
+      return Status.NOT_STARTED;
+    case "BLOCKED":
+      return Status.BLOCKED;
     case undefined: 
       return undefined;
   }

@@ -25,6 +25,14 @@ export default function creationForm() {
   const projectLeaderRef = useRef<HTMLSelectElement>(null);
   const [startDate, setStartDate] = useState<Dayjs | null>(null);
   const [finishDate, setFinishDate] = useState<Dayjs | null>(null);
+  const [employees, setEmployees] = useState<Employee[]>();
+  useEffect(() => {
+    const fetchData = async () => {
+        const data = await fetchEmployees();
+        setEmployees(data);
+    };
+    fetchData();
+  }, []);
 
   const handleChange = (event: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.currentTarget;
@@ -44,9 +52,6 @@ export default function creationForm() {
     }
   };
   
-  const Employees = fetchEmployees();
-  
-
   return (
     <>
     <div style={{ position: 'absolute', color: 'black', top: '10%', left: '25%', fontSize: '2em', fontWeight: 'bold', letterSpacing: 0.20 }}>Crear Proyecto</div>
