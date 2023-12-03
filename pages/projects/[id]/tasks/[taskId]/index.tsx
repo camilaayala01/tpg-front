@@ -21,6 +21,7 @@ export default function TaskMainPage({ params }: { params: { id: string} }) {
   const [error, setError] = useState<string | null>(null);
   
   useEffect(() => {
+    if(!id || !taskId) return;
     setLoading(true);
     fetch(`https://psa-proyecto.onrender.com/projects/${id}/tasks/${taskId}`)
       .then((res) => {
@@ -42,7 +43,7 @@ export default function TaskMainPage({ params }: { params: { id: string} }) {
         setLoading(false);
       });
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+  }, [id, taskId]);
 
   return (
     <div className="flex h-full flex-col justify-center items-center bg-white">

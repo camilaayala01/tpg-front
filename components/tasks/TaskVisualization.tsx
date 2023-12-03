@@ -34,8 +34,9 @@ function handleButtonClick() {
 }
 
 const handleDeletion = () => {
+  console.log(task)
   deleteTask(task.projectId,task.id)
-  router.push(`${task.projectId}/tasks`);
+  router.back()
 };
 
 
@@ -59,7 +60,7 @@ const submit = () => {
 
 
 const urlKanban = `/projects/${task.projectId}/kanban`
-const urlModify = `/projects/${task.projectId}/modify`
+const urlModify = `/projects/${task.projectId}/tasks/${task.id}/modify`
 
 return (
   <>

@@ -7,7 +7,7 @@ import { Ubuntu } from "next/font/google"
 const ubuntu = Ubuntu({ subsets: ["latin"],  weight: "300"})
 
 
-export default function modificarProyecto() {
+export default function ModificarProyecto() {
 
   const router = useRouter();
 

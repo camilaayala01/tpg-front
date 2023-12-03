@@ -11,7 +11,7 @@ import {  Project, Status, getStatusToString } from "@/types/types";
 import { useRouter } from "next/router";
 import fetchEmployees from "@/services/project/fetchEmployees";
 
-export default function modifyForm({project}: {project: Project}) {
+export default function ModifyForm({project}: {project: Project}) {
     
   const estiloRectangulo: React.CSSProperties = {
     position: 'fixed',
@@ -38,20 +38,22 @@ export default function modifyForm({project}: {project: Project}) {
   const Employees = fetchEmployees();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+    event.preventDefault()
+
     if (!formData.name || !formData.description ||  !finishDate || !projectLeaderRef.current?.value || !statusRef.current?.value ) {
       alert("Por favor, complete todos los campos.");
       return;
     }else{
-      editProject(project.id, formData.name, formData.description, statusRef.current?.options[statusRef.current?.selectedIndex].value,projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value, finishDate );
-      console.log(project.id);
+      console.log(finishDate)
+      editProject(project.id, formData.name, formData.description, statusRef.current?.options[statusRef.current?.selectedIndex].value, finishDate, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value);
+      router.push(`/projects/`)
     }
   };
   
   return (
     <>
     <div style={{ position: 'absolute', color: 'black', top: '10%', left: '25%', fontSize: '2em', fontWeight: 'bold', letterSpacing: 0.20 }}>Modificar Proyecto</div>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} >
     <div style={estiloRectangulo}>
 
       <TextBox label='Nombre' description='Indique el nombre del proyecto' style={{ position: 'absolute', top: '1%', left: '1%' }} name={"name"} defaultValue={project.name} handleChange={handleChange} />
@@ -74,7 +76,7 @@ export default function modifyForm({project}: {project: Project}) {
         <label htmlFor="status" style={{ fontSize: '1em', fontWeight: 'bold', color: 'black' }}>Estado</label>
         <select ref={statusRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}} defaultValue={project.status}>
             {Object.keys(Status).map((opcion) => (
-            <option key={opcion} value={opcion}>
+            <option value={opcion}>
                 {getStatusToString(opcion)}
             </option>
             ))}
@@ -86,7 +88,7 @@ export default function modifyForm({project}: {project: Project}) {
         <label htmlFor="projectLeader" style={{ fontSize: '1em', fontWeight: 'bold', color: 'black' }}>Lider de Proyecto</label>
         <select ref={projectLeaderRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}} defaultValue={"Raul"}>
             {Employees.list.map((opcion) => (
-            <option key={opcion.legajo}  value={opcion.legajo}>
+            <option value={opcion.legajo} key={opcion.legajo}>
                 {opcion ? `${opcion['Nombre']} ${opcion['Apellido']}` : "-"}
             </option>
             ))}

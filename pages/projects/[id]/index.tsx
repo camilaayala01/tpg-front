@@ -23,6 +23,7 @@ export default function ProjectMainPage({ params }: { params: { id: string } }) 
   const [error, setError] = useState<string | null>(null);
   
   useEffect(() => {
+    if(!id) return;
     setLoading(true);
     fetch(`https://psa-proyecto.onrender.com/projects/${id}`)
       .then((res) => {
