@@ -108,7 +108,7 @@ export type Ticket = {
   severity: string;
   priority: string;
   // employees: number[];
-  // tasks: number[];
+  tasks: number[];
   creationDate: string;
   deadline: string;
   // lastEditionDate: string;
