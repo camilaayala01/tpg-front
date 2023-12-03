@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-const Boton: React.FC<{label: any; style?: React.CSSProperties; link: string}> = ({label, style, link}) => {
+const Boton: React.FC<{label: any; style?: React.CSSProperties; funcion: any}> = ({label, style, funcion}) => {
 
 const router = useRouter();
 
@@ -11,7 +11,7 @@ interface CampoDeTextoProps {
 
 const handleClick = () => {
   // Cambia '/otra-pagina' a la ruta de la página a la que deseas redirigir
-  window.location.reload();;
+  funcion();;
 };
 
 return (
