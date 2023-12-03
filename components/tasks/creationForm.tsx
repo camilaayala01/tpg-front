@@ -8,7 +8,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import React from "react";
 import { Dayjs } from "dayjs";
 import { useRouter } from "next/router";
-import { Employee } from "@/types/types";
+import { Employee, Priority, getEnumToString } from "@/types/types";
 import createTask from "@/services/project/createTask";
 
 export default function creationForm() {
@@ -89,13 +89,13 @@ export default function creationForm() {
         </label>
       </div>
 
+
       <div style = {{position: 'absolute', top: '35%', left: '1%'}}>
         <label htmlFor="priority" style={{ fontSize: '1em', fontWeight: 'bold', color: 'black' }}>Prioridad</label>
         <select ref={priorityRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}}>
-            <option value="" style= {{color: 'black'}}>Seleccione la prioridad</option>
-            {['LOW', 'MEDIUM', 'HIGH'].map((opcion, index) => (
-            <option key={index} value={opcion}>
-                {opcion}
+            {Object.keys(Priority).map((opcion) => (
+            <option value={opcion} key={opcion}>
+                {getEnumToString(opcion)}
             </option>
             ))}
         </select>

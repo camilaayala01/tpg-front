@@ -60,7 +60,7 @@ const submit = () => {
 
 
 const urlKanban = `/projects/${task.projectId}/kanban`
-const urlModify = `/projects/${task.projectId}/tasks/${task.id}/modify`
+const urlModify = `/projects/${task.projectId}/tasks/${task.id}/modificar`
 
 return (
   <>

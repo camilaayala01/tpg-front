@@ -1,5 +1,7 @@
 import Image from "next/image"
 import { Ubuntu } from "next/font/google"
+import CommentSectionComponent from "@/components/projects/commentsSection";
+import { Stack } from "@mui/material";
 
 const ubuntu = Ubuntu({ subsets: ["latin"],  weight: "300"})
 
@@ -34,7 +36,6 @@ const estiloImagen: React.CSSProperties = {
 
 const estiloTitulo: React.CSSProperties = {
 
-  marginTop: '10px',
   textTransform: 'uppercase',
   color: 'black',
   fontSize: 24,
@@ -44,22 +45,46 @@ const estiloTitulo: React.CSSProperties = {
 
 export default function Home() {
   return (
-    <div style={estiloRectangulo} >
-      <div>
-      <div style={{ position: 'absolute', top: '5%', left: '10%', display:'inline-block', alignItems: 'center', justifyContent: 'center'}}>
-        <div style={estiloComponente}>
-          <img src="https://iili.io/JzVLjyP.png" style={estiloImagen} />
+    <div style={{position:'absolute', marginLeft: '15vw', marginTop:'5vw'}}>
+
+    <Stack
+      direction="row"
+      justifyContent="center"
+      alignItems="center"
+      spacing={'10vw'}
+    >
+      <div style={{maxWidth:'20vw', width: 'auto'}}>
+        <Stack
+          justifyContent="center"
+          alignItems="center"
+          spacing={'2vw'}
+        >
+          <div style={estiloComponente}>
+              <img src="https://iili.io/JzVLjyP.png" style={estiloImagen} />
+            </div>
+            <h1 style={estiloTitulo}>Soporte a clientes</h1>
+            <div style={{width: '100%', textAlign: 'center', fontSize:'1.1rem', color: 'black', wordWrap: 'break-word'}}>
+              Este componente permite la creacion de tickets, en conjunto con sus tareas asociadas, asignar encargados y notificar a las areas correspondientes
+            </div>
+        </Stack>
+      </div>
+      <div style={{maxWidth:'20vw', width: 'auto'}}>
+        <Stack
+          justifyContent="center"
+          alignItems="center"
+          spacing={'2vw'}
+        >
+          <div style={estiloComponente}>
+              <img src="https://iili.io/JzWK2Db.png" style={estiloImagen} />
+          </div>
+          <h1 style={estiloTitulo}>Gestión de proyectos</h1>
+          <div style={{width: '100%', textAlign: 'center', fontSize:'1.1rem', color: 'black', wordWrap: 'break-word'}}>
+          Este componente permite la creacion y modificacion de proyectos, asignarle a este un grupo de trabajo y llevar un registro de los trabajado
+            </div>
+        </Stack>
         </div>
-        <h1 style={estiloTitulo}>Soporte a clientes</h1>
-      </div>
-      </div>
-      <div style={{ position: 'absolute', top: '5%', left: '50%'}}>
-        <div style={estiloComponente}>
-          <img src="https://iili.io/JzWK2Db.png" style={estiloImagen} />
-        </div>
-        <h1 style={estiloTitulo}>Gestión de proyectos</h1>
-      </div>
-    </div>
+    </Stack>
+  </div>
   )
 }
 

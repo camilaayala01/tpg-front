@@ -1,7 +1,7 @@
 import { Task } from "@/types/types";
 import { Dayjs } from "dayjs";
 
- function editData(url = "", data = {}) {
+ function editData(url: string, data = {}) {
 
     const response = fetch(url, {
       method: "PUT", 
@@ -16,18 +16,18 @@ import { Dayjs } from "dayjs";
     
     return response;
   }
-  
-  
-  export default function editTask(id: number, projectId :number, name: string , description:string , status: string,priority: string,  finishDate?:Dayjs | null , estimatedDuration?: number| null)
+
+  export default function editTask(id: any, projectId :any, name: string , description:string ,estimatedDuration: number,priority: string, status: string,leaderId: string,finishDate?:Dayjs | null)
   {
     return editData(`https://psa-proyecto.onrender.com/projects/${projectId}/tasks/${id}`, 
     {
         name: name,
-        projectId: projectId,
         description: description, 
-        status: status,
         priority: priority,
-        finishDate: finishDate?.format('DD-MM-YYYY')?? null,
-        estimatedDuration: estimatedDuration?? null,
+        status: status,
+        estimatedDuration: estimatedDuration,
+        estimatedFinishDate: finishDate?.format('YYYY-MM-DD')?? null,
+        leaderId: leaderId,
+       
     }).then((data) => {data});
   }
