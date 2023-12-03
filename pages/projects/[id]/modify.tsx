@@ -2,14 +2,14 @@ import { Inter } from "next/font/google"
 import ModifyForm from "@/components/projects/modifyForm";
 import { useRouter } from "next/router";
 import fetchProject from "@/services/project/fetchProject";
-import fetchEmployees from "@/services/project/fetchEmployees";
-import fetchEmployee from "@/services/project/fetchEmployee";
+import { Ubuntu } from "next/font/google"
 
-const inter = Inter({ subsets: ["latin"] })
+const ubuntu = Ubuntu({ subsets: ["latin"],  weight: "300"})
+
 
 export default function ModificarProyecto() {
 
-const router = useRouter();
+  const router = useRouter();
 
   const { id } = router.query;
   const {curProject, error} = fetchProject(id); //manejar error jej

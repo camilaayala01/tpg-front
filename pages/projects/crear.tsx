@@ -1,7 +1,7 @@
-import { Inter } from "next/font/google"
 import CreationForm from "@/components/projects/creationForm";
+import { Ubuntu } from "next/font/google"
 
-const inter = Inter({ subsets: ["latin"] })
+const ubuntu = Ubuntu({ subsets: ["latin"],  weight: "300"})
 
 export default function crearProyecto() {
   return (

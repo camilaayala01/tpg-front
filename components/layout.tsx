@@ -36,8 +36,8 @@ export default function Layout({ children }: { children: any }) {
       <header className="bg-grisBarra sticky top-0 h-10  flex justify-between items-center font-semibold uppercase text-black">
 
       <div className="items-center mx-5">
-        <Image
-          src={"./icono.svg"}
+        <img
+          src="https://i.ibb.co/z2d6z5k/svgviewer-output-1.png"
           alt="Logo SVG"
           width={100}
           height={100}
