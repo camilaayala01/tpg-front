@@ -32,7 +32,7 @@ export default function ModificarTicket() {
 
     return (
         <div className="flex h-full flex-col justify-center items-center bg-white">
-            <div style={{ position: 'absolute', top: '70%', left: '12%', display: 'flex', alignItems: 'center' }} className="text-sm leading-5 text-gray-900">
+            <div style={{ position: 'absolute', top: '10%', left: '64%', display: 'flex', alignItems: 'center' }} className="text-sm leading-5 text-gray-900">
                 <AddButton urlImg="https://i.ibb.co/Z68w2Mj/edit.png" name="Crear Tarea" urlDestination={urlModify} backColor="rgba(155, 190, 200, 1)"/>
             </div>
             {/* <Button label="Crear tarea" style={{backgroundColor: "verde"}} funcion={pressTaskButton}></Button> */}

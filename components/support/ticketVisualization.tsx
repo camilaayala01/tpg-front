@@ -105,7 +105,7 @@ return (
       </div>
 
 
-      <div style={{ position: 'absolute', top: '35%', left: '60%'}}>
+      <div style={{ position: 'absolute', top: '35%', left: '50%'}}>
           <TaskView ids={ticket.associatedTasks}/>
       </div>
 

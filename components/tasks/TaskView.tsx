@@ -29,7 +29,7 @@ export default function TaskView({ids} : {ids: number[]})
     return (
       <div>
         <p style = {{top: '10vh', left: '0vw', fontSize: '1.2rem', fontWeight: 'bold', color: 'black'}}>Tareas asociadas</p>
-        <table style={{ width: '60%', maxWidth: '90vw', overflowX: 'auto' }}>
+        <table style={{ width: '60%',  overflowX: 'auto' }}>
           <thead>
             <tr>
               <HeaderItem title="Nombre" />
