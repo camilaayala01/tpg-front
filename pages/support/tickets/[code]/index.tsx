@@ -15,6 +15,8 @@ export default function TicketsMainPage({ params }: { params: { code: string } }
   const router = useRouter();
   const { code } = router.query;
 
+  console.log(`code: ${code}`);
+
   const [curTicket, setTicket] = useState<Ticket>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

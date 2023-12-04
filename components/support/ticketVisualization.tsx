@@ -28,7 +28,7 @@ export default function ticketVisualization({ ticket }: {ticket: Ticket}) {
 
   const handleDeletion = () => {
     deleteProject(ticket.code)
-    router.push(`/ticket`);
+    router.push(`/ticket`); // ojo aca tal vez es ticketS
   };
 
 const submit = () => {
