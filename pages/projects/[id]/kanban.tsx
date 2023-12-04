@@ -4,7 +4,7 @@ import { Inter } from "next/font/google"
 import { HeaderItem } from "@/pages/projects";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Task} from "@/types/types";
+import { Task } from "@/types/types";
 import TaskGridRow from "@/components/projects/taskGridRow";
 import router, { useRouter } from "next/router";
 import TableClass from "@/components/projects/TableClass";
@@ -18,10 +18,11 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   const router = useRouter();
-  const {id} = router.query;
+  const { id } = router.query;
 
   useEffect(() => {
     const fetchData = async () => {
+      if (!id) return;
       try {
         const response = await fetch(`https://psa-proyecto.onrender.com/projects/${id}/tasks`);
         const result = await response.json();
@@ -36,23 +37,50 @@ export default function Home() {
   }, [id]);
 
   // Separate the data based on a condition (e.g., category includes 'SpecialCategory')
-  
+
   const notStartedFilter = data.filter(task => task.status.includes('NOT_STARTED'));
   const doingFilter = data.filter(task => task.status.includes('IN_PROGRESS'));
   const doneFilter = data.filter(task => task.status.includes('COMPLETED'));
-
+  const cancelledFilter = data.filter(task => task.status.includes('CANCELLED'));
   return (
-    <div>
-      {notStartedFilter.map((task) => (
+    <div className="flex flex-row justify-around">
+
+      <div className="block w-64  p-4 bg-white border border-gray-200 rounded-lg ">
+        <div className="block max-w-md p-4 px-18 bg-white border border-gray-200 rounded-lg ">
+          <h1 className="text-xl font-bold decoration-gray-400">TO DO</h1>
+        </div>
+        {notStartedFilter.map((task) => (
           <KanbanRow key={task.id} task={task} />
         ))
         }
+      </div>
+
+      <div className="block  w-64 p-4 bg-white border border-gray-200 rounded-lg">
+        <div className="block max-w-md p-4 px-18 bg-white border border-gray-200 rounded-lg ">
+          <h1 className="text-xl font-bold decoration-gray-400">DOING</h1>
+        </div>
         {doingFilter.map((task) => (
           <KanbanRow key={task.id} task={task} />
         ))}
+      </div>
+
+      <div className="columns-1 w-64 p-4 bg-white border border-gray-200 rounded-lg ">
+        <div className="block max-w-md p-4 px-18 bg-white border border-gray-200 rounded-lg ">
+          <h1 className="text-xl font-bold decoration-gray-400">DONE</h1>
+        </div>
         {doneFilter.map((task) => (
           <KanbanRow key={task.id} task={task} />
         ))}
+      </div>
+
+      <div className="block w-64 p-4 bg-white border border-gray-200 rounded-lg ">
+        <div className="block max-w-md p-4 px-18 bg-white border border-gray-200 rounded-lg ">
+          <h1 className="text-xl font-bold decoration-gray-400">CANCELLED</h1>
+        </div>
+        {cancelledFilter.map((task) => (
+          <KanbanRow key={task.id} task={task} />
+        ))}
+      </div>
     </div>
   );
 };
@@ -88,28 +116,28 @@ export default function Home() {
       setDoneList["name"],
     };
     */
-      /*
-      <table className="min-w-full">
-                  <thead>
-                    <tr>
-                      <HeaderItem title="TO DO" />
-                      <HeaderItem title="DOING" />
-                      <HeaderItem title="DONE" />
-                    </tr>
-                  </thead>
-                  <tbody>
+/*
+<table className="min-w-full">
+            <thead>
+              <tr>
+                <HeaderItem title="TO DO" />
+                <HeaderItem title="DOING" />
+                <HeaderItem title="DONE" />
+              </tr>
+            </thead>
+            <tbody>
 
-                    
+              
 
-                  </tbody>
-                </table>
-      */
-     /*
-          return(
-                <div className="App">
-                   
-                </div>
-              );
+            </tbody>
+          </table>
+*/
+/*
+     return(
+           <div className="App">
+              
+           </div>
+         );
 };
 
 */
