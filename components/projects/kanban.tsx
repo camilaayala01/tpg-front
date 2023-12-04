@@ -1,74 +1,110 @@
 import { Status, Task } from '@/types/types';
-import { Stack } from '@mui/material';
+import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import MyButton from './viewButton';
 
+/*
 const KanbanBoard = ({tasks}: { tasks : Task[] }) => {
-
-  function generarColorAleatorio() {
-    const componenteColor = () => Math.floor(Math.random() * 256);
-  
-    const colorRojo = componenteColor();
-    const colorVerde = componenteColor();
-    const colorAzul = componenteColor();
-  
-    const colorHex = `#${colorRojo.toString(16)}${colorVerde.toString(16)}${colorAzul.toString(16)}`;
-  
-    return colorHex;
-  }
-
-  const [taskLists, setTaskLists] = useState<{
-      [Status.NOT_STARTED]: Task[];
-      [Status.IN_PROGRESS]: Task[];
-      [Status.COMPLETED]: Task[];
-      [Status.BLOCKED]: Task[];
-  }>({
-      [Status.NOT_STARTED]: [],
-      [Status.IN_PROGRESS]: [],
-      [Status.COMPLETED]: [],
-      [Status.BLOCKED]: [],
-  });
-  
-  useEffect(() => {
-      const updatedTaskLists = {
-      [Status.NOT_STARTED]: [] as Task[],
-      [Status.IN_PROGRESS]: [] as Task[],
-      [Status.COMPLETED]: [] as Task[],
-      [Status.BLOCKED]: [] as Task[],
-      };
-  
-      tasks.forEach((task) => {
-        if (task.status && Object.keys(updatedTaskLists).includes(task.status)) {
-          updatedTaskLists[task.status].push(task);
-        }
-      });      
-  
-      setTaskLists(updatedTaskLists);
-  }, [tasks]);
+    const [taskLists, setTaskLists] = useState<{
+        [Status.NOT_STARTED]: Task[];
+        [Status.IN_PROGRESS]: Task[];
+        [Status.COMPLETED]: Task[];
+        [Status.BLOCKED]: Task[];
+    }>({
+        [Status.NOT_STARTED]: [],
+        [Status.IN_PROGRESS]: [],
+        [Status.COMPLETED]: [],
+        [Status.BLOCKED]: [],
+    });
+    
+    useEffect(() => {
+        // Actualiza las listas de tareas cuando cambian las tareas
+        const updatedTaskLists = {
+        [Status.NOT_STARTED]: [] as Task[],
+        [Status.IN_PROGRESS]: [] as Task[],
+        [Status.COMPLETED]: [] as Task[],
+        [Status.BLOCKED]: [] as Task[],
+        };
+    
+        tasks.forEach((task) => {
+        updatedTaskLists[task.status];
+        });
+    
+        setTaskLists(updatedTaskLists);
+    }, [tasks]);
 
   return (
-    <Stack
-      direction="row"
-      justifyContent="center"
-      alignItems="center"
-      spacing={'10vw'}
-    >
-      
-      {Object.entries(taskLists).map(([status, taskList]: [string, Task[]]) => (
-        <div style={{color: 'rgba(146, 166, 197, 0.62)'}}>
-        <h3>{status}</h3>
-        <Stack>
-            {taskList.map((task: Task) => (
-              <div style={{position: 'relative', maxWidth: '80vw'}}>
-                <h3 key={task.id}>{task.name}</h3>
+  
+    <DragDropContext onDragEnd={onDragEnd}>
+      <Droppable droppableId="board" direction="horizontal" type="LIST">
+        {(provided) => (
+          <div ref={provided.innerRef} {...provided.droppableProps}>
+            {Object.entries(taskLists).map(([status, taskList], index) => (
+              <div key={status} className="list-container">
+                <h3>{status}</h3>
+                <Droppable droppableId={status} index={index} type="CARD">
+                  {(provided) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.droppableProps}
+                      className="card-list"
+                    >
+                      {taskList.map((task, index) => (
+                        <Draggable key={task.id} draggableId={task.id} index={index}>
+                          {(provided) => (
+                            <div
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              className="card"
+                            >
+                              {task.name}
+                            </div>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
               </div>
             ))}
-        </Stack>
-        </div>
-      ))}
-
-    </Stack>
-  );
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
+    </DragDropContext>
+);
+                   
+    
 };
 
-export default KanbanBoard;
+*/
+export default function KanbanRow({ task }: {task: Task}) {
+  const router = useRouter();
+  const {id} = router.query;
+
+  function handleButtonClick() {
+      router.push(`/projects/${task.projectId}/tasks/${task.id}`)
+  }
+    
+  return (
+      <>       
+          <h2>To Do</h2>
+          <div className="flex flex-row">
+              <div className="px-6 py-4 whitespace-no-swrap border-b border-gray-200">
+                <div className="flex items-center text-gray-900">{task['name']}</div>
+              </div>
+
+              <div className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <div className="text-sm leading-5 text-gray-900"><MyButton onClickHandler={handleButtonClick} /></div>
+              </div>
+          </div>
+           
+
+          </>
+  )
+}
+
+
