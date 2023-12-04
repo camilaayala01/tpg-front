@@ -54,7 +54,7 @@ const submit = () => {
   });
 };
 
-
+const urlBacklog = `/projects/${task.projectId}/tasks`
 const urlKanban = `/projects/${task.projectId}/kanban`
 const urlModify = `/projects/${task.projectId}/tasks/${task.id}/modificar`
 
@@ -113,6 +113,9 @@ return (
 
       <div style={{ position: 'absolute', top: '65vh', left: '70%', display: 'flex', alignItems: 'center' }} className="text-sm leading-5 text-gray-900">
         <AddButton urlImg="https://i.ibb.co/FByhPx2/kanban.png" name="Ver Kanban" urlDestination={urlKanban} backColor="rgba(155, 190, 200, 1)" />
+      </div>
+      <div style={{ position: 'absolute', top: '65vh', left: '55%', display: 'flex', alignItems: 'center' }} className="text-sm leading-5 text-gray-900">
+              <AddButton urlImg="https://i.ibb.co/X2FHKrw/backlog.png" name="Ver backlog" urlDestination={urlBacklog} backColor="rgba(155, 190, 200, 1)"/>
       </div>
   </div>
   </>

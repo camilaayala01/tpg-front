@@ -67,13 +67,3 @@ export default function Projects() {
       </div>
   )
 }
-
-{/* <h1 className="text-3xl mb-5 font-bold text-black" style={{ position: "absolute", left:"30%", top:"20%"}}>Aún no hay ningún proyecto.</h1>
-<BotonAtrasTop distanceLeft="30%" distanceTop="70%"/>
-<div style={{ position: "absolute", left:"60%", top:"70%"}}>
-  <BotonMultiuso name="Agregar tareas" urlDestination="/projects/crear" urlImg="https://i.ibb.co/pbXRFvd/add.png" backColor="rgba(66, 125, 157, 1)"/>
-</div>
-<div style={{ position: "absolute", left:"43%", top:"35%"}}>
-  <img src="https://i.ibb.co/JBdmpRv/no-data.png" alt="add" style={{width: "12vw"}} />
-</div>
-</div> */}
