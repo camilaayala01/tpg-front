@@ -3,8 +3,6 @@ import { Dayjs } from "dayjs";
 
  function postData(url = "", data = {}) {
 try{
-
-
     const response = fetch(url, {
       method: "POST", 
       headers: {
