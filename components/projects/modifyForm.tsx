@@ -26,7 +26,6 @@ export default function ModifyForm({project}: {project: Project}) {
   const projectLeaderRef = useRef<HTMLSelectElement>(null);
   const statusRef = useRef<HTMLSelectElement>(null);
   const [finishDate, setFinishDate] = useState<Dayjs|null>(dayjs(project.finishDate, "YYYY-MM-DD"));
-  const router = useRouter();
   const [employees, setEmployees] = useState<Employee[]>();
   useEffect(() => {
     const fetchData = async () => {
@@ -35,9 +34,7 @@ export default function ModifyForm({project}: {project: Project}) {
     };
     fetchData();
   }, []);
-  function handleClick() {
-    router.push(`/projects/${project.id}`);
-  }
+
   const handleChange = (event: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.currentTarget;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
@@ -48,15 +45,17 @@ export default function ModifyForm({project}: {project: Project}) {
     setFinishDate(dayjs(project.finishDate, "YYYY-MM-DD"));
   })
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const router = useRouter();
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     if (!formData.name || !formData.description ||  !finishDate || !projectLeaderRef.current?.value || !statusRef.current?.value ) {
       alert("Por favor, complete todos los campos.");
-      return;
     }else{
-      editProject(project.id, formData.name, formData.description, statusRef.current?.options[statusRef.current?.selectedIndex].value, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value, finishDate);
+      await editProject(project.id, formData.name, formData.description, statusRef.current?.options[statusRef.current?.selectedIndex].value, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value, finishDate);
+      router.push(`/projects/${project.id}`).then(() => window.location.reload());
     }
+    return;
   };
   
   return (
@@ -104,9 +103,9 @@ export default function ModifyForm({project}: {project: Project}) {
         </select>
             </div>
         
-      <DescriptionBox label='Descripcion' description='Detalles del proyecto' style={{ position: 'absolute', top: '60%', left: '1%', width: '70%', height: '50%'}} name={"description"} defaultValue={project.description} handleChange={handleChange} />
+      <DescriptionBox label='Descripcion' description='Detalles del proyecto' style={{ position: 'absolute', top: '50%', left: '1%', width: '70%', height: '50%'}} name={"description"} defaultValue={project.description} handleChange={handleChange} />
 
-      <button type="submit" className="buttonStyle" onClick={handleClick}>
+      <button type="submit" className="buttonStyle">
         Aceptar
       </button>
     </div>  

@@ -41,14 +41,14 @@ export default function creationForm() {
   };
 
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!formData.name || !formData.description || !startDate || !finishDate || !projectLeaderRef.current?.value) {
       alert("Por favor, complete todos los campos.");
-      return;
     }else{
-      createProject(formData.name, formData.description, startDate, finishDate, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value);
+      await createProject(formData.name, formData.description, startDate, finishDate, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value);
+      router.push(`/projects`).then(() => window.location.reload());
     }
   };
   

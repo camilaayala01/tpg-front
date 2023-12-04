@@ -22,7 +22,7 @@ const TextBox: React.FC<CampoDeTextoProps> = ({ label, name, description, style,
             name={name}
             onChange={handleChange}
             defaultValue={defaultValue}
-            style={{backgroundColor: '#EDEDED', width: '300px', height: '40px', borderRadius: '12px', color: 'black'}}
+            style={{backgroundColor: '#E8EDFF', padding:'7px', width: '300px', height: '40px', borderRadius: '12px', color: 'black'}}
         />
         
        

@@ -40,13 +40,13 @@ export default function Tasks() {
         ) : list.length > 0 ? (
         <>
         <div className="mb-4 justify-around">
-          <h1 className="text-3xl font-bold decoration-gray-400">Tasks</h1>
+          <h1 className="text-3xl font-bold decoration-gray-400 text-black">Backlog del proyecto</h1>
         </div>
         <div className="flex flex-col" >
           <div className="overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-            <div className="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
+            <div className="inline-block min-w-full overflow-hidden align-middle border-b ">
                
-                <table className="min-w-full">
+              <table className="mt-10" style={{ width: '90%', maxWidth: '90vw', height: 'auto', maxHeight: '60vw', overflowX: 'auto' }}>
                   <thead>
                     <tr>
                       <HeaderItem title="Name" />
