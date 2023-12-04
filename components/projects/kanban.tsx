@@ -28,10 +28,10 @@ export default function KanbanRow({ task }: {task: Task}) {
   return (
       <>       
           
-          <a href="#" style={{background: generarColorAleatorioConTransparencia()}} className="block max-w-xs p-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-              <div className="flex flex-row border-x-black "> 
-                  <div className="flex items-center text-gray-900">{task['name']}</div>
-                  <div className="px-6 py-4 whitespace-no-wrap  border-gray-200">
+          <a href="#" style={{background: generarColorAleatorioConTransparencia() ,marginBottom:10, marginTop:10}}  className="block max-w-xs p-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+              <div className="flex flex-row border-x-black justify-between" > 
+                  <div className="flex  text-gray-900">{task['name']}</div>
+                  <div className="px-5 py-4 whitespace-no-wrap  border-gray-200">
                         <div ><ButtonKanban  onClickHandler={handleButtonClick} /></div>
                   </div>
               </div>

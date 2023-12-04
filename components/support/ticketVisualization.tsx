@@ -8,13 +8,15 @@ import DateBox from "../projects/DateBox";
 import AddButton from "../projects/addButton";
 import deleteProject from "@/services/project/deleteProject";
 import DeleteButton from "../projects/DeleteButton";
-
-
-
+import PriorityText from "@/components/projects/PriorityText";
+import SeverityText from "@/components/support/SeverityText";
+import ProductText from "@/components/support/ProductText";
+import LeaderBox from "@/components/projects/LeaderBox";
+import ClientBox from "@/components/support/ClientBox";
 
 export default function ticketVisualization({ ticket }: {ticket: Ticket}) {
   
-  const router = useRouter();
+  //const router = useRouter();
 
 
   const estiloRectangulo: React.CSSProperties = {
@@ -28,7 +30,7 @@ export default function ticketVisualization({ ticket }: {ticket: Ticket}) {
 
   const handleDeletion = () => {
     deleteProject(ticket.code)
-    router.push(`/ticket`);
+    router.push(`/ticket`); // ojo aca tal vez es ticketS
   };
 
 const submit = () => {
@@ -50,7 +52,6 @@ const submit = () => {
 
 const urlModify = `/support/tickets/${ticket.code}/modify`
 
-console.log(ticket.closingDate);
 console.log(ticket);
 
 return (
@@ -61,8 +62,9 @@ return (
           {StatusText(ticket.status)}
     </div>
   </div>
-  
-  
+
+
+
   <div style={estiloRectangulo}>
 
       <div style={{ position: 'absolute', top: '5%', left: '0%', width: '80%', height: '20%', background: 'rgba(180, 180, 255, 0.2)', borderRadius: 10, border: '1px #999999 solid', padding: '10px', boxSizing: 'border-box' }}>
@@ -74,15 +76,47 @@ return (
           </p>
       </div>
 
-      
-      <div style={{ position: 'absolute', top: '45%', left: '40%'}}>
-          <DateBox dateName={"Fecha de finalizacion"} date={ticket.closingDate} />
+
+      <div >
+          <div style={{ position: 'fixed', color: 'black', top: '11%', left: '25%', fontSize: '2em', fontWeight: 'bold', letterSpacing: 0.20 }}>Proyecto {ticket.title}</div>
+          <div style={{ position: 'fixed', top: '40%', left: '25%', display: 'flex', alignItems: 'center' }}>
+              <span style={{ color: 'black', marginRight: '8px', fontSize: '1.1rem' }}>Prioridad:</span>
+              {PriorityText(ticket.priority)}
+              <span style={{ margin: '0 10px', color: 'black', fontSize: '1.1rem' }}></span> {/* Espacio adicional */}
+              <span style={{ color: 'black', marginRight: '8px', fontSize: '1.1rem' }}>Severidad:</span>
+              {SeverityText(ticket.severity)}
+          </div>
       </div>
 
-      <div style={{ position: 'absolute', top: '45%', left: '20%'}}>
-          <DateBox dateName={"Fecha de inicio"} date={ticket.startDate} />
+      <div >
+          <div style={{ position: 'fixed', color: 'black', top: '11%', left: '25%', fontSize: '2em', fontWeight: 'bold', letterSpacing: 0.20 }}>Proyecto {ticket.title}</div>
+          <div style={{position: 'fixed', top: '50%', left: '25%', display: 'flex', alignItems: 'center' }}>
+              <span style={{ color: 'black', marginRight: '8px', fontSize: '1.1rem' }}>Producto:</span>
+              {ProductText(ticket.product )}
+              <span style={{ margin: '0 10px', color: 'black', fontSize: '1.1rem' }}></span> {/* Espacio adicional */}
+              <span style={{ color: 'black', marginRight: '8px', fontSize: '1.1rem' }}>Versión:</span>
+              {ProductText(ticket.version)}
+          </div>
       </div>
 
+
+      <div style={{ position: 'absolute', top: '52%', left: '0%', display: 'flex', alignItems: 'center' }}>
+          <p style={{ fontSize: '1rem', fontWeight: 'bold', color: '#666666', marginRight: '20px' }}>Empleado </p>
+          <LeaderBox id ={ticket['assignatedEmployeeId']} />
+      </div>
+
+      <div style={{ position: 'absolute', top: '62%', left: '0%', display: 'flex', alignItems: 'center' }}>
+          <p style={{ fontSize: '1rem', fontWeight: 'bold', color: '#666666', marginRight: '20px' }}>Cliente </p>
+          <ClientBox id ={ticket['clientId']} />
+      </div>
+
+      <div style={{ position: 'absolute', top: '45%', left: '62%'}}>
+          <DateBox dateName={"Fecha de Finalizacion"} date={ticket.closingDate} />
+      </div>
+
+      <div style={{ position: 'absolute', top: '28%', left: '62%'}}>
+          <DateBox dateName={"Fecha de Inicio"} date={ticket.startDate} />
+      </div>
       
 
       <div style={{ position: 'absolute', top: '70%', left: '12%', display: 'flex', alignItems: 'center' }} className="text-sm leading-5 text-gray-900">

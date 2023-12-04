@@ -9,7 +9,7 @@ import TaskGridRow from "@/components/projects/taskGridRow";
 import router, { useRouter } from "next/router";
 import TableClass from "@/components/projects/TableClass";
 import KanbanRow from "@/components/projects/kanban";
-
+import { Ubuntu } from "next/font/google"
 const inter = Inter({ subsets: ["latin"] })
 
 
@@ -43,11 +43,12 @@ export default function Home() {
   const doneFilter = data.filter(task => task.status.includes('COMPLETED'));
   const cancelledFilter = data.filter(task => task.status.includes('CANCELLED'));
   return (
-    <div className="flex flex-row justify-around">
 
-      <div className="block w-64  p-4 bg-white border border-gray-200 rounded-lg ">
-        <div className="block max-w-md p-4 px-18 bg-white border border-gray-200 rounded-lg ">
-          <h1 className="text-xl font-bold decoration-gray-400">TO DO</h1>
+    <div className="flex flex-row justify-center">
+
+      <div className="flex flex-col w-64  p-4 bg-white border border-gray-200 rounded-lg" style={{marginRight:15}}>
+        <div className="block max-w-md p-4 px-18  bg-blue-100 border border-gray-200 rounded-lg ">
+          <h1 className="text-xl font-bold decoration-gray-400" style={{textAlign: "center"}}>TO DO</h1>
         </div>
         {notStartedFilter.map((task) => (
           <KanbanRow key={task.id} task={task} />
@@ -55,27 +56,27 @@ export default function Home() {
         }
       </div>
 
-      <div className="block  w-64 p-4 bg-white border border-gray-200 rounded-lg">
-        <div className="block max-w-md p-4 px-18 bg-white border border-gray-200 rounded-lg ">
-          <h1 className="text-xl font-bold decoration-gray-400">DOING</h1>
+      <div className="flex flex-col  w-64 p-4 bg-white border border-gray-200 rounded-lg" style={{marginRight:15}}>
+        <div className="block max-w-md p-4 px-18 bg-blue-100 border border-gray-200 rounded-lg ">
+          <h1 className="text-xl font-bold decoration-gray-400" style={{textAlign: "center"}}>DOING</h1>
         </div>
         {doingFilter.map((task) => (
           <KanbanRow key={task.id} task={task} />
         ))}
       </div>
 
-      <div className="columns-1 w-64 p-4 bg-white border border-gray-200 rounded-lg ">
-        <div className="block max-w-md p-4 px-18 bg-white border border-gray-200 rounded-lg ">
-          <h1 className="text-xl font-bold decoration-gray-400">DONE</h1>
+      <div className="flex flex-col w-64 p-4 bg-white border border-gray-200 rounded-lg " style={{marginRight:15}}>
+        <div className="block max-w-md p-4 px-18 bg-blue-100 border border-gray-200 rounded-lg ">
+          <h1 className="text-xl font-bold decoration-gray-400" style={{textAlign: "center"}}>DONE</h1>
         </div>
         {doneFilter.map((task) => (
           <KanbanRow key={task.id} task={task} />
         ))}
       </div>
 
-      <div className="block w-64 p-4 bg-white border border-gray-200 rounded-lg ">
-        <div className="block max-w-md p-4 px-18 bg-white border border-gray-200 rounded-lg ">
-          <h1 className="text-xl font-bold decoration-gray-400">CANCELLED</h1>
+      <div className="block w-64 p-4 bg-white border border-gray-200 rounded-lg " style={{marginRight:15}}>
+        <div className="block max-w-md p-4 px-18 bg-blue-100 border border-gray-200 rounded-lg ">
+          <h1 className="text-xl font-bold decoration-gray-400" style={{textAlign: "center"}}>CANCELLED</h1>
         </div>
         {cancelledFilter.map((task) => (
           <KanbanRow key={task.id} task={task} />
@@ -85,120 +86,3 @@ export default function Home() {
   );
 };
 
-/*
-export default function Home() {
-
-  const [toDoList, setToDoList] = useState<Task[]>([])
-  const [DoingList, setDoingList] = useState<Task[]>([])
-  const [doneList, setDoneList] = useState<Task[]>([])
-  const [loading, setLoading] = useState(true);
-  const router = useRouter();
-  const { id } = router.query;
-
-  useEffect(() => {
-    setLoading(true);
-    fetch(`https://psa-proyecto.onrender.com/projects/${id}/tasks`)
-      .then((res) => {
-        return res.json()
-      })
-      .then((data) => {
-        setToDoList(data.status === "NOT_STARTED")
-        setDoingList(data.status.includes("IN_PROGRESS"))
-        setDoneList(data.status.includes("COMPLETED"))
-        setLoading(false);
-      })
-    }, [id])
-    console.log(toDoList)
-    /*
-    const tableData = {
-      setToDoList["name"],
-      setDoingList["name"],
-      setDoneList["name"],
-    };
-    */
-/*
-<table className="min-w-full">
-            <thead>
-              <tr>
-                <HeaderItem title="TO DO" />
-                <HeaderItem title="DOING" />
-                <HeaderItem title="DONE" />
-              </tr>
-            </thead>
-            <tbody>
-
-              
-
-            </tbody>
-          </table>
-*/
-/*
-     return(
-           <div className="App">
-              
-           </div>
-         );
-};
-
-*/
-
-
-/*
-interface Props {
-  index: number;
-  todo: Task;
-  todos: Task[];
-  inbox: Task[];
-  completed: Task[];
-  setTodos: (s: Task[]) => void;
-  setInbox: (s: Task[]) => void;
-  setCompleted: (s: Task[]) => void;
-}
-
-
-  const TodoItem: React.FC<Props> = ({ index, todo, todos, setTodos, inbox, completed, setInbox, setCompleted }) => {
-  const [edit, setEdit] = useState<boolean>(false);
-  const [editTodo, setEditTodo] = useState<string>(todo.todo);
-
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-
-  useEffect(() => {
-    textareaRef.current?.focus();
-    if (textareaRef.current) {
-      textareaRef.current.style.height =
-        textareaRef.current.scrollHeight + 'px';
-    }
-  }, [edit]);
-
-  const handleDone = (id: string) => {
-    if (todo.status ) {
-      setTodos(
-        todos.filter((todo) => todo.id !== id)
-      );
-      setInbox([...inbox, { ...todo, isDone: false }]);
-    } else {
-      setTodos(
-        todos.filter((todo) => todo.id !== id)
-      );
-      setCompleted([...completed, { ...todo, isDone: true }]);
-    }
-  };
-
-  const handleDelete = (id: string) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-  };
-
-  const handleEdit = (e: React.FormEvent, id: string) => {
-    e.preventDefault();
-    setTodos(
-      todos.map((todo) => (todo.id === id ? { ...todo, todo: editTodo } : todo))
-    );
-    setEdit(false);
-  };
-
-  const handleClickToEdit = () => {
-    if (!edit && !todo.isDone) {
-      setEdit(!edit);
-    }
-  };
-*/

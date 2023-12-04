@@ -72,6 +72,7 @@ export const getEnumToString = (value: string): string | undefined => {
   }
 };
 
+
 export const getStringToStatus = (status: string): string | undefined => {
 
   switch (status) {
@@ -115,7 +116,7 @@ export type Ticket = {
   priority: string;
   product: string;
   version: string;
-  clientId: number; // despues vemos de pasarlo a que sea el id (number)
+  clientId: number;
   employeeId: number;
   associatedTasks: number[];
   startDate: string;
