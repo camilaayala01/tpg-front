@@ -1,4 +1,3 @@
-import {useRouter} from 'next/router';
 import { SVGAttributes } from "react";
 export function EyeIcon(props: SVGAttributes<SVGElement>) {
   return (
@@ -10,7 +9,6 @@ export function EyeIcon(props: SVGAttributes<SVGElement>) {
 }
 
 export default function MyButton({ onClickHandler }: { onClickHandler: () => void }) {
-  const router = useRouter();
 
   function handleClick() {
     onClickHandler();

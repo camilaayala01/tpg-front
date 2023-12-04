@@ -34,6 +34,7 @@ export interface Task
   creationDate: string;
   startDate: string;
   finishDate: string;
+  leaderId:string
 }
 
 export enum Status {
@@ -49,9 +50,9 @@ export enum Priority {
   MEDIUM = "Medium",
 }
 
-export const getStatusToString = (status: string): string | undefined => {
+export const getEnumToString = (value: string): string | undefined => {
 
-  switch (status) {
+  switch (value) {
     case "IN_PROGRESS":
       return "In progress";
     case "COMPLETED":
@@ -98,6 +99,12 @@ export type Product = {
   versions: ProductVersion[];
 };
 
+export type TicketForTask = {
+  code:number;
+  title: string;
+  severity: string;
+}
+
 
 export type Ticket = {
   code: number;
@@ -112,7 +119,7 @@ export type Ticket = {
   employeeId: number;
   associatedTasks: number[];
   startDate: string;
-  estimatedClosingDate: string;
+  closingDate: string;
 };
 
 

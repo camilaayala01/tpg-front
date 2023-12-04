@@ -1,5 +1,4 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 
 interface Params {
   urlImg: string;
@@ -9,7 +8,6 @@ interface Params {
 }
 
 const BotonEliminar: React.FC<Params> = ({ urlImg, name, backColor, handleClick }) => {
-  const router = useRouter();
 
   const botonStyle: React.CSSProperties = {
     padding: '10px',

@@ -60,7 +60,7 @@ const submit = () => {
 
 
 const urlKanban = `/projects/${task.projectId}/kanban`
-const urlModify = `/projects/${task.projectId}/tasks/${task.id}/modify`
+const urlModify = `/projects/${task.projectId}/tasks/${task.id}/modificar`
 
 return (
   <>
@@ -104,7 +104,7 @@ return (
       </div>
 
       <div style={{ position: 'absolute', top: '45%', left: '0%'}}>
-          <TicketsView id={task.id}/>
+          <TicketsView id={task.projectId} taskId = {task.id}/>
       </div>
 
       <div style={{ position: 'absolute', top: '65vh', left: '12%', display: 'flex', alignItems: 'center' }} className="text-sm leading-5 text-gray-900">

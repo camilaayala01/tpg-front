@@ -23,11 +23,11 @@ export default function Layout({ children }: { children: any }) {
     },
     {
       href: "/support",
-      title: "Support",
+      title: "Soporte",
     },
     {
       href: "/projects",
-      title: "Projects",
+      title: "Proyectos",
     }
   ]
 
@@ -50,8 +50,8 @@ export default function Layout({ children }: { children: any }) {
         </div>
         
       </header>
-      <div className="flex flex-col md:flex-row flex-1">
-        <aside className="bg-grey-100 w-full md:w-60 text-black">
+      <div className="flex flex-col md:flex-row flex-1 " >
+        <aside className="bg-grisLateral w-full md:w-60 text-black">
           <nav>
             <ul>
               {menuItems.map((item) => (

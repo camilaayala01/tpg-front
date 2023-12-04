@@ -1,31 +1,30 @@
 import Image from "next/image"
-import { Inter } from "next/font/google"
 import { useRouter } from "next/router";
-import MyButton from "@/components/projects/viewButton";
 import { useEffect, useState } from "react";
+import { Ticket } from "@/types/types";
 import SkeletonLoader from "@/components/SkeletonLoader";
-import LeaderBox from "@/components/projects/LeaderBox";
-import DateBox from "@/components/projects/DateBox";
-import { Task } from "@/types/types";
-import { TaskVisualization } from "@/components/tasks/TaskVisualization";
-import FetchTicketsForTask from "@/services/project/fetchTicketsForTask";
+import TicketVisualization from "@/components/support/ticketVisualization";
 
 
-const inter = Inter({ subsets: ["latin"] })
+import { Ubuntu } from "next/font/google"
 
-export default function TaskMainPage({ params }: { params: { id: string} }) {
+const ubuntu = Ubuntu({ subsets: ["latin"],  weight: "300"})
+
+
+export default function TicketsMainPage({ params }: { params: { code: string } }) {
   const router = useRouter();
-  const { id, taskId } = router.query;
+  const { code } = router.query;
 
-  const [curTask, setTask] = useState<Task>();
+  const [curTicket, setTicket] = useState<Ticket>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
   
+
   useEffect(() => {
-    if(!id || !taskId) return;
+    if(!code) return;
     setLoading(true);
-    fetch(`https://psa-proyecto.onrender.com/projects/${id}/tasks/${taskId}`)
+    fetch(`https://psa-soporte-1yfx.onrender.com/tickets/${code}`)
+    
       .then((res) => {
         if (!res.ok) {
           throw new Error(`Error ${res.status}: ${res.statusText}`);
@@ -33,32 +32,29 @@ export default function TaskMainPage({ params }: { params: { id: string} }) {
         return res.json();
       })
       .then((data) => {
-        setTask(data);
+        setTicket(data);
         setLoading(false);
       })
       .catch((error) => {
         if (error instanceof TypeError && error.message === 'Failed to fetch') {
-          setError('No se puede conectar al servidor. Verifica tu conexión e inténtalo de nuevo.');
+          setError('No se puede conectar al servidor. Verifica tu conexion e intentalo de nuevo.');
         } else {
-          setError('This task does not exist.');
+          setError('This project does not exist.');
         }
         setLoading(false);
       });
-  }, [id, taskId]);
-
-  
+  }, [code]);
 
   return (
     <div className="flex h-full flex-col justify-center items-center bg-white">
       {loading ? (
         SkeletonLoader()
         
-      ) : error || !curTask ? (
+      ) : error || !curTicket ? (
         <h1 className="text-4xl mb-5 font-bold text-red-500">{error}</h1>
       ) : (
-        <TaskVisualization task={curTask} />
+        <TicketVisualization ticket={curTicket}/>
       )}
     </div>
   );
 }
-

@@ -5,7 +5,7 @@ import { HeaderItem } from "@/pages/projects";
 import { useRouter } from "next/router";
 
 
-export default function AppSearchBarProjects({listProject}: {listProject: [Project]}) {
+export default function AppSearchBarProjects({listProject}: {listProject: Project[]}) {
     const router = useRouter();
     const onClickHandler = () => {
       router.push("/projects/crear")

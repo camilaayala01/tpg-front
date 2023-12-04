@@ -7,7 +7,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import React from "react";
 import dayjs, { Dayjs } from "dayjs";
 import editProject from "@/services/project/editProject";
-import {  Employee, Project, Status, getStatusToString } from "@/types/types";
+import {  Employee, Project, Status, getEnumToString} from "@/types/types";
 import { useRouter } from "next/router";
 import fetchEmployees from "@/services/project/fetchEmployees";
 
@@ -55,7 +55,6 @@ export default function ModifyForm({project}: {project: Project}) {
       alert("Por favor, complete todos los campos.");
       return;
     }else{
-      console.log(finishDate)
       editProject(project.id, formData.name, formData.description, statusRef.current?.options[statusRef.current?.selectedIndex].value, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value, finishDate);
     }
   };
@@ -87,7 +86,7 @@ export default function ModifyForm({project}: {project: Project}) {
         <select ref={statusRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}} defaultValue={project.status}>
             {Object.keys(Status).map((opcion) => (
             <option value={opcion} key={opcion}>
-                {getStatusToString(opcion)}
+                {getEnumToString(opcion)}
             </option>
             ))}
         </select>
@@ -96,7 +95,7 @@ export default function ModifyForm({project}: {project: Project}) {
        
       <div style = {{position: 'absolute', top: '20%', left: '1%'}}>
         <label htmlFor="projectLeader" style={{ fontSize: '1em', fontWeight: 'bold', color: 'black' }}>Lider de Proyecto</label>
-        <select ref={projectLeaderRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}} defaultValue={"Raul"}>
+        <select ref={projectLeaderRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}} defaultValue="">
         {employees?.map((opcion) => (
             <option value={opcion.legajo} key={opcion.legajo}>
                 {opcion ? `${opcion['Nombre']} ${opcion['Apellido']}` : "-"}

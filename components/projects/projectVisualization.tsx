@@ -55,7 +55,7 @@ const submit = () => {
 
 const urlBacklog = `/projects/${project.id}/tasks`
 const urlKanban = `/projects/${project.id}/kanban`
-const urlModify = `/projects/${project.id}/modify`
+const urlModify = `/projects/${project.id}/modificar`
 
 
 return (

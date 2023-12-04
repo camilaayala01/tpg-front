@@ -1,4 +1,4 @@
-import { Task } from "@/types/types";
+import { Ticket } from "@/types/types";
 import { Dayjs } from "dayjs";
 
  function editData(url: string, data = {}) {
@@ -17,17 +17,26 @@ import { Dayjs } from "dayjs";
     return response;
   }
 
-  export default function editTask(id: any, projectId :any, name: string , description:string ,estimatedDuration: number,priority: string, status: string,leaderId: string,finishDate?:Dayjs | null)
+
+  export default function editTicket(
+    code: number,
+    title: string,
+    description:string,
+    priority: string,
+    //employeeId: string, 
+    status: string,
+    closingDate?: Dayjs    
+    | null
+    )
   {
-    return editData(`https://psa-proyecto.onrender.com/projects/${projectId}/tasks/${id}`, 
+    return editData(`https://psa-soporte-1yfx.onrender.com/tickets/${code}/modify`, 
     {
         name: name,
         description: description, 
         priority: priority,
         status: status,
-        estimatedDuration: estimatedDuration,
-        estimatedFinishDate: finishDate?.format('YYYY-MM-DD')?? null,
-        leaderId: leaderId,
+        estimatedClosingDate: closingDate?.format('YYYY-MM-DD')?? null,
+        //employeeId: employeeId,
        
     }).then((data) => {data});
   }

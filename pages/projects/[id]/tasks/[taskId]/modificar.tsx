@@ -1,8 +1,8 @@
 import { Inter } from "next/font/google"
-import { ModifyFormTask } from "@/components/tasks/ModifyFormTask";
 import { useRouter } from "next/router";
 import FetchTask from "@/services/project/fetchTask";
 import { useEffect } from "react";
+import ModifyForm from "@/components/tasks/ModifyForm";
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -22,6 +22,6 @@ export default function ModificarTarea() {
 
   return (
         <div className="flex h-full flex-col justify-center items-center bg-white">
-            <ModifyFormTask  task={curTask} />
+            <ModifyForm  task={curTask} />
         </div>)
 } 
