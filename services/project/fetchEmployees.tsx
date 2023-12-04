@@ -1,17 +1,36 @@
 import { Employee } from "@/types/types";
+import { useEffect, useState } from "react";
+import Alert from 'react-bootstrap/Alert';
 
-async function getEmployees(): Promise<Employee[]> {
-  try {
-    const response = await fetch('https://psa-proyecto.onrender.com/employees');
-    console.log(response);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error al obtener empleados:', error);
-    throw error; 
-  }
+interface FetchEmployeesResult {
+  employees :Employee[] | undefined ;
+  error: string;
 }
 
-export default async function fetchEmployees(): Promise<Employee[]> {
-  return await getEmployees();
+export default function fetchEmployees(): FetchEmployeesResult {
+  const [employees, setList] = useState<Employee[]| undefined>();
+  const [error, setError] = useState<string>("");
+
+  useEffect(() => {
+    fetch(`https://psa-proyecto.onrender.com/employees`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Error ${res.status}: ${res.statusText}`);
+        }
+        console.log(res);
+        return res.json();
+      })
+      .then((data) => {
+        setList(data);
+      })
+      .catch((error) => {
+        if (error instanceof TypeError && error.message === 'Failed to fetch') {
+          setError('No se puede conectar al servidor. Verifica tu conexión e inténtalo de nuevo.');
+        } else {
+          setError('This project does not exist.');
+        }
+      });
+  }, []);
+
+      return ({employees, error})
 }
