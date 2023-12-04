@@ -29,14 +29,11 @@ const estiloRectangulo: React.CSSProperties = {
     };
 
 const router = useRouter();
-function handleButtonClick() {
-  router.push(`${task.id}/tasks`);
-}
 
 const handleDeletion = () => {
   console.log(task)
-  deleteTask(task.projectId,task.id)
-  router.back()
+  deleteTask(task.projectId, task.id)
+  router.push(`${task.id}/tasks`);
 };
 
 
@@ -53,7 +50,6 @@ const submit = () => {
           label: "Confirmar",
           onClick: () => handleDeletion()
         },
-
     ]
   });
 };
@@ -69,8 +65,8 @@ return (
     <div style={{ position: 'fixed', top: '11%', left: '65%', display: 'flex', alignItems: 'center' }}>
           {StatusText(task.status)}
     </div>
-    <div style={{ position: 'fixed', top: '11%', left: '80%', display: 'flex'}}>
-          <BotonAtrasTop/>
+    <div style={{ position: 'fixed', display: 'flex'}}>
+          <BotonAtrasTop distanceTop={"11%"} distanceLeft={"80%"}/>
     </div>
   </div>
   
@@ -86,24 +82,24 @@ return (
           </p>
       </div>
       
-      <div style={{ position: 'absolute', top: '27%', left: '0%', display: 'flex', alignItems: 'center' }}>
+      <div style={{ position: 'absolute', top: '28%', left: '0%', display: 'flex', alignItems: 'center' }}>
           <p style={{ fontSize: '1rem', fontWeight: 'bold', color: '#666666', marginRight: '20px' }}>Prioridad</p>
           {PriorityText(task.priority)}
       </div>
 
-      <div style={{ position: 'absolute', top: '35%', left: '0%'}}>
+      <div style={{ position: 'absolute', top: '40%', left: '0%'}}>
           <DateBox dateName={"Fecha de creación"} date={task.creationDate} />
       </div>
 
-      <div style={{ position: 'absolute', top: '35%', left: '20%'}}>
+      <div style={{ position: 'absolute', top: '40%', left: '20%'}}>
           <DateBox dateName={"Fecha de inicio"} date={task.startDate} />
       </div>
 
-      <div style={{ position: 'absolute', top: '35%', left: '40%'}}>
+      <div style={{ position: 'absolute', top: '55%', left: '0%'}}>
           <DateBox dateName={"Fecha de finalizacion"} date={task.finishDate} />
       </div>
 
-      <div style={{ position: 'absolute', top: '45%', left: '0%'}}>
+      <div style={{ position: 'absolute', top: '29%', left: '45%'}}>
           <TicketsView id={task.projectId} taskId = {task.id}/>
       </div>
 

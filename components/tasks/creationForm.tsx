@@ -28,14 +28,7 @@ export default function creationForm() {
   const [startDate, setStartDate] = useState<Dayjs | null>(null);
   const priorityRef = useRef<HTMLSelectElement>(null);
   const [finishDate, setFinishDate] = useState<Dayjs | null>(null);
-  const [employees, setEmployees] = useState<Employee[]>();
-  useEffect(() => {
-    const fetchData = async () => {
-        const data = await fetchEmployees();
-        setEmployees(data);
-    };
-    fetchData();
-  }, []);
+  const {employees,error} = fetchEmployees();
 
   const handleChange = (event: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.currentTarget;

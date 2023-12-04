@@ -18,9 +18,6 @@ try{
     return e;
   }
   }
-  
-  
-
   export default function createProject(name: string , description:string , startDate?: Dayjs | null, estimatedFinishDate?:Dayjs | null ,leaderId?: string | null)
   {
     return postData("https://psa-proyecto.onrender.com/projects", 

@@ -20,6 +20,7 @@ export default function creationForm() {
     top: '18vh',
     left: '25vw'
   };
+  
   const router = useRouter();
   const [formData, setFormData] = useState({ name: "", description: ""});
   const projectLeaderRef = useRef<HTMLSelectElement>(null);

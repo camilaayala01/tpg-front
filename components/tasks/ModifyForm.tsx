@@ -28,14 +28,7 @@ export default function ModifyForm({task}: {task: Task}) {
   const [finishDate, setFinishDate] = useState<Dayjs|null>(dayjs(task.finishDate, "YYYY-MM-DD"));
   const priorityRef = useRef<HTMLSelectElement>(null);
   const router = useRouter();
-  const [employees, setEmployees] = useState<Employee[]>();
-  useEffect(() => {
-    const fetchData = async () => {
-        const data = await fetchEmployees();
-        setEmployees(data);
-    };
-    fetchData();
-  }, []);
+  const {employees,error} = fetchEmployees();
   function handleClick() {
     router.push(`/projects/${task.projectId}/tasks/${task.id}`);
   }

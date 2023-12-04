@@ -2,12 +2,6 @@ import Image from 'next/image';
 import { useEffect, useState } from "react"
 import { Inter } from "next/font/google"
 import TicketGridRow from "@/components/projects/ticketGridRow";
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import BotonAtras from "@/components/support/backButton";
-import ProjectGridRow from "@/components/projects/projectGridRow";
-import { supportFetcher } from "@/services/support/fetcher";
-import { Ticket } from "@/types/types";
 import FetchTicketsForTask from '@/services/project/fetchTicketsForTask';
 import MyButton from '../projects/viewButton';
 
@@ -20,13 +14,13 @@ function HeaderItem({ title }: { title: string }) {
 
 export default function TicketsView({id, taskId} : {id:any, taskId:any}) {
 
-  const {ticketList,errorTickets} = FetchTicketsForTask(id,taskId);
+  const {ticketList, errorTickets} = FetchTicketsForTask(id,taskId);
   if (ticketList && ticketList.length > 0)
   {
     return (
-      <div>
-        <p style = {{top: '10vh', left: '0vw', fontSize: '1.2rem', fontWeight: 'bold', color: 'black'}}>Tickets asociados</p>
-        <table style={{ width: '60%', maxWidth: '90vw', overflowX: 'auto' }}>
+      <div style={{maxHeight:'10vh'}}>
+        <p style = {{top: '10vh', left: '0vw', fontSize: '1rem', fontWeight: 'bold', color: 'black'}}>Tickets asociados</p>
+        <table style={{ width: '90%', maxWidth: '90vw', height: 'auto', overflowX: 'auto' }}>
           <thead>
             <tr>
               <HeaderItem title="Nombre" />
@@ -40,9 +34,8 @@ export default function TicketsView({id, taskId} : {id:any, taskId:any}) {
             }
           </tbody>
         </table>
-        <BotonAtras />
     </div>
     )
-    
   }
+  return (<></>)
 }
