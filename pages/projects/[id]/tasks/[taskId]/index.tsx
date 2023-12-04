@@ -8,6 +8,7 @@ import LeaderBox from "@/components/projects/LeaderBox";
 import DateBox from "@/components/projects/DateBox";
 import { Task } from "@/types/types";
 import { TaskVisualization } from "@/components/tasks/TaskVisualization";
+import FetchTicketsForTask from "@/services/project/fetchTicketsForTask";
 
 
 const inter = Inter({ subsets: ["latin"] })
@@ -19,6 +20,7 @@ export default function TaskMainPage({ params }: { params: { id: string} }) {
   const [curTask, setTask] = useState<Task>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
   
   useEffect(() => {
     if(!id || !taskId) return;
@@ -43,6 +45,8 @@ export default function TaskMainPage({ params }: { params: { id: string} }) {
         setLoading(false);
       });
   }, [id, taskId]);
+
+  
 
   return (
     <div className="flex h-full flex-col justify-center items-center bg-white">

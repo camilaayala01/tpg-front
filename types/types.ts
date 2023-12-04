@@ -99,6 +99,12 @@ export type Product = {
   versions: ProductVersion[];
 };
 
+export type TicketForTask = {
+  code:number;
+  title: string;
+  severity: string;
+}
+
 
 export type Ticket = {
   code: number;

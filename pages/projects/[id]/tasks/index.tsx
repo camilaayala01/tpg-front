@@ -13,8 +13,7 @@ export default function Tasks() {
   const [list, setList] = useState<Task[]>([])
   const [loading, setLoading] = useState(true);
   const router = useRouter();
-  const {id} = router.query;
-  
+  const {id} = router.query; 
   useEffect(() => {
     if(!id) return;
     setLoading(true);
