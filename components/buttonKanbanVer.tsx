@@ -12,12 +12,21 @@ export function EyeIcon(props: SVGAttributes<SVGElement>) {
 
 export default function ButtonKanban({ onClickHandler }: { onClickHandler: () => void }) {
 
+  const buttonView: React.CSSProperties = {
+    backgroundColor: '#164863',
+    display: 'flex',
+    padding: '6px',
+    borderRadius: '6px',
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
+
   function handleClick() {
     onClickHandler();
   }
   return (
-    <button onClick={handleClick} className="blueButton" >
-        <EyeIcon  className='sm:mr-1 backgroundColor:azul'></EyeIcon>
+    <button onClick={handleClick} style={buttonView} >
+        <EyeIcon className='backgroundColor:azul'></EyeIcon>
     </button>
   );
 }

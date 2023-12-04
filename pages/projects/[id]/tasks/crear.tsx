@@ -8,6 +8,5 @@ export default function crearTarea() {
     <div className="flex h-full flex-col justify-center items-center bg-white">
       <CreationForm/>
     </div>
-
   )
   }  

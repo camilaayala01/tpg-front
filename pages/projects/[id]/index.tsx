@@ -39,12 +39,11 @@ export default function ProjectMainPage({ params }: { params: { id: string } }) 
         setLoading(false);
       })
       .catch((error) => {
-        if (error instanceof TypeError && error.message === 'Failed to fetch') {
-          setError('No se puede conectar al servidor. Verifica tu conexión e inténtalo de nuevo.');
-        } else {
-          setError('This project does not exist.');
-        }
-        setLoading(false);
+          if (error instanceof TypeError) 
+          {
+            setError(error.message);
+          }
+          setLoading(false);
       });
   }, [id]);
 

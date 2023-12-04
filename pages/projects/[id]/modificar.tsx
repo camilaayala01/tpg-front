@@ -17,8 +17,7 @@ export default function ModificarProyecto() {
     router.back();
   };
 
-  const {curProject, error} = fetchProject(id); //manejar error jej
-
+  const {curProject, error} = fetchProject(id);
   if (!curProject) {
     return <h1>Project not found</h1>;
   }

@@ -24,7 +24,7 @@ const DescriptionBox: React.FC<CampoDeTextoProps> = ({ label, name, description,
           style={{
             backgroundColor: '#FFFFFF',
             width: '100%',
-            minHeight: '150px',
+            minHeight: '100px',
             fontWeight: 'normal',
             borderRadius: '8px',
             color: 'black',

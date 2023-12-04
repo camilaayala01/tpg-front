@@ -27,6 +27,8 @@ export default function ModifyForm({project}: {project: Project}) {
   const statusRef = useRef<HTMLSelectElement>(null);
   const [finishDate, setFinishDate] = useState<Dayjs|null>(dayjs(project.finishDate, "YYYY-MM-DD"));
   const {employees,error} = fetchEmployees();
+  const router = useRouter();
+  const { id } = router.query;
 
   const handleChange = (event: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.currentTarget;
@@ -38,15 +40,14 @@ export default function ModifyForm({project}: {project: Project}) {
     setFinishDate(dayjs(project.finishDate, "YYYY-MM-DD"));
   })
 
-  const router = useRouter();
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     if (!formData.name || !formData.description ||  !finishDate || !projectLeaderRef.current?.value || !statusRef.current?.value ) {
       alert("Por favor, complete todos los campos.");
     }else{
-      await editProject(project.id, formData.name, formData.description, statusRef.current?.options[statusRef.current?.selectedIndex].value, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value, finishDate);
-      router.push(`/projects/${project.id}`).then(() => window.location.reload());
+      const res = editProject(project.id, formData.name, formData.description, statusRef.current?.options[statusRef.current?.selectedIndex].value, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value, finishDate);
+      router.push(`/projects/${id}`)
     }
     return;
   };

@@ -28,9 +28,10 @@ export default function ModifyForm({task}: {task: Task}) {
   const [finishDate, setFinishDate] = useState<Dayjs|null>(dayjs(task.finishDate, "YYYY-MM-DD"));
   const priorityRef = useRef<HTMLSelectElement>(null);
   const router = useRouter();
+  const { id, taskId} = router.query;
   const {employees,error} = fetchEmployees();
   function handleClick() {
-    router.push(`/projects/${task.projectId}/tasks/${task.id}`);
+    
   }
   const handleChange = (event: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.currentTarget;
@@ -50,6 +51,7 @@ export default function ModifyForm({task}: {task: Task}) {
       return;
     }else{
       editTask(task.id,task.projectId, formData.name, formData.description, formData.estimatedDuration, priorityRef.current?.options[priorityRef.current?.selectedIndex].value,statusRef.current?.options[statusRef.current?.selectedIndex].value, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value, finishDate);
+      router.push(`/projects/${id}/tasks/${taskId}`);
     }
   };
   
@@ -62,7 +64,7 @@ export default function ModifyForm({task}: {task: Task}) {
       <TextBox label='Nombre' description='Indique el nombre del proyecto' style={{ position: 'absolute', top: '1%', left: '1%' }} name={"name"} defaultValue={task.name} handleChange={handleChange} />
        
      
-      <div style =  {{position: 'absolute', top: '22%', left: '40%'}}>
+      <div style =  {{position: 'absolute', top: '22%', left: '1%'}}>
         <label htmlFor="finishDate" style={{fontWeight: 'bold', color: 'black'}}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
@@ -75,7 +77,7 @@ export default function ModifyForm({task}: {task: Task}) {
           </LocalizationProvider>
         </label>
       </div>
-      <div style = {{position: 'absolute', top: '35%', left: '1%'}}>
+      <div style = {{position: 'absolute', top: '40%', left: '40%'}}>
         <label htmlFor="status" style={{ fontSize: '1em', fontWeight: 'bold', color: 'black' }}>Estado</label>
         <select ref={statusRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}} defaultValue={task.status}>
             {Object.keys(Status).map((opcion) => (
@@ -86,7 +88,7 @@ export default function ModifyForm({task}: {task: Task}) {
         </select>
       </div>
 
-      <div style = {{position: 'absolute', top: '45%', left: '1%'}}>
+      <div style = {{position: 'absolute', top: '5%', left: '40%'}}>
         <label htmlFor="priority" style={{ fontSize: '1em', fontWeight: 'bold', color: 'black' }}>Prioridad</label>
         <select ref={priorityRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}} defaultValue={task.priority}>
             {Object.keys(Priority).map((opcion) => (
@@ -97,9 +99,9 @@ export default function ModifyForm({task}: {task: Task}) {
         </select>
       </div>
       
-      <TextBox label='Duracion estimada' description='Indique la duracion estimada en horas' style={{ position: 'absolute', top: '35%', left: '40%' }} name={"estimatedDuration"} defaultValue={task.estimatedDuration.toString()} handleChange={handleChange} />
+      <TextBox label='Duracion estimada' description='Indique la duracion estimada en horas' style={{ position: 'absolute', top: '35%', left: '1%' }} name={"estimatedDuration"} defaultValue={task.estimatedDuration.toString()} handleChange={handleChange} />
        
-      <div style = {{position: 'absolute', top: '20%', left: '1%'}}>
+      <div style = {{position: 'absolute', top: '22%', left: '40%'}}>
         <label htmlFor="projectLeader" style={{ fontSize: '1em', fontWeight: 'bold', color: 'black' }}>Lider de Proyecto</label>
         <select ref={projectLeaderRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}}>
         {employees?.map((opcion) => (
@@ -110,7 +112,7 @@ export default function ModifyForm({task}: {task: Task}) {
         </select>
             </div>
         
-      <DescriptionBox label='Descripcion' description='Detalles del proyecto' style={{ position: 'absolute', top: '60%', left: '1%', width: '70%', height: '50%'}} name={"description"} defaultValue={task.description} handleChange={handleChange} />
+      <DescriptionBox label='Descripcion' description='Detalles del proyecto' style={{ position: 'absolute', top: '55%', left: '1%', width: '70%', height: '20%'}} name={"description"} defaultValue={task.description} handleChange={handleChange} />
 
       <button type="submit" className="buttonStyle" onClick={handleClick}>
         Aceptar

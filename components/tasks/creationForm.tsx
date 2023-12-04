@@ -44,6 +44,7 @@ export default function creationForm() {
       return;
     }else{
       createTask(id, formData.name, formData.description, formData.estimatedDuration, startDate, finishDate, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value,priorityRef.current?.options[priorityRef.current?.selectedIndex].value);
+      router.push(`/projects/${id}/tasks`)
     }
   };
   

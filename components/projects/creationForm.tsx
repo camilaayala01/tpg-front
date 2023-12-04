@@ -42,7 +42,7 @@ export default function creationForm() {
       alert("Por favor, complete todos los campos.");
     }else{
       await createProject(formData.name, formData.description, startDate, finishDate, projectLeaderRef.current?.options[projectLeaderRef.current?.selectedIndex].value);
-      router.push(`/projects`).then(() => window.location.reload());
+      router.push(`/projects`);
     }
   };
   

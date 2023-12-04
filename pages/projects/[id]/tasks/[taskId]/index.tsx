@@ -22,6 +22,7 @@ export default function TaskMainPage({ params }: { params: { id: string} }) {
     setLoading(true);
     fetch(`https://psa-proyecto.onrender.com/projects/${id}/tasks/${taskId}`)
       .then((res) => {
+        console.log(res);
         if (!res.ok) {
           throw new Error(`Error ${res.status}: ${res.statusText}`);
         }
@@ -35,7 +36,7 @@ export default function TaskMainPage({ params }: { params: { id: string} }) {
         if (error instanceof TypeError && error.message === 'Failed to fetch') {
           setError('No se puede conectar al servidor. Verifica tu conexión e inténtalo de nuevo.');
         } else {
-          setError('This task does not exist.');
+          setError('No existe esta tarea.');
         }
         setLoading(false);
       });

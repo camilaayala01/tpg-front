@@ -1,18 +1,17 @@
 import { Project } from "@/types/types";
 import { Dayjs } from "dayjs";
 
- async function editData(url = "", data = {}){
-    const response = 
-      await fetch(url, {
+function editData(url = "", data = {}){ 
+      fetch(url, {
       method: "PUT", 
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
       body: JSON.stringify(data),
-    });
-
-    }
+    }).then((data) => {
+      return data.json;});
+}
   
   export default function editProject(projectId :number, name: string , description:string , status: string,leaderId: string, estimatedFinishDate?:Dayjs | null)
   {

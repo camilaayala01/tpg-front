@@ -16,17 +16,15 @@ export default function ModificarTarea() {
   const { taskId, id } = router.query;
   const {curTask, error} = FetchTask(id, taskId); 
 
-  useEffect (() => {
-    console.log(id, taskId)
-  },[id, taskId])
-
   if (!curTask) {
     return <h1>Tarea no encontradaaa</h1>;
   }
 
   return (
-        <div className="flex h-full flex-col justify-center items-center bg-white">
-            <ModifyForm  task={curTask} />
-            <CancelarBoton distanceLeft="62%" distanceTop="87.7%" handlerClick={handleClick}/>
-        </div>)
+  <div className="flex h-full flex-col justify-center items-center bg-white">
+      error ? (
+      <h1 className="text-4xl mb-5 font-bold text-red-500">{error}</h1>)
+          <ModifyForm  task={curTask} />
+          <CancelarBoton distanceLeft="62%" distanceTop="87.7%" handlerClick={handleClick}/>
+  </div>)
 } 

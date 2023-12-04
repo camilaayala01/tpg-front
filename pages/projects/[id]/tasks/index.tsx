@@ -42,6 +42,10 @@ export default function Tasks() {
         <div className="mb-4 justify-around">
           <h1 className="text-3xl font-bold decoration-gray-400 text-black">Backlog del proyecto</h1>
         </div>
+        <div style={{position: 'absolute', top: '10%', right: '12%'}}>
+          <BotonMultiuso name="Agregar tareas" urlDestination={creationUrl} urlImg="https://i.ibb.co/pbXRFvd/add.png" backColor="rgba(66, 125, 157, 1)"/>
+        </div>
+        <BotonAtrasTop distanceLeft="20%" distanceTop="80%"/>
         <div className="flex flex-col" >
           <div className="overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
             <div className="inline-block min-w-full overflow-hidden align-middle border-b ">

@@ -2,21 +2,15 @@ import { Task } from "@/types/types";
 import { Dayjs } from "dayjs";
 
  function editData(url: string, data = {}) {
-
-  try{
-    const response = fetch(url, {
+    fetch(url, {
       method: "PUT", 
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
       body: JSON.stringify(data),
-    });
-  }
-  catch (e) {
-    return e;
-  }
-    
+    }).then((data) => {
+      return data.json;});
   }
 
   export default function editTask(id: any, projectId :any, name: string , description:string ,estimatedDuration: number,priority: string, status: string,leaderId: string,finishDate?:Dayjs | null)

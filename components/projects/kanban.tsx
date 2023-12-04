@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import ButtonKanban from '../buttonKanbanVer';
+import { Stack } from '@mui/material';
 
 function generarColorAleatorioConTransparencia() {
   const componenteColor = () => Math.floor(Math.random() * 256);
@@ -30,9 +31,11 @@ export default function KanbanRow({ task }: {task: Task}) {
           
           <a href="#" style={{background: generarColorAleatorioConTransparencia() ,marginBottom:10, marginTop:10}}  className="block max-w-xs p-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
               <div className="flex flex-row border-x-black justify-between" > 
-                  <div className="flex  text-gray-900">{task['name']}</div>
                   <div className="px-5 py-4 whitespace-no-wrap  border-gray-200">
-                        <div ><ButtonKanban  onClickHandler={handleButtonClick} /></div>
+                  <Stack direction="row" alignItems="center" spacing={2}>
+                    <div className="flex text-gray-900">{task['name']}</div>
+                    <div ><ButtonKanban  onClickHandler={handleButtonClick} /></div>
+                  </Stack>
                   </div>
               </div>
           </a>

@@ -2,19 +2,16 @@ import { Project } from "@/types/types";
 import { Dayjs } from "dayjs";
 
  function postData(url = "", data = {}) {
-try{
-    const response = fetch(url, {
+ fetch(url, {
       method: "POST", 
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
       body: JSON.stringify(data),
-    });
-  }
-  catch (e) {
-    return e;
-  }
+    }).then((data) => {
+      return data.json;});;
+ 
   }
   export default function createProject(name: string , description:string , startDate?: Dayjs | null, estimatedFinishDate?:Dayjs | null ,leaderId?: string | null)
   {
