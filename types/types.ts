@@ -119,7 +119,7 @@ export type Ticket = {
   employeeId: number;
   associatedTasks: number[];
   startDate: string;
-  estimatedClosingDate: string;
+  closingDate: string;
 };
 
 
