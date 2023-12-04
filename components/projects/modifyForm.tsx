@@ -27,10 +27,11 @@ export default function ModifyForm({project}: {project: Project}) {
   const statusRef = useRef<HTMLSelectElement>(null);
   const [finishDate, setFinishDate] = useState<Dayjs|null>(dayjs(project.finishDate, "YYYY-MM-DD"));
   const [employees, setEmployees] = useState<Employee[]>();
+  
   useEffect(() => {
     const fetchData = async () => {
         const data = await fetchEmployees();
-        setEmployees(data);
+        setEmployees(data.employees);
     };
     fetchData();
   }, []);
