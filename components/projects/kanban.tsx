@@ -7,7 +7,6 @@ import ButtonKanban from '../buttonKanbanVer';
 function generarColorAleatorioConTransparencia() {
   const componenteColor = () => Math.floor(Math.random() * 256);
 
-<<<<<<< HEAD
   const colorRojo = componenteColor();
   const colorVerde = componenteColor();
   const colorAzul = componenteColor();
@@ -17,53 +16,6 @@ function generarColorAleatorioConTransparencia() {
 
   return colorRGBA;
 }
-=======
-  return (
-  
-    <DragDropContext onDragEnd={onDragEnd}>
-      <Droppable droppableId="board" direction="horizontal" type="LIST">
-        {(provided) => (
-          <div ref={provided.innerRef} {...provided.droppableProps}>
-            {Object.entries(taskLists).map(([status, taskList], index) => (
-              <div key={status} className="list-container">
-                <h3>{status}</h3>
-                <Droppable droppableId={status} index={index} type="CARD">
-                  {(provided) => (
-                    <div
-                      ref={provided.innerRef}
-                      {...provided.droppableProps}
-                      className="card-list"
-                    >
-                      {taskList.map((task, index) => (
-                        <Draggable key={task.id} draggableId={task.id} index={index}>
-                          {(provided) => (
-                            <div
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                              className="card"
-                            >
-                              {task.name}
-                            </div>
-                          )}
-                        </Draggable>
-                      ))}
-                      {provided.placeholder}
-                    </div>
-                  )}
-                </Droppable>
-              </div>
-            ))}
-            {provided.placeholder}
-          </div>
-        )}
-      </Droppable>
-    </DragDropContext>
-);
-                   
-    
-};
->>>>>>> d3dda301fedd172a7ec36ff2dcdaf8086d65e627
 
 export default function KanbanRow({ task }: {task: Task}) {
   const router = useRouter();
