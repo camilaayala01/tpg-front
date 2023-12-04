@@ -66,7 +66,7 @@ return (
           {StatusText(project.status)}
     </div>
     <div style={{ position: 'fixed', top: '11%', left: '80%', display: 'flex'}}>
-        <BotonAtrasTop/>  
+        <BotonAtrasTop distanceLeft="74%" distanceTop="11%"/>  
     </div>
   </div>
   

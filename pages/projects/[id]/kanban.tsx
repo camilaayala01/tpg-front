@@ -7,18 +7,17 @@ import { useEffect } from "react";
 import { Task} from "@/types/types";
 import TaskGridRow from "@/components/projects/taskGridRow";
 import router, { useRouter } from "next/router";
+import KanbanBoard from "@/components/projects/kanban";
+import SkeletonLoader from "@/components/SkeletonLoader";
 
 const inter = Inter({ subsets: ["latin"] })
 
-export default function Home() {
+export default function Kanban() {
 
   const [list, setList] = useState<Task[]>([])
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const { id } = router.query;
-  const toDo: [Task] = [];
-  const inProgress: [Task] = [];
-  const done: [Task] = [];
 
   useEffect(() => {
     setLoading(true);
@@ -32,27 +31,13 @@ export default function Home() {
       })
     }, [])
     return (
-      <table className="min-w-full">
-                  <thead>
-                    <tr>
-                      <HeaderItem title="TO DO" />
-                      <HeaderItem title="DOING" />
-                      <HeaderItem title="DONE" />
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {
-                    
-                    }
-
-                  </tbody>
-                </table>
-
+      <div className="flex h-full flex-col justify-center items-center bg-white">
+      loading ? ( SkeletonLoader() ) :
+      <KanbanBoard tasks={list}/>
+      </div>
     );
 
 }
-
-
 
 /*
 interface Props {
