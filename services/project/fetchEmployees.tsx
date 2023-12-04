@@ -1,6 +1,5 @@
 import { Employee } from "@/types/types";
 import { useEffect, useState } from "react";
-import Alert from 'react-bootstrap/Alert';
 
 interface FetchEmployeesResult {
   employees :Employee[] | undefined ;
