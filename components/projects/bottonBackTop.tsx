@@ -1,15 +1,20 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-export const BotonAtrasTop: React.FC = () => {
+interface Location{
+  distanceTop: string
+  distanceLeft: string
+}
+
+export const BotonAtrasTop: React.FC<Location> = ({distanceLeft, distanceTop}) => {
   const router = useRouter();
 
   const botonStyle: React.CSSProperties = {
     position: 'fixed',
     width: '7vw',
     height: '4.5vh',
-    left: '74%',
-    top: '11%',
+    left: distanceLeft,
+    top: distanceTop,
     backgroundColor: '#427D9D',
     color: 'black',
     padding: '20px',
@@ -17,7 +22,7 @@ export const BotonAtrasTop: React.FC = () => {
     borderRadius: '10px',
     cursor: 'pointer',
     display: 'flex',
-    justifyContent: 'space-between', // Distribuye el espacio entre los elementos
+    justifyContent: 'space-between',
     alignItems: 'center',
   };
 

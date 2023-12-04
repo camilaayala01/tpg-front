@@ -3,6 +3,7 @@ import { Dayjs } from "dayjs";
 
  function editData(url: string, data = {}) {
 
+  try{
     const response = fetch(url, {
       method: "PUT", 
       headers: {
@@ -10,11 +11,12 @@ import { Dayjs } from "dayjs";
         Accept: "application/json",
       },
       body: JSON.stringify(data),
-    }).then(response => response.json());
-    console.log(JSON.stringify(data));
-    console.log(response);
+    });
+  }
+  catch (e) {
+    return e;
+  }
     
-    return response;
   }
 
   export default function editTask(id: any, projectId :any, name: string , description:string ,estimatedDuration: number,priority: string, status: string,leaderId: string,finishDate?:Dayjs | null)
@@ -29,5 +31,5 @@ import { Dayjs } from "dayjs";
         estimatedFinishDate: finishDate?.format('YYYY-MM-DD')?? null,
         leaderId: leaderId,
        
-    }).then((data) => {data});
+    });
   }
