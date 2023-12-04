@@ -48,7 +48,7 @@ const submit = () => {
   });
 };
 
-const urlModify = `/soporte/tickets/${ticket.code}/modify`
+const urlModify = `/support/tickets/${ticket.code}/modify`
 
 console.log(ticket.closingDate);
 console.log(ticket);
