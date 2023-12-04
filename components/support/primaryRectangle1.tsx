@@ -49,7 +49,7 @@ const SoftRectangle1: React.FC = () => {
 
   const handleClick = () => {
     // Cambia '/otra-pagina' a la ruta de la página a la que deseas redirigir
-    router.push('/soporte/create_ticket');
+    router.push('/support/create_ticket');
   };
 
   return (

@@ -22,7 +22,7 @@ export default function Layout({ children }: { children: any }) {
       title: "Homepage",
     },
     {
-      href: "/soporte",
+      href: "/support",
       title: "Soporte",
     },
     {
