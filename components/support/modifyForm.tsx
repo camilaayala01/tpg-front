@@ -17,9 +17,10 @@ export default function ModifyForm({ ticket }: { ticket: Ticket }) {
   const [formData, setFormData] = useState({ title: ticket.title, description: ticket.description });
   const statusRef = useRef<HTMLSelectElement>(null);
   const priorityRef = useRef<HTMLSelectElement>(null);
+  const employeeRef = useRef<HTMLSelectElement>(null);
   const [nombres_clientes, setNombresClientes] = useState<string[]>([]);
   const [baseClientes, setBaseClientes] = useState<any[]>([]);
-  const [employees, setEmployees] = useState<Employee[]>([]);
+  const {employees,error} = fetchEmployees();
   const [closingDate, setclosingDate] = useState<Dayjs | null>(dayjs(ticket.closingDate, "YYYY-MM-DD"));
   const router = useRouter();
 
@@ -32,16 +33,8 @@ export default function ModifyForm({ ticket }: { ticket: Ticket }) {
     left: '25vw'
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchEmployees();
-      setEmployees(data);
-    };
-    fetchData();
-  }, []);
-
   function handleClick() {
-    router.push(`/tickets/${ticket.code}`);
+    router.push(`/support/tickets/${ticket.code}`);
   }
 
   useEffect(() => {
@@ -141,11 +134,11 @@ export default function ModifyForm({ ticket }: { ticket: Ticket }) {
             </div>
 
             <div style={{ position: 'absolute', top: '48%', left: '1%' }}>
-              <label htmlFor="status" style={{ fontSize: '1em', fontWeight: 'bold', color: 'black' }}>Estado</label>
-              <select ref={statusRef} style={{ position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666' }} defaultValue={ticket.status}>
-                {Object.keys(Status).map((opcion) => (
-                    <option value={opcion} key={opcion}>
-                      {getEnumToString(opcion)}
+              <label htmlFor="employee" style={{ fontSize: '1em', fontWeight: 'bold', color: 'black' }}>Persona Asignada</label>
+              <select ref={employeeRef} style={{ position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666' }} defaultValue={ticket.status}>
+                {employees?.map((opcion) => (
+                    <option value={opcion.legajo} key={opcion.legajo}>
+                      {opcion ? `${opcion['Nombre']} ${opcion['Apellido']}` : "-"}
                     </option>
                 ))}
               </select>

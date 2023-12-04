@@ -3,7 +3,7 @@ import { Employee } from "@/types/types";
 import { useEffect, useState } from "react";
 import fetchClient from "@/services/support/fetchClient";
 
-export default function LeaderBox({id}: {id:any}) {
+export default function ClientBox({id}: {id:any}) {
 
     const {fullName,error} =  fetchClient(id);
 

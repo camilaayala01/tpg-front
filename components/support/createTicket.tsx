@@ -113,7 +113,7 @@ const RectanguloConBorde: React.FC = () => {
     useEffect(() => {
       const fetchEmpleados = async () => {
         try {
-          const empleados = await employeeFetcher("/employees/", {
+          const empleados = await employeeFetcher("/employees", {
             method: "GET",
             headers: {
               'Content-Type': 'application/json',
@@ -154,7 +154,10 @@ const RectanguloConBorde: React.FC = () => {
           employeeId,
         };
     
-        // Hacer la solicitud y esperar a que la promesa se resuelva
+        if (!formData.clientId || !formData.description || !formData.employeeId || !formData.estimatedClosingDate || !formData.priority || !formData.product || !formData.severity || !formData.status || !formData.title || !formData.version) {
+          alert("Por favor, complete todos los campos.");
+        }else{
+                  // Hacer la solicitud y esperar a que la promesa se resuelva
         const response = await fetch('https://psa-soporte-1yfx.onrender.com/tickets', {
           method: "POST",
           headers: {
@@ -162,16 +165,17 @@ const RectanguloConBorde: React.FC = () => {
             Accept: "application/json",
           },
           body: JSON.stringify(formDataWithIds),
-        });
-    
-        // Esperar a que se resuelva la promesa JSON
-        const responseData = await response.json();
-    
-        // Imprimir los datos después de que la promesa se haya resuelto
-        console.log(responseData);
-    
-        // Retornar los datos
-        return responseData;
+          });
+      
+          // Esperar a que se resuelva la promesa JSON
+          const responseData = await response.json();
+      
+          // Imprimir los datos después de que la promesa se haya resuelto
+          console.log(responseData);
+      
+          // Retornar los datos
+          return responseData;
+          }
       } catch (error) {
         // Manejar errores aquí
         console.error(error);

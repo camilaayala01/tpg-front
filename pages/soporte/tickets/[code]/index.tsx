@@ -39,7 +39,7 @@ export default function TicketsMainPage({ params }: { params: { code: string } }
         if (error instanceof TypeError && error.message === 'Failed to fetch') {
           setError('No se puede conectar al servidor. Verifica tu conexion e intentalo de nuevo.');
         } else {
-          setError('This project does not exist.');
+          setError('This Ticket does not exist.');
         }
         setLoading(false);
       });

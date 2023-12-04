@@ -6,18 +6,16 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import StatusText from "../projects/StatusText";
 import DateBox from "../projects/DateBox";
 import AddButton from "../projects/addButton";
-import deleteProject from "@/services/project/deleteProject";
+import deleteTicket from "@/services/support/deleteTicket";
 import DeleteButton from "../projects/DeleteButton";
 import PriorityText from "@/components/projects/PriorityText";
 import SeverityText from "@/components/support/SeverityText";
 import ProductText from "@/components/support/ProductText";
 import LeaderBox from "@/components/projects/LeaderBox";
 import ClientBox from "@/components/support/ClientBox";
+import TaskView from "@/components/tasks/TaskView";
 
 export default function ticketVisualization({ ticket }: {ticket: Ticket}) {
-  
-  //const router = useRouter();
-
 
   const estiloRectangulo: React.CSSProperties = {
     position: 'absolute',
@@ -29,8 +27,8 @@ export default function ticketVisualization({ ticket }: {ticket: Ticket}) {
   };
 
   const handleDeletion = () => {
-    deleteProject(ticket.code)
-    router.push(`/ticket`); // ojo aca tal vez es ticketS
+    deleteTicket(ticket.code)
+    router.back(); // ojo aca tal vez es ticketS
   };
 
 const submit = () => {
@@ -57,7 +55,7 @@ console.log(ticket);
 return (
   <>
   <div >
-    <div style={{ position: 'fixed', color: 'black', top: '11%', left: '25%', fontSize: '2em', fontWeight: 'bold', letterSpacing: 0.20 }}>Proyecto {ticket.title}</div>
+    <div style={{ position: 'fixed', color: 'black', top: '11%', left: '25%', fontSize: '2em', fontWeight: 'bold', letterSpacing: 0.20 }}>Ticket: {ticket.title}</div>
     <div style={{ position: 'fixed', top: '11%', left: '60%', display: 'flex', alignItems: 'center' }}>
           {StatusText(ticket.status)}
     </div>
@@ -78,7 +76,6 @@ return (
 
 
       <div >
-          <div style={{ position: 'fixed', color: 'black', top: '11%', left: '25%', fontSize: '2em', fontWeight: 'bold', letterSpacing: 0.20 }}>Proyecto {ticket.title}</div>
           <div style={{ position: 'fixed', top: '40%', left: '25%', display: 'flex', alignItems: 'center' }}>
               <span style={{ color: 'black', marginRight: '8px', fontSize: '1.1rem' }}>Prioridad:</span>
               {PriorityText(ticket.priority)}
@@ -89,7 +86,6 @@ return (
       </div>
 
       <div >
-          <div style={{ position: 'fixed', color: 'black', top: '11%', left: '25%', fontSize: '2em', fontWeight: 'bold', letterSpacing: 0.20 }}>Proyecto {ticket.title}</div>
           <div style={{position: 'fixed', top: '50%', left: '25%', display: 'flex', alignItems: 'center' }}>
               <span style={{ color: 'black', marginRight: '8px', fontSize: '1.1rem' }}>Producto:</span>
               {ProductText(ticket.product )}
@@ -102,28 +98,30 @@ return (
 
       <div style={{ position: 'absolute', top: '52%', left: '0%', display: 'flex', alignItems: 'center' }}>
           <p style={{ fontSize: '1rem', fontWeight: 'bold', color: '#666666', marginRight: '20px' }}>Empleado </p>
-          <LeaderBox id ={ticket['assignatedEmployeeId']} />
-      </div>
-
-      <div style={{ position: 'absolute', top: '62%', left: '0%', display: 'flex', alignItems: 'center' }}>
+          <LeaderBox id ={ticket['employeeId']} />
+          <span style={{ margin: '0 10px', color: 'black', fontSize: '1.1rem' }}></span> {/* Espacio adicional */}
           <p style={{ fontSize: '1rem', fontWeight: 'bold', color: '#666666', marginRight: '20px' }}>Cliente </p>
-          <ClientBox id ={ticket['clientId']} />
+          <ClientBox id ={ticket.clientId} />
       </div>
 
-      <div style={{ position: 'absolute', top: '45%', left: '62%'}}>
-          <DateBox dateName={"Fecha de Finalizacion"} date={ticket.closingDate} />
+
+      <div style={{ position: 'absolute', top: '35%', left: '60%'}}>
+          <TaskView ids={ticket.associatedTasks}/>
       </div>
 
-      <div style={{ position: 'absolute', top: '28%', left: '62%'}}>
+
+      <div style={{ position: 'absolute', top: '62%', left: '0%',alignItems: 'center',display: 'flex'}}>
           <DateBox dateName={"Fecha de Inicio"} date={ticket.startDate} />
+          <span style={{ margin: '0 10px', color: 'black', fontSize: '1.1rem' }}></span> {/* Espacio adicional */}
+          <DateBox dateName={"Fecha de Finalizacion"} date={ticket.closingDate} />
       </div>
       
 
-      <div style={{ position: 'absolute', top: '70%', left: '12%', display: 'flex', alignItems: 'center' }} className="text-sm leading-5 text-gray-900">
+      <div style={{ position: 'absolute', top: '80%', left: '20%', display: 'flex', alignItems: 'center' }} className="text-sm leading-5 text-gray-900">
         <AddButton urlImg="https://i.ibb.co/Z68w2Mj/edit.png" name="Editar ticket" urlDestination={urlModify} backColor="rgba(155, 190, 200, 1)"/>
       </div>
 
-      <div style={{ position: 'absolute', top: '70%', left: '0%', display: 'flex', alignItems: 'center' }} className="text-sm leading-5 text-gray-900">
+      <div style={{ position: 'absolute', top: '80%', left: '0%', display: 'flex', alignItems: 'center' }} className="text-sm leading-5 text-gray-900">
         <DeleteButton urlImg="https://i.ibb.co/gw4X4S5/delete.png" name="Eliminar" backColor="rgba(155, 190, 200, 1)" handleClick={submit} />
       </div>
 

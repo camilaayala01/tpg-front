@@ -20,7 +20,7 @@ import { Dayjs } from "dayjs";
 
   export default function createTicketAssociaTask(code: any, projectId: any,name: string , description:string ,estimatedDuration:string, startDate?: Dayjs | null, estimatedFinishDate?:Dayjs | null ,leaderId?: string | null, priority?: string |null)
   {
-    return postData(`https://psa-proyecto.onrender.com/tickets/${code}/associatedTask?projectId=${projectId}`, 
+    return postData(`https://psa-soporte-1yfx.onrender.com//tickets/${code}/associatedTask?projectId=${projectId}`, 
     {
         name: name,
         description: description, 

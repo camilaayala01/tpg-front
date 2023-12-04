@@ -1,0 +1,26 @@
+import { Ticket } from "@/types/types";
+import { Dayjs } from "dayjs";
+
+ function deleteData(url = "") {
+  try{
+    const response = fetch(url, {
+      method: "DELETE", 
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+    console.log(response);
+  }
+  catch (e) {
+    return e;
+  }
+  }
+    
+  
+  
+
+  export default function deleteTicket(code :number)
+  {
+    return deleteData(`https://psa-soporte-1yfx.onrender.com/tickets/${code}`);
+  }

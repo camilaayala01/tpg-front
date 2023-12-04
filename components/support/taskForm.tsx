@@ -35,8 +35,8 @@ export default function CreationForm() {
   const [startDate, setStartDate] = useState<Dayjs | null>(null);
   const priorityRef = useRef<HTMLSelectElement>(null);
   const [finishDate, setFinishDate] = useState<Dayjs | null>(null);
-  const [employees, setEmployees] = useState<Employee[]>();
   const [projects, setProjects] = useState<Project[]>();
+  const {employees,error} = fetchEmployees();
 
   async function getProjects(): Promise<Project[]> {
     try {
@@ -55,15 +55,10 @@ export default function CreationForm() {
   }
 
   useEffect(() => {
-    const fetchEmployeesData = async () => {
-        const data = await fetchEmployees();
-        setEmployees(data);
-    };
     const fetchProjectData = async () => {
         const data = await fetchProjects();
         setProjects(data);
     };
-    fetchEmployeesData();
     fetchProjectData();
   }, []);
 
