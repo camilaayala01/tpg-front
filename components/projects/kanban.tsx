@@ -1,7 +1,10 @@
 import { Status, Task } from '@/types/types';
+import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import MyButton from './viewButton';
 
+/*
 const KanbanBoard = ({tasks}: { tasks : Task[] }) => {
     const [taskLists, setTaskLists] = useState<{
         [Status.NOT_STARTED]: Task[];
@@ -25,7 +28,7 @@ const KanbanBoard = ({tasks}: { tasks : Task[] }) => {
         };
     
         tasks.forEach((task) => {
-        updatedTaskLists[task.status].push(task);
+        updatedTaskLists[task.status];
         });
     
         setTaskLists(updatedTaskLists);
@@ -37,6 +40,7 @@ const KanbanBoard = ({tasks}: { tasks : Task[] }) => {
   };
 
   return (
+  
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="board" direction="horizontal" type="LIST">
         {(provided) => (
@@ -76,7 +80,36 @@ const KanbanBoard = ({tasks}: { tasks : Task[] }) => {
         )}
       </Droppable>
     </DragDropContext>
-  );
+);
+                   
+    
 };
 
-export default KanbanBoard;
+*/
+export default function KanbanRow({ task }: {task: Task}) {
+  const router = useRouter();
+  const {id} = router.query;
+
+  function handleButtonClick() {
+      router.push(`/projects/${task.projectId}/tasks/${task.id}`)
+  }
+    
+  return (
+      <>       
+          <h2>To Do</h2>
+          <div className="flex flex-row">
+              <div className="px-6 py-4 whitespace-no-swrap border-b border-gray-200">
+                <div className="flex items-center text-gray-900">{task['name']}</div>
+              </div>
+
+              <div className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                <div className="text-sm leading-5 text-gray-900"><MyButton onClickHandler={handleButtonClick} /></div>
+              </div>
+          </div>
+           
+
+          </>
+  )
+}
+
+
