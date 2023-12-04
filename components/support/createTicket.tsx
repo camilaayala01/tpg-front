@@ -184,7 +184,7 @@ const RectanguloConBorde: React.FC = () => {
         <div style={estiloRectangulo}>
             {/* Contenido del rectángulo */}
             <h1 style = {{position: 'absolute', color: 'black',top: '3%', left: '3%', fontSize: '36px',  fontWeight: 'bold'}}>Crear Ticket</h1>
-            <ListBox label = 'Cliente' onChange={(value) => handleFieldChange('clientId', value)} opciones = {nombres_clientes} style = {{position: 'absolute', top: '13%', left: '33%'}}/>
+            <ListBox label = 'Cliente' onChange={(value) => handleFieldChange('clientId', value)} opciones = {nombres_clientes} style = {{position: 'absolute', top: '15%', left: '33%'}}/>
             <TextBox label = 'Título' onChange={(value) => handleFieldChange('title', value)} description = 'Indique el título del Ticket' style = {{position: 'absolute', top: '13%', left: '3%'}}/>
             <TextBox label = 'Descripción' onChange={(value) => handleFieldChange('description', value)} description = 'Indique la descripción del Ticket' style = {{position: 'absolute', top: '13%', left: '70%'}}/>
             <ListBox label = 'Estado' onChange={(value) => handleFieldChange('status', value)} opciones = {['No comenzado', 'En proceso', 'Bloqueado', 'Completado']} style = {{position: 'absolute', top: '33%', left: '3%',fontSize:'17px'}}/>
@@ -197,7 +197,7 @@ const RectanguloConBorde: React.FC = () => {
             
             <h3 style = {{position: 'absolute', color: 'black',top: '31%', left: '70%', fontSize: '22px',  fontWeight: 'bold'}}>Seleccionar Fecha</h3>
             
-            <div style =  {{position: 'absolute', top: '54%', left: '69%'}}>
+            <div style =  {{position: 'absolute', top: '39%', left: '69%'}}>
               <label htmlFor="finishDate" style={{fontWeight: 'bold', color: 'black'}}>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker

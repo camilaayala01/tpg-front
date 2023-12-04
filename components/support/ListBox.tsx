@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 
 interface CampoDeTextoProps {
     style?: React.CSSProperties;  // Define la propiedad opcional 'style'
   }
 
-  const ListBox: React.FC<{ label: any; style?: React.CSSProperties; opciones: string[]; onChange: (name: string, value: string) => void }> = ({ label, style, opciones, onChange }) => {
-    const [opcionSeleccionada, setOpcionSeleccionada] = useState('');
-  
+  const ListBox: React.FC<{ label: any; style?: React.CSSProperties; opciones: string[]; onChange: (name: string, value: string) => void; initialValue?: string}> = ({ label, style, opciones, onChange , initialValue}) => {
+    const [opcionSeleccionada, setOpcionSeleccionada] = useState(initialValue || '');
+
+      useEffect(() => {
+          // Update the selected option when the initialValue prop changes
+          setOpcionSeleccionada(initialValue || '');
+      }, [initialValue]);
+
     const handleSeleccion = (event: React.ChangeEvent<HTMLSelectElement>) => {
       const { value } = event.target;
       setOpcionSeleccionada(value);
