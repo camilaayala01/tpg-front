@@ -10,12 +10,11 @@ function deleteData(url = "") {
         Accept: "application/json",
       },
     })
+    console.log(response);
   } catch (e) {
-    console.log(e)
+    return e;
   }
 }
-
-
 
 export default function deleteTask(id: number, taskId: number) {
   return deleteData(`https://psa-proyecto.onrender.com/projects/${id}/tasks/${taskId}`);

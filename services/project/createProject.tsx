@@ -2,6 +2,8 @@ import { Project } from "@/types/types";
 import { Dayjs } from "dayjs";
 
  function postData(url = "", data = {}) {
+try{
+
 
     const response = fetch(url, {
       method: "POST", 
@@ -10,9 +12,11 @@ import { Dayjs } from "dayjs";
         Accept: "application/json",
       },
       body: JSON.stringify(data),
-    }).then(response => response.json());
-    console.log(response);
-    return response;
+    });
+  }
+  catch (e) {
+    return e;
+  }
   }
   
   
@@ -26,5 +30,5 @@ import { Dayjs } from "dayjs";
         startDate: startDate?.format('YYYY-MM-DD')?? null,
         estimatedFinishDate: estimatedFinishDate?.format('YYYY-MM-DD')?? null,
         leaderId: leaderId?? null,
-    }).then((data) => {data});
+    });
   }

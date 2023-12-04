@@ -2,7 +2,7 @@ import { Project } from "@/types/types";
 import { Dayjs } from "dayjs";
 
  function editData(url = "", data = {}) {
-
+try{
     const response = fetch(url, {
       method: "PUT", 
       headers: {
@@ -10,11 +10,14 @@ import { Dayjs } from "dayjs";
         Accept: "application/json",
       },
       body: JSON.stringify(data),
-    }).then(response => response.json());
-    console.log(JSON.stringify(data));
+    });
     console.log(response);
     
     return response;
+  }
+  catch (e) {
+    return e;
+  }
   }
   
   
@@ -27,5 +30,5 @@ import { Dayjs } from "dayjs";
         status: status,
         estimatedFinishDate: estimatedFinishDate?.format('YYYY-MM-DD')?? null,
         leaderId: leaderId,
-    }).then((data) => {data});
+    });
   }
