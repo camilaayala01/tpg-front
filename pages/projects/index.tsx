@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { Project } from "@/types/types"
-import ProjectGridRow from "@/components/projects/projectGridRow"
 import SkeletonLoader from "@/components/SkeletonLoader"
 import router, { useRouter } from "next/router"
 import AppSearchBar from "@/components/homeList"
@@ -46,7 +45,7 @@ export default function Projects() {
                 </div>
                 
                 <div style={{position: 'absolute', top: '25%', right: '12%'}}>
-                <BotonAgregar name="Agregar Proyecto" urlDestination="projects/crear" urlImg="https://i.ibb.co/pbXRFvd/add.png" backColor="rgba(66, 125, 157, 1)"/>
+                  <BotonAgregar name="Agregar Proyecto" urlDestination="projects/crear" urlImg="https://i.ibb.co/pbXRFvd/add.png" backColor="rgba(66, 125, 157, 1)"/>
                 </div>
                 </>
               ) : (

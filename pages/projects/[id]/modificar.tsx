@@ -3,6 +3,8 @@ import ModifyForm from "@/components/projects/modifyForm";
 import { useRouter } from "next/router";
 import fetchProject from "@/services/project/fetchProject";
 import { Ubuntu } from "next/font/google"
+import { CancelarBoton } from "@/components/projects/cancelButton";
+import { useEffect } from "react";
 
 const ubuntu = Ubuntu({ subsets: ["latin"],  weight: "300"})
 
@@ -10,8 +12,11 @@ const ubuntu = Ubuntu({ subsets: ["latin"],  weight: "300"})
 export default function ModificarProyecto() {
 
   const router = useRouter();
-
   const { id } = router.query;
+  const handleClick = () => {
+    router.back();
+  };
+
   const {curProject, error} = fetchProject(id); //manejar error jej
 
   if (!curProject) {
@@ -21,5 +26,6 @@ export default function ModificarProyecto() {
   return (
         <div className="flex h-full flex-col justify-center items-center bg-white">
             <ModifyForm  project={curProject} />
+            <CancelarBoton distanceLeft="62%" distanceTop="87.7%" handlerClick={handleClick}/>
         </div>)
 } 

@@ -26,10 +26,6 @@ const estiloRectangulo: React.CSSProperties = {
 
 const router = useRouter();
 
-function handleButtonClick() {
-  router.push(`${project.id}/tasks`);
-}
-
 const handleDeletion = () => {
   deleteProject(project.id)
   router.push(`/projects`);

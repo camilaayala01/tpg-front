@@ -1,15 +1,10 @@
 import Image from "next/image"
 import { Inter } from "next/font/google"
 import { useRouter } from "next/router";
-import MyButton from "@/components/projects/viewButton";
 import { useEffect, useState } from "react";
 import SkeletonLoader from "@/components/SkeletonLoader";
-import LeaderBox from "@/components/projects/LeaderBox";
-import DateBox from "@/components/projects/DateBox";
 import { Task } from "@/types/types";
 import { TaskVisualization } from "@/components/tasks/TaskVisualization";
-import FetchTicketsForTask from "@/services/project/fetchTicketsForTask";
-
 
 const inter = Inter({ subsets: ["latin"] })
 
