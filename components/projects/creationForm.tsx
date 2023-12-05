@@ -10,7 +10,7 @@ import { Dayjs } from "dayjs";
 import createProject from "@/services/project/createProject";
 import { useRouter } from "next/router";
 
-export default function creationForm() {
+export default function CreationForm() {
     
   const estiloRectangulo: React.CSSProperties = {
     position: 'fixed',
@@ -85,7 +85,7 @@ export default function creationForm() {
         <select ref={projectLeaderRef} style={{position: 'absolute', top: '100%', left: '1%', width: '200px', height: '40px', borderRadius: '12px', color: '#666666'}}>
             <option value="" style= {{color: 'black'}}>Asigne un líder</option>
             {employees?.map((opcion) => (
-            <option value={opcion.legajo}>
+            <option key= {opcion.legajo} value={opcion.legajo}>
                 {opcion ? `${opcion['Nombre']} ${opcion['Apellido']}` : "-"}
             </option>
             ))}

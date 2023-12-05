@@ -2,7 +2,7 @@ import { Status, Task } from '@/types/types';
 import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import ButtonKanban from '../buttonKanbanVer';
+import ButtonKanban from '../ButtonKanbanVer';
 import { Stack } from '@mui/material';
 
 function generarColorAleatorioConTransparencia() {

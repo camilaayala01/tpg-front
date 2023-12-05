@@ -1,18 +1,15 @@
 import TicketsView from "./TicketsView";
 import { Task } from "@/types/types";
 import React from "react";
-import LeaderBox from "../projects/LeaderBox";
 import DateBox from "../projects/DateBox";
-import MyButton from "../projects/viewButton";
 import { useRouter } from "next/router";
 import StatusText from "../projects/StatusText";
-import AddButton from "../projects/addButton"
+import AddButton from "../projects/AddButton"
 import { confirmAlert } from "react-confirm-alert";
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import DeleteButton from "../projects/DeleteButton"
-import styled from "styled-components";
 
-import { BotonAtrasTop } from "../projects/bottonBackTop";
+import { BotonAtrasTop } from "../projects/BottonBackTop";
 import PriorityText from "../projects/PriorityText";
 import deleteTask from "@/services/project/deleteTask";
 

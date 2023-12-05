@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import { Employee, Priority, getEnumToString } from "@/types/types";
 import createTask from "@/services/project/createTask";
 
-export default function creationForm() {
+export default function CreationForm() {
     
   const estiloRectangulo: React.CSSProperties = {
     position: 'fixed',

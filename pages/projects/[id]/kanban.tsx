@@ -1,18 +1,12 @@
 
 import Image from "next/image"
 import { Inter } from "next/font/google"
-import { HeaderItem } from "@/pages/projects";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Task } from "@/types/types";
-import TaskGridRow from "@/components/projects/taskGridRow";
 import router, { useRouter } from "next/router";
-import TableClass from "@/components/projects/TableClass";
 import KanbanRow from "@/components/projects/kanban";
-import { Ubuntu } from "next/font/google"
-import { BotonAtrasTop } from "@/components/projects/bottonBackTop"
-const inter = Inter({ subsets: ["latin"] })
-
+import { BotonAtrasTop } from "@/components/projects/BottonBackTop"
 
 export default function Home() {
   const [data, setData] = useState<Task[]>([]);

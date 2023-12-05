@@ -2,12 +2,12 @@ import { useEffect, useState } from "react"
 import { Project } from "@/types/types"
 import SkeletonLoader from "@/components/SkeletonLoader"
 import router, { useRouter } from "next/router"
-import AppSearchBar from "@/components/homeList"
-import BotonAgregar from "@/components/projects/addButton"
+import AppSearchBar from "@/components/HomeList"
+import BotonAgregar from "@/components/projects/AddButton"
 
 import { Ubuntu } from "next/font/google"
-import { BotonAtrasTop } from "@/components/projects/bottonBackTop"
-import BotonMultiuso from "@/components/projects/addButton"
+import { BotonAtrasTop } from "@/components/projects/BottonBackTop"
+import BotonMultiuso from "@/components/projects/AddButton"
 
 const ubuntu = Ubuntu({ subsets: ["latin"],  weight: "300"})
 

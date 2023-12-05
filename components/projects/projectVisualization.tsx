@@ -2,15 +2,14 @@ import { Project } from "@/types/types";
 import React, { useEffect, useState } from "react";
 import LeaderBox from "./LeaderBox";
 import DateBox from "./DateBox";
-import MyButton from "./viewButton";
 import { useRouter } from "next/router";
 import StatusText from "./StatusText";
-import AddButton from "./addButton";
+import AddButton from "./AddButton";
 import { confirmAlert } from "react-confirm-alert";
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import DeleteButton from "./DeleteButton";
 import deleteProject from "@/services/project/deleteProject";
-import { BotonAtrasTop } from './bottonBackTop';
+import { BotonAtrasTop } from './BottonBackTop';
 
 export default function ProjectVisualization({ project }: {project: Project}) {
 

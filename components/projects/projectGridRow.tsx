@@ -1,5 +1,5 @@
 import { Project } from "@/types/types";
-import MyButton from "./viewButton";
+import MyButton from "./ViewButton";
 import router from "next/router";
 import StatusText from "./StatusText";
 

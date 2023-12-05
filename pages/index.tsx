@@ -1,6 +1,5 @@
-import Image from "next/image"
+
 import { Ubuntu } from "next/font/google"
-import CommentSectionComponent from "@/components/projects/commentsSection";
 import { Stack } from "@mui/material";
 
 const ubuntu = Ubuntu({ subsets: ["latin"],  weight: "300"})

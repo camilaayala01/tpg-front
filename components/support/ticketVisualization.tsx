@@ -5,7 +5,7 @@ import { confirmAlert } from "react-confirm-alert";
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import StatusText from "../projects/StatusText";
 import DateBox from "../projects/DateBox";
-import AddButton from "../projects/addButton";
+import AddButton from "../projects/AddButton";
 import deleteTicket from "@/services/support/deleteTicket";
 import DeleteButton from "../projects/DeleteButton";
 import PriorityText from "@/components/projects/PriorityText";

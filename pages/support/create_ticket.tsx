@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { Inter } from "next/font/google"
 import ImagenComponente from "@/components/support/componentImage";
-import BotonAtras from "@/components/support/backButton";
+import BotonAtras from "@/components/support/BackButton";
 import RectanguloConBorde from "@/components/support/createTicket";
 
 

@@ -1,5 +1,5 @@
 import { Ticket } from "@/types/types";
-import MyButton from "../projects/viewButton";
+import MyButton from "../projects/ViewButton";
 import router from "next/router";
 import StatusText from "../projects/StatusText";
 import { supportFetcher } from "@/services/support/fetcher";

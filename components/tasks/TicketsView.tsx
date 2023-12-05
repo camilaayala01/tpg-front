@@ -1,9 +1,6 @@
-import Image from 'next/image';
-import { useEffect, useState } from "react"
 import { Inter } from "next/font/google"
 import TicketGridRow from "@/components/projects/ticketGridRow";
 import FetchTicketsForTask from '@/services/project/fetchTicketsForTask';
-import MyButton from '../projects/viewButton';
 
 
 const inter = Inter({ subsets: ["latin"] })

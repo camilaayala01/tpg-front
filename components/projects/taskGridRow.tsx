@@ -1,6 +1,6 @@
-import { Project, Task } from "@/types/types";
-import MyButton from "./viewButton";
-import router, { useRouter } from "next/router";
+import {  Task } from "@/types/types";
+import MyButton from "./ViewButton";
+import  { useRouter } from "next/router";
 import StatusText from "./StatusText";
 import PriorityText from "./PriorityText";
 

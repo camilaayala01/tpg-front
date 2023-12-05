@@ -1,12 +1,12 @@
-import { BotonAtrasTop } from "@/components/projects/bottonBackTop";
-import { CancelarBoton } from "@/components/projects/cancelButton";
-import CreationForm from "@/components/projects/creationForm";
+import { BotonAtrasTop } from "@/components/projects/BottonBackTop";
+import { CancelarBoton } from "@/components/projects/CancelButton";
+import CreationForm from "@/components/projects/CreationForm";
 import { Ubuntu } from "next/font/google"
 import { useRouter } from "next/router";
 
 const ubuntu = Ubuntu({ subsets: ["latin"],  weight: "300"})
 
-export default function crearProyecto() {
+export default function CrearProyecto() {
   const router= useRouter();
   const handleClick = () => {
     router.back();

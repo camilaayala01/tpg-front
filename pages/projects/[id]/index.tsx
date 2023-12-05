@@ -1,16 +1,9 @@
-import Image from "next/image"
-import { Inter } from "next/font/google"
 import { useRouter } from "next/router";
-import MyButton from "@/components/projects/viewButton";
 import { useEffect, useState } from "react";
 import { Project } from "@/types/types";
 import SkeletonLoader from "@/components/SkeletonLoader";
-import LeaderBox from "@/components/projects/LeaderBox";
-import DateBox from "@/components/projects/DateBox";
 import ProjectVisualization from "@/components/projects/projectVisualization";
-
 import { Ubuntu } from "next/font/google"
-import fetchEmployee from "@/services/project/fetchEmployee";
 
 const ubuntu = Ubuntu({ subsets: ["latin"],  weight: "300"})
 

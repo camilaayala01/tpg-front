@@ -1,15 +1,11 @@
-import Image from 'next/image';
-import { useEffect, useState } from "react"
+
 import { Inter } from "next/font/google"
 import TaskGridRow from "@/components/support/taskGridRow";
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import BotonAtras from "@/components/support/backButton";
-import ProjectGridRow from "@/components/projects/projectGridRow";
-import { supportFetcher } from "@/services/support/fetcher";
-import { Task, Ticket } from "@/types/types";
+
+import BotonAtras from "@/components/support/BackButton";
+
 import FetchTasksForTicket from '@/services/support/fetchTasksForTicket';
-import MyButton from '../projects/viewButton';
+
 
 
 const inter = Inter({ subsets: ["latin"] })
