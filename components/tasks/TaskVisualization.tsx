@@ -4,12 +4,12 @@ import React from "react";
 import DateBox from "../projects/DateBox";
 import { useRouter } from "next/router";
 import StatusText from "../projects/StatusText";
-import AddButton from "../projects/AddButton"
+import AddButton from "../projects/addButton"
 import { confirmAlert } from "react-confirm-alert";
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import DeleteButton from "../projects/DeleteButton"
 
-import { BotonAtrasTop } from "../projects/BottonBackTop";
+import { BotonAtrasTop } from "../projects/bottonBackTop";
 import PriorityText from "../projects/PriorityText";
 import deleteTask from "@/services/project/deleteTask";
 

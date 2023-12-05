@@ -1,5 +1,5 @@
 import {  Task } from "@/types/types";
-import MyButton from "./ViewButton";
+import MyButton from "./viewButton";
 import  { useRouter } from "next/router";
 import StatusText from "./StatusText";
 import PriorityText from "./PriorityText";

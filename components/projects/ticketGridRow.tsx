@@ -1,6 +1,6 @@
 import { TicketForTask } from "@/types/types";
 import router from "next/router";
-import MyButton from "./ViewButton";
+import MyButton from "./viewButton";
 
 export default function TicketGridRow(ticket: TicketForTask) {
     

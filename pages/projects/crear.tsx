@@ -1,6 +1,5 @@
-import { BotonAtrasTop } from "@/components/projects/BottonBackTop";
-import { CancelarBoton } from "@/components/projects/CancelButton";
-import CreationForm from "@/components/projects/CreationForm";
+import { CancelarBoton } from "@/components/projects/cancelButton";
+import CreationForm from "@/components/projects/creationForm";
 import { Ubuntu } from "next/font/google"
 import { useRouter } from "next/router";
 

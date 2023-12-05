@@ -4,12 +4,12 @@ import LeaderBox from "./LeaderBox";
 import DateBox from "./DateBox";
 import { useRouter } from "next/router";
 import StatusText from "./StatusText";
-import AddButton from "./AddButton";
+import AddButton from "./addButton";
 import { confirmAlert } from "react-confirm-alert";
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import DeleteButton from "./DeleteButton";
 import deleteProject from "@/services/project/deleteProject";
-import { BotonAtrasTop } from './BottonBackTop';
+import { BotonAtrasTop } from './bottonBackTop';
 
 export default function ProjectVisualization({ project }: {project: Project}) {
 

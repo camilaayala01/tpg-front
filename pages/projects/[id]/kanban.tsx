@@ -1,12 +1,10 @@
 
-import Image from "next/image"
-import { Inter } from "next/font/google"
 import { useState } from "react";
 import { useEffect } from "react";
 import { Task } from "@/types/types";
 import router, { useRouter } from "next/router";
 import KanbanRow from "@/components/projects/kanban";
-import { BotonAtrasTop } from "@/components/projects/BottonBackTop"
+import { BotonAtrasTop } from "@/components/projects/bottonBackTop"
 
 export default function Home() {
   const [data, setData] = useState<Task[]>([]);

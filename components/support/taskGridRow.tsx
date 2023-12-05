@@ -1,6 +1,6 @@
 import { Task } from "@/types/types";
 import router from "next/router";
-import MyButton from "@/components/projects/ViewButton";
+import MyButton from "@/components/projects/viewButton";
 import StatusText from "@/components/projects/StatusText";
 import PriorityText from "@/components/projects/PriorityText";
 

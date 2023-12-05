@@ -1,9 +1,9 @@
 import { Inter } from "next/font/google"
-import ModifyForm from "@/components/projects/ModifyForm";
+import ModifyForm from "@/components/projects/modifyForm";
 import { useRouter } from "next/router";
 import fetchProject from "@/services/project/fetchProject";
 import { Ubuntu } from "next/font/google"
-import { CancelarBoton } from "@/components/projects/CancelButton";
+import { CancelarBoton } from "@/components/projects/cancelButton";
 
 const ubuntu = Ubuntu({ subsets: ["latin"],  weight: "300"})
 

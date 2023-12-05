@@ -3,9 +3,8 @@ import { Task } from "@/types/types"
 import TaskGridRow from "@/components/projects/taskGridRow"
 import { useRouter } from "next/router"
 import SkeletonLoader from "@/components/SkeletonLoader"
-import { BotonAtrasTop } from "@/components/projects/BottonBackTop"
-import { Stack } from "@mui/material"
-import BotonMultiuso from "@/components/projects/AddButton"
+import { BotonAtrasTop } from "@/components/projects/bottonBackTop"
+import BotonMultiuso from "@/components/projects/addButton"
 
 function HeaderItem({ title }: { title: string }) {
   return <th className="px-6 py-3 text-sm text-left text-gray-500 border-b border-gray-200 bg-gray-50">{title}</th>

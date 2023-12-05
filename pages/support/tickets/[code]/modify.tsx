@@ -2,10 +2,9 @@ import { Inter } from "next/font/google"
 import { useRouter } from "next/router";
 
 import { Ubuntu } from "next/font/google";
-import ModifyForm from "@/components/support/ModifyForm";
+import ModifyForm from "@/components/support/modifyForm";
 import FetchTicket from "@/services/support/fetchTicket";
-import Button from "@/components/support/Button";
-import AddButton from "@/components/projects/AddButton";
+import AddButton from "@/components/projects/addButton";
 
 const ubuntu = Ubuntu({ subsets: ["latin"], weight: "300" });
 

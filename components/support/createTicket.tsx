@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import ListBox from './ListBox';
-import Boton from './Button';
+import Boton from './button';
 import TextBox from './TextBox';
 
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';

@@ -1,11 +1,7 @@
-import Image from 'next/image';
 import { useEffect, useState } from "react"
 import { Inter } from "next/font/google"
 import TicketGridRow from "@/components/support/ticketGridRow";
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import BotonAtras from "@/components/support/BackButton";
-import ProjectGridRow from "@/components/projects/projectGridRow";
+import BotonAtras from "@/components/support/backButton";
 import { supportFetcher } from "@/services/support/fetcher";
 import { Ticket } from "@/types/types";
 import { translateInputTicket } from '@/services/support/translateTicket';

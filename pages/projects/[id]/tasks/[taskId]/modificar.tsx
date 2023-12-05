@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import FetchTask from "@/services/project/fetchTask";
 import { useEffect } from "react";
 import ModifyForm from "@/components/tasks/ModifyForm";
-import { CancelarBoton } from "@/components/projects/CancelButton";
+import { CancelarBoton } from "@/components/projects/cancelButton";
 
 const inter = Inter({ subsets: ["latin"] })
 

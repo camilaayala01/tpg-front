@@ -2,7 +2,7 @@
 import { Inter } from "next/font/google"
 import TaskGridRow from "@/components/support/taskGridRow";
 
-import BotonAtras from "@/components/support/BackButton";
+import BotonAtras from "@/components/support/backButton";
 
 import FetchTasksForTicket from '@/services/support/fetchTasksForTicket';
 
