@@ -1,42 +1,8 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Notas para el usuario
+#### Para mejorar su experiencia, desde el lado de proyectos dejamos algunos comentarios respecto de posibles bugs que podrian encontrarse al correr el programa:
+* es posible que cuando borran un proyecto y vuelvan a la pagina principal, se muestre el proyecto eliminado. Creemos que esto se debe a que la funcion no espera el retorno de la eliminacion, y es asincronica por lo que no controlamos el orden de las llamadas, y se puede llegar a re-renderizar mientras sigue estando. Si recargan la pagina, el proyecto no debería aparecer más.
+* si modifican un proyecto o una tarea, al clickear en cualquier boton que debería realizar alguna accion (aceptar, cancelar o cualquiera de la sidebar) se cambia la URL pero no te lleva a esa pagina. Esto no sabemos a qué se debe, pero haciendo f5 pueden continuar con el funcionamiento de la pagina. Si se clickea en aceptar, los valores efectivamente se modifican, tanto en su estado como en el kanban, etc, simplemente no podemos lograr que se recargue la pagina correctamente.
+* en la pagina de visualizacion de una tarea, se pueden observar los tickets asociados, pero deben esperar un rato.
+* esto no es un bug nuestro, pero al correr por primera vez la aplicación, es muy probable que les tome un rato en cargar. Pedimos paciencia, render no tiene una gran velocidad.
 
-## Getting Started
-
-Install dependencies:
-```bash
-npm install
-```
-
-Run the development server:
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Pedimos disculpas por los inconvenientes.
